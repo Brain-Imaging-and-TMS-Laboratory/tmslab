@@ -54,7 +54,7 @@ footer_fixed: true
 search_enabled: false # global nav search + ⌘K disabled (publications page filter is independent and stays enabled via `bib_search` below)
 socials_in_search: true
 posts_in_search: true
-bib_search: false # publications-page filter input disabled — list is browsable enough as-is
+bib_search: true # publications-page filter input enabled (compact, top-right of page heading)
 
 # Dimensions
 max_width: 930px

@@ -19,6 +19,26 @@ The Brain Imaging and TMS Laboratory conducts research on memory, cognitive agin
 
 > Each study below has been reviewed by an Institutional Review Board responsible for human subjects research at The University of Arizona and found to be acceptable, according to applicable state and federal regulations and University policies designed to protect the rights and welfare of participants in research.
 
+<section class="tmslab-video-section">
+  <h2>What is TMS?</h2>
+  <p class="tmslab-video-subtitle">A short introduction to transcranial magnetic stimulation &mdash; what it is, how it feels, and why we use it in our research.</p>
+
+  <div class="tmslab-video-wrapper">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/RWJaaZoruyY"
+      title="What is TMS? — Brain Imaging and TMS Lab"
+      frameborder="0"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+
+  <p class="tmslab-video-caption">
+    Video credit: <a href="https://www.youtube.com/watch?v=RWJaaZoruyY" target="_blank" rel="noopener noreferrer">original source on YouTube</a>
+  </p>
+</section>
+
 ---
 
 ### Study #1 — Interleaved TMS Study (Ages 55–85)
