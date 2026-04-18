@@ -2,33 +2,22 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Director — <a href='https://psychology.arizona.edu/'>University of Arizona, Department of Psychology</a>
 
 profile:
   align: right
-  image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image: chou.jpg   # you'll add this image next
+  image_circular: false
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
-
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
-
-announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
-
-latest_posts:
-  enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+    <p>Department of Psychology</p>
+    <p>University of Arizona</p>
+    <p>Tucson, AZ 85721</p>
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+The Brain Imaging and TMS Laboratory, directed by Dr. Ying-hui Chou, focuses on the integration of transcranial magnetic stimulation (TMS), magnetic resonance imaging (MRI), electroencephalography (EEG), behavioral measures, AD plasma biomarkers, and the gut microbiome. Our primary objectives are:
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+1. Developing image-guided TMS therapeutic protocols to enhance memory.
+2. Investigating causal relationships between brain-behavior and brain region-to-region interactions.
+3. Exploring TMS-derived and imaging-based biomarkers for early diagnosis and prediction of therapeutic outcomes.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Our lab is particularly interested in applying this multi-modal approach to studying mild cognitive impairment, Alzheimer's disease, and cognitive aging.
