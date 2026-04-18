@@ -6,42 +6,28 @@
    ============================================================= */
 
 /* --- Font-size accessibility toggle ---
-   Target audience includes older adults (50-85). We honor the
-   user's browser/OS base font size via `font-size: 100%` on <html>
-   and scale everything proportionally via a CSS custom property
-   flipped on the body (via JS) or on <html> (via inline preload
-   script to prevent flash-of-unstyled-size on page load).        */
+   Target audience includes older adults (50-85). Two sizes:
+   Regular (1×) and Big (1.35×). The class flip lives on <html>
+   itself (NOT body) — CSS custom properties inherit down, not
+   up, so setting the scale variable on body would never reach
+   the `html { font-size: ... }` declaration above.              */
 
 :root {
   --tmslab-font-scale: 1;
 }
 
-/* Body classes flip the scale when the main JS finishes loading
-   and restores the user's saved preference from localStorage.  */
-body.font-size-large {
-  --tmslab-font-scale: 1.25;
-}
-
-body.font-size-xlarge {
-  --tmslab-font-scale: 1.5;
-}
-
-/* Html preload classes are set by an inline <head> script before
-   body renders, eliminating the flash. The main JS removes these
-   classes after it syncs body classes.                           */
-html.font-size-large-preload {
-  --tmslab-font-scale: 1.25;
-}
-
-html.font-size-xlarge-preload {
-  --tmslab-font-scale: 1.5;
+/* Single class pattern on <html> — used by both the inline
+   preload script (fires in <head>, prevents flash-of-unstyled-
+   size on reload) and the main font-toggle.js (syncs on click). */
+html.font-size-big {
+  --tmslab-font-scale: 1.35;
 }
 
 /* 100% honors the browser/OS default font size (which users can
    set globally). Multiplying by the scale variable lets our
-   toggle make everything an additional 25% / 50% bigger. Using
-   100% (not `1rem`) avoids any circular-reference edge case when
-   setting font-size on the root element.                        */
+   toggle make everything an additional 35% bigger. Using 100%
+   (not `1rem`) avoids any circular-reference edge case when
+   setting font-size on the root element.                       */
 html {
   font-size: calc(100% * var(--tmslab-font-scale, 1));
 }

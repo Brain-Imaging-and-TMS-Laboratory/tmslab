@@ -13,19 +13,16 @@
       <meta http-equiv="refresh" content="3; url={{ redirect }}">
     {% endif %}
     {% include head.liquid %}
-    <!-- Font-size accessibility toggle: preload class applied to
-         <html> *before* body renders, so saved "large" / "xlarge"
-         preferences don't flash the regular size on first paint.
-         Main JS in /assets/js/font-toggle.js takes over after load,
-         syncs body classes, and clears these preload classes. -->
+    <!-- Font-size accessibility toggle: if the user previously
+         picked "big", apply the class on <html> *before* body
+         renders, so the bigger type shows on first paint with no
+         flash. The main JS in /assets/js/font-toggle.js also uses
+         the same class on <html>, so handoff is seamless.       -->
     <script>
       (function () {
         try {
-          var size = localStorage.getItem("tmslab-font-size");
-          if (size === "large") {
-            document.documentElement.classList.add("font-size-large-preload");
-          } else if (size === "xlarge") {
-            document.documentElement.classList.add("font-size-xlarge-preload");
+          if (localStorage.getItem("tmslab-font-size") === "big") {
+            document.documentElement.classList.add("font-size-big");
           }
         } catch (e) {}
       })();
@@ -81,30 +78,23 @@
     {% include participate_modal.liquid %}
 
     <!-- Font-size accessibility toggle — bottom-left floating pill.
-         Sits opposite the Participate-modal triggers (which live on
-         Join Us + Research via the bottom-right pattern) so the two
-         floating UIs don't collide on any page.                     -->
+         Two buttons: Regular (1×) and Big (1.35×). The big one
+         shows a visibly larger "A" so the affordance reads at a
+         glance. Class flip lives on <html> (see font-toggle.js).  -->
     <div class="tmslab-font-toggle" role="group" aria-label="Adjust text size">
       <button type="button"
               class="tmslab-font-toggle-btn"
               data-font-size="regular"
               aria-label="Regular text size"
               aria-pressed="true">
-        <span class="tmslab-font-toggle-a" style="font-size: 0.85em;">A</span>
+        <span class="tmslab-font-toggle-a" style="font-size: 0.9em;">A</span>
       </button>
       <button type="button"
               class="tmslab-font-toggle-btn"
-              data-font-size="large"
-              aria-label="Large text size"
+              data-font-size="big"
+              aria-label="Bigger text size"
               aria-pressed="false">
-        <span class="tmslab-font-toggle-a" style="font-size: 1em;">A</span>
-      </button>
-      <button type="button"
-              class="tmslab-font-toggle-btn"
-              data-font-size="xlarge"
-              aria-label="Extra large text size"
-              aria-pressed="false">
-        <span class="tmslab-font-toggle-a" style="font-size: 1.2em;">A</span>
+        <span class="tmslab-font-toggle-a" style="font-size: 1.25em;">A</span>
       </button>
     </div>
     <div id="tmslab-font-toggle-status" class="sr-only" aria-live="polite"></div>
