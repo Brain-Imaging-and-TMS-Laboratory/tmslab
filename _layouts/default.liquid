@@ -20,6 +20,12 @@
     <!-- Header -->
     {% include header.liquid %}
 
+    <!-- News ticker — homepage only. Sits below the fixed navbar;
+         the include itself also no-ops when _news/ is empty. -->
+    {% if page.layout == 'about' %}
+      {% include news_ticker.liquid %}
+    {% endif %}
+
     <!-- Content -->
     <div class="container mt-5 layout-{{ page.layout }}" role="main">
       {% if page.toc and page.toc.sidebar %}
@@ -49,6 +55,15 @@
 
     <!-- Footer -->
     {% include footer.liquid %}
+
+    <!-- "Participate in a Study" modal. Triggers live inline on the
+         Join Us and Research pages (and any other element with
+         data-tmslab-open-modal="participate"). The site-wide floating
+         button was removed — the inline triggers cover the use case
+         without the persistent visual clutter. -->
+    {% include participate_modal.liquid %}
+
+    <script src="{{ '/assets/js/participate-modal.js' | relative_url }}" defer></script>
 
     <!-- JavaScripts -->
     {% include scripts.liquid %}

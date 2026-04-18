@@ -1,0 +1,85 @@
+{%- comment -%}
+  NOTE TO USER (Hangbin):
+  This modal form uses Formsubmit.co — same service as the Contact page form.
+  Once activated (via any form submission), the lab will receive inquiries automatically.
+
+  The activation is a ONE-TIME setup done after first deploy.
+  See _pages/contact.md for full activation instructions.
+
+  Triggers: any element with `data-tmslab-open-modal="participate"`.
+  Closes on: backdrop click, [data-modal-close] click, or Escape key.
+{%- endcomment -%}
+
+<div
+  id="tmslab-participate-modal"
+  class="tmslab-modal"
+  aria-hidden="true"
+  role="dialog"
+  aria-labelledby="tmslab-participate-title"
+  aria-modal="true"
+>
+  <div class="tmslab-modal-backdrop" data-modal-close></div>
+
+  <div class="tmslab-modal-card" role="document">
+    <button class="tmslab-modal-close" type="button" data-modal-close aria-label="Close dialog">&times;</button>
+
+    <h2 id="tmslab-participate-title">Participate in a Study</h2>
+    <p class="tmslab-modal-intro">Interested in taking part in our research? Fill out the form below and our team will reach out with details about eligibility and scheduling.</p>
+
+    <form
+      action="https://formsubmit.co/yinghuichou@arizona.edu"
+      method="POST"
+      class="tmslab-modal-form"
+    >
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="TMS Lab study participation inquiry">
+      <input type="hidden" name="_next" value="https://hangbinzhang.github.io/tmslab/?participation_sent=1">
+
+      <div class="tmslab-form-row">
+        <label class="tmslab-form-field">
+          <span class="tmslab-form-label">First name</span>
+          <input type="text" name="first_name" required autocomplete="given-name">
+        </label>
+        <label class="tmslab-form-field">
+          <span class="tmslab-form-label">Last name</span>
+          <input type="text" name="last_name" required autocomplete="family-name">
+        </label>
+      </div>
+
+      <div class="tmslab-form-row">
+        <label class="tmslab-form-field">
+          <span class="tmslab-form-label">Email</span>
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label class="tmslab-form-field">
+          <span class="tmslab-form-label">Phone</span>
+          <input type="tel" name="phone" autocomplete="tel">
+        </label>
+      </div>
+
+      <label class="tmslab-form-field">
+        <span class="tmslab-form-label">Which study are you most interested in?</span>
+        <select name="study_interest" required>
+          <option value="">Select one&hellip;</option>
+          <option>Interleaved TMS Study (Ages 55&ndash;85)</option>
+          <option>Hippocampal Plasticity Study (Ages 50&ndash;85)</option>
+          <option>EEG Study (Ages 50&ndash;85)</option>
+          <option>Gut Microbiome Study (Ages 50&ndash;85)</option>
+          <option>Not sure / any study I qualify for</option>
+        </select>
+      </label>
+
+      <label class="tmslab-form-field">
+        <span class="tmslab-form-label">Briefly, why would you like to join?</span>
+        <textarea name="message" rows="3"></textarea>
+      </label>
+
+      <p class="tmslab-modal-note">
+        Your information will be used only to contact you about study participation. We do not share contact information with third parties.
+      </p>
+
+      <button type="submit" class="tmslab-button">Submit</button>
+    </form>
+  </div>
+</div>

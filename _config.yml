@@ -51,10 +51,10 @@ external_services:
 
 navbar_fixed: true
 footer_fixed: true
-search_enabled: true
+search_enabled: false # global nav search + ⌘K disabled (publications page filter is independent and stays enabled via `bib_search` below)
 socials_in_search: true
 posts_in_search: true
-bib_search: true
+bib_search: false # publications-page filter input disabled — list is browsable enough as-is
 
 # Dimensions
 max_width: 930px
@@ -338,8 +338,10 @@ filtered_bibtex_keywords:
     website,
   ]
 
-# Maximum number of authors to be shown for each publication (more authors are visible on click)
-max_author_limit: 3 # leave blank to always show all authors
+# Threshold for author truncation. Papers with <= 10 authors render the
+# full list inline; papers with > 10 authors render the first 10 plus a
+# "N more authors" reveal link.
+max_author_limit: 10
 more_authors_animation_delay: 10 # more authors are revealed on click using animation; smaller delay means faster animation
 
 # Enables publication thumbnails. If disabled, none of the publications will display thumbnails, even if specified in the bib entry.

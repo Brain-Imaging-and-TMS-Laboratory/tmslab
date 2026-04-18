@@ -23,12 +23,23 @@
     }
   }
 
+  /* Year markers — left-aligned, prominent terracotta section
+     headings with a hairline rule below. Replaces al-folio's
+     pale right-aligned default which was hard to scan.        */
   h2.bibliography {
-    color: var(--global-divider-color);
-    border-top: 1px solid var(--global-divider-color);
-    padding-top: 1rem;
-    margin-top: 2rem;
-    text-align: right;
+    color: var(--global-theme-color);
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin: 3rem 0 1.25rem;
+    padding: 0 0 0.5rem;
+    border-top: none;
+    border-bottom: 1px solid var(--global-theme-color);
+  }
+
+  h2.bibliography:first-of-type {
+    margin-top: 1.5rem;
   }
 
   ol.bibliography {
@@ -185,4 +196,87 @@
 .citation,
 .citation-number {
   color: var(--global-theme-color);
+}
+
+/* ------------------------------------------------------------
+   Compact bibsearch input — overrides al-folio's default
+   `.bibsearch-form-input` (defined in _utilities.scss). Sits
+   to the right at the top of the publications page, with a
+   subtle sand-light background, no full border, and a small
+   terracotta underline that animates in on focus. A
+   magnifying-glass SVG is set as a left-aligned background
+   image so the field is recognisable as a search box.
+   ------------------------------------------------------------ */
+input.bibsearch-form-input,
+.bibsearch-form-input {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 0 1.5rem auto; /* right-align within parent block */
+
+  font-size: 0.92rem;
+  color: var(--global-text-color);
+  background-color: var(--tmslab-sand-light);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23a0522d'><path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: 14px 14px;
+
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 3px;
+  outline: none;
+  box-shadow: none;
+  padding: 7px 12px 7px 34px;
+
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+input.bibsearch-form-input::placeholder,
+.bibsearch-form-input::placeholder {
+  color: var(--global-text-color-light);
+  font-style: italic;
+}
+
+input.bibsearch-form-input:focus,
+.bibsearch-form-input:focus {
+  background-color: var(--global-bg-color);
+  border-bottom-color: var(--tmslab-clay);
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------
+   Pin the filter input to the top-right of the page-title row.
+   The h1 (in `header.post-header`) and the input (in `article`)
+   are in different parents, so we use `:has(.publications)` to
+   scope to the publications page only, make the `.post`
+   container the positioning context, and absolutely position
+   the input. The post-header gets right padding so a long
+   heading wouldn't collide with the input.
+   ------------------------------------------------------------ */
+.post:has(.publications) {
+  position: relative;
+}
+
+.post:has(.publications) > .post-header {
+  padding-right: 300px;
+}
+
+.post:has(.publications) .bibsearch-form-input {
+  position: absolute;
+  top: 5rem; /* aligns to the h1 baseline area */
+  right: 0;
+  margin: 0;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .post:has(.publications) > .post-header {
+    padding-right: 0;
+  }
+
+  .post:has(.publications) .bibsearch-form-input {
+    position: static;
+    margin: 0 0 1.5rem auto;
+  }
 }

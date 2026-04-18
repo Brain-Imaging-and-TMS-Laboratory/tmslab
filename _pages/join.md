@@ -4,12 +4,18 @@ permalink: /join/
 title: Join Us
 description: Participate in one of our research studies or join the lab as a trainee.
 nav: true
-nav_order: 6
+nav_order: 7
 ---
 
 ## Participate in a Study
 
 The Brain Imaging and TMS Laboratory conducts research on memory, cognitive aging, and brain stimulation. If you are interested in any of the studies below, please contact us at **[520-626-7755](tel:520-626-7755)** — leave your name, phone number, and email, and mention which study you're asking about.
+
+<div class="tmslab-inline-cta">
+  <a href="#" class="tmslab-button tmslab-button-large" data-tmslab-open-modal="participate" aria-haspopup="dialog">
+    Participate in a Study
+  </a>
+</div>
 
 > Each study below has been reviewed by an Institutional Review Board responsible for human subjects research at The University of Arizona and found to be acceptable, according to applicable state and federal regulations and University policies designed to protect the rights and welfare of participants in research.
 

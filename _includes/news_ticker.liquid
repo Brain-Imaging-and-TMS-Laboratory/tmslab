@@ -1,0 +1,29 @@
+{%- comment -%}
+  Site-wide news ticker. Pulls the 5 most recent items from
+  _news/, sorted by `date` descending. The whole strip is
+  one anchor → /news/ for clean a11y. Rotation handled by
+  /assets/js/news-ticker.js (10s per item, fade 0.4s, pauses
+  on hover, respects prefers-reduced-motion).
+
+  One-line summaries: each item's body is run through
+    markdownify | strip_html | strip_newlines | strip
+  so markdown links like [text](url) render as just "text"
+  and any HTML tags / comments are removed.
+{%- endcomment -%}
+
+{%- assign recent_news = site.news | sort: "date" | reverse -%}
+{%- assign news_count = recent_news | size -%}
+
+{%- if news_count > 0 -%}
+<a href="{{ '/news/' | relative_url }}" class="tmslab-ticker" aria-label="Latest lab news; opens the news page">
+  <span class="tmslab-ticker-prefix">Latest news</span>
+  <div class="tmslab-ticker-text" aria-live="polite" aria-atomic="true">
+    {%- for item in recent_news limit: 5 -%}
+      {%- capture clean -%}{{ item.content | markdownify | strip_html | strip_newlines | strip }}{%- endcapture -%}
+      <span class="tmslab-ticker-item{% if forloop.first %} is-active{% endif %}" data-index="{{ forloop.index0 }}">{{ clean | truncate: 160 }}</span>
+    {%- endfor -%}
+  </div>
+  <span class="tmslab-ticker-link" aria-hidden="true">All news →</span>
+</a>
+<script src="{{ '/assets/js/news-ticker.js' | relative_url }}" defer></script>
+{%- endif -%}

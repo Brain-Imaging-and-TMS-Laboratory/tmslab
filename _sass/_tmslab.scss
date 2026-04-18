@@ -87,20 +87,34 @@ html[data-theme="dark"] {
     color: var(--global-text-color, var(--tmslab-ink));
   }
 
-  /* Section headings — bigger, lighter, with breathing room
-     and a hairline terracotta rule below. Width matches body
-     copy (85ch) so the underline ends where the text wraps,
-     instead of running across the whole 1180px container.    */
+  /* Section headings — centered (Reinhart Lab pattern) with a
+     short terracotta accent bar centered beneath. Applies to
+     all top-level h2's on the homepage: the markdown ones
+     (## Research themes, ## Join us) AND the layout-injected
+     ones (news, selected publications). Per-section-class
+     overrides (e.g. .tmslab-study-heading) keep matching too.  */
   h2 {
     font-size: 1.95rem;
     font-weight: 500;
     letter-spacing: -0.01em;
     line-height: 1.25;
-    max-width: 85ch;
-    margin: 4.5rem 0 1.75rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--tmslab-rule);
+    text-align: center;
+    max-width: none;
+    margin: 4.5rem 0 1.4rem;
+    padding: 0;
+    border-bottom: none;
     color: var(--global-text-color, var(--tmslab-ink));
+    position: relative;
+  }
+
+  h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--tmslab-clay);
+    border-radius: 2px;
+    margin: 0.6rem auto 0;
   }
 
   h3,
@@ -139,56 +153,47 @@ html[data-theme="dark"] {
    ==================================================== */
 
 .layout-about .tmslab-study {
-  margin: 5rem 0 3rem;
+  margin: 1.5rem 0 3rem;
 }
 
-/* Heading: left-aligned, no full-width rule, with a
-   short terracotta accent bar under the text.            */
+/* Study heading inherits the centered + terracotta-bar style
+   from the general `.layout-about h2` rule above. Resetting the
+   inherited margin so this heading sits flush at the top of its
+   own <section>, which already has its own top margin.        */
 .layout-about .tmslab-study-heading {
-  font-size: 1.95rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  text-align: left;
-  max-width: none;
-  margin: 0 0 1.4rem;
-  padding: 0 0 0.85rem;
-  border-bottom: none;
-  position: relative;
+  margin-top: 0;
 }
 
-.layout-about .tmslab-study-heading::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: var(--tmslab-clay);
-  border-radius: 2px;
-  margin-top: 0.85rem;
-}
-
+/* Block centered (margin auto + max-width) but text aligned
+   left inside — `text-align: center` produces ragged line ends
+   on multi-line paragraphs. Reinhart / NET Lab use this same
+   "centered block, left text" pattern for >2-line intros.    */
 .layout-about .tmslab-study-intro {
-  max-width: 68ch;
-  margin: 0 0 2.75rem;
+  max-width: 720px;
+  margin: 0 auto 2.75rem;
+  text-align: left;
   font-size: 1.12rem;
   line-height: 1.75;
   color: var(--global-text-color, var(--tmslab-ink));
 }
 
-/* The objectives grid — 3 columns on desktop, stacks on mobile. */
+/* The objectives grid — 3 columns on desktop, stacks on mobile.
+   Wider gap (3rem) so cards feel distinct without a divider line. */
 .tmslab-objectives-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.75rem;
+  gap: 3rem;
   margin: 0 0 2rem;
 }
 
+/* No left border — the big terracotta 01/02/03 numbers anchor each
+   card visually. The whitespace from the wider grid gap separates
+   them; a vertical bar would break the horizontal reading rhythm. */
 .tmslab-objective-card {
   position: relative;
-  padding: 1.5rem 1.5rem 1.75rem 1.75rem;
+  padding: 1.5rem;
   background: var(--tmslab-cream);
-  border-left: 3px solid var(--tmslab-clay);
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -229,13 +234,6 @@ html[data-theme="dark"] .tmslab-objective-card:hover {
   max-width: none;
 }
 
-.layout-about .tmslab-study-caption {
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--tmslab-ink-soft);
-  margin: 1.25rem 0 0;
-  max-width: 68ch;
-}
 
 /* ====================================================
    3. HERO — full-bleed image band with overlaid text
@@ -255,17 +253,42 @@ html[data-theme="dark"] .tmslab-objective-card:hover {
   margin-left: -50vw;
   margin-right: -50vw;
   margin-top: -1.5rem;
-  margin-bottom: 0;
+  margin-bottom: 1.5rem;
   overflow: hidden;
-  max-height: 460px;
+  max-height: 380px;
 }
 
 .tmslab-hero-img {
   width: 100%;
-  height: 460px;
+  height: 380px;
   object-fit: cover;
+  /* Skyline horizon sits in the upper-middle of the source — bias
+     vertical crop downward so we keep mountains + city, not foreground. */
+  object-position: 50% 35%;
   display: block;
-  filter: brightness(0.62);
+  /* No brightness filter — the gradient ::before below darkens
+     just the left side where the text lives, plus a soft bottom
+     gradient that grounds the image. */
+}
+
+/* Uniform vertical tint across the entire image — no horizontal
+   seam between a darkened left and bright right. The sunset stays
+   visibly colorful (~0.40-0.45 opacity wash); the bottom edge is
+   slightly stronger (0.55) to ground the hero against the page.
+   Per-element text-shadow on the title/subtitle/kicker handles
+   any remaining contrast issues over lighter sky areas.         */
+.tmslab-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 14, 10, 0.45) 0%,
+    rgba(20, 14, 10, 0.40) 60%,
+    rgba(20, 14, 10, 0.55) 100%
+  );
+  pointer-events: none;
 }
 
 .tmslab-hero-overlay {
@@ -279,6 +302,7 @@ html[data-theme="dark"] .tmslab-objective-card:hover {
   margin: 0 auto;
   color: #faf7f2;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  z-index: 2; /* above the gradient ::before */
 }
 
 .tmslab-hero-overlay h1,
@@ -292,6 +316,9 @@ html[data-theme="dark"] .tmslab-objective-card:hover {
   color: #faf7f2;
   border: none !important;
   padding: 0 !important;
+  /* Stronger glow-boundary so the title still reads even if
+     it crosses into a lighter region of the sunset photo. */
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
 }
 
 .tmslab-hero-overlay p {
@@ -302,6 +329,7 @@ html[data-theme="dark"] .tmslab-objective-card:hover {
   margin: 0;
   color: #faf7f2;
   opacity: 0.95;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
 }
 
 .tmslab-hero-overlay .tmslab-hero-kicker {
@@ -312,6 +340,7 @@ html[data-theme="dark"] .tmslab-objective-card:hover {
   margin: 0 0 1rem;
   opacity: 0.9;
   color: #faf7f2;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
 }
 
 .tmslab-hero-overlay .tmslab-hero-tagline {
@@ -319,48 +348,156 @@ html[data-theme="dark"] .tmslab-objective-card:hover {
 }
 
 /* ====================================================
-   4. RESEARCH THEMES — airy tile grid
+   4. RESEARCH THEMES — image-forward cards
+   Visual weight is the figure; text is a quiet caption
+   below. No card background, no border, no left bar.
+   Hover: image scales subtly + shadow deepens + a
+   terracotta underline grows under the title.
    ==================================================== */
 
 .tmslab-research-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.75rem;
-  margin: 2.5rem 0 2rem;
+  gap: 2rem;
+  margin: 2.5rem 0 3rem;
 }
 
-.tmslab-research-tile {
+.tmslab-research-card {
   display: block;
-  padding: 2rem 1.75rem 2.25rem;
-  background: var(--tmslab-sand-light, #efe6d6);
-  border-radius: 6px;
-  text-decoration: none !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  color: var(--tmslab-ink, #2c2416) !important;
+  text-decoration: none;
+  color: inherit;
 }
 
-.tmslab-research-tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 32px rgba(44, 36, 22, 0.12);
+/* Wrapper around the <img> — owns the aspect ratio, the
+   shadow, the rounded corners, and clips the scale-on-hover. */
+.tmslab-research-card-img {
+  aspect-ratio: 8 / 5;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(44, 36, 22, 0.10);
+  transition: box-shadow 0.3s ease;
+  background: var(--tmslab-sand-light); /* placeholder color while loading */
 }
 
-html[data-theme="dark"] .tmslab-research-tile:hover {
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+.tmslab-research-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
-.tmslab-research-tile h4 {
-  font-size: 1.15rem;
+.tmslab-research-card-body {
+  padding-top: 1rem;
+}
+
+.tmslab-research-card-title {
+  display: inline-block;
+  position: relative;
+  font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.3;
-  margin: 0 0 0.75rem;
-  color: var(--tmslab-clay, #b8654a) !important;
+  color: var(--tmslab-ink);
+  margin: 0 0 0.4rem;
+  letter-spacing: -0.005em;
 }
 
-.tmslab-research-tile p {
-  font-size: 0.95rem !important;
-  line-height: 1.6 !important;
-  margin: 0 !important;
-  color: var(--tmslab-ink-soft, #5a4a36) !important;
+/* Terracotta underline that grows on hover. */
+.tmslab-research-card-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: var(--tmslab-clay);
+  transition: width 0.3s ease;
+}
+
+.tmslab-research-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--tmslab-ink-soft);
+  margin: 0 0 0.5rem;
+  max-width: none;
+  /* Clamp at two lines so cards stay even-height in a row. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tmslab-research-card-arrow {
+  display: inline-block;
+  color: var(--tmslab-clay);
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Hover state — image scales, shadow deepens, title underline
+   grows, arrow fades in and slides into place. */
+.tmslab-research-card:hover .tmslab-research-card-img img {
+  transform: scale(1.03);
+}
+
+.tmslab-research-card:hover .tmslab-research-card-img {
+  box-shadow: 0 10px 24px rgba(44, 36, 22, 0.18);
+}
+
+html[data-theme="dark"] .tmslab-research-card:hover .tmslab-research-card-img {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
+}
+
+.tmslab-research-card:hover .tmslab-research-card-title::after {
+  width: 100%;
+}
+
+.tmslab-research-card:hover .tmslab-research-card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* "More →" row — wraps the link in an explicit <div> so
+   kramdown doesn't auto-wrap a bare <a> in a <p>, which
+   would inherit the 68ch body-paragraph cap and make
+   "right-aligned" appear near the page center. Negative
+   top margin pulls the row up tight against the cards
+   (the grid has 3rem bottom margin; -2rem here collapses
+   the visible gap to ~1rem).                               */
+.tmslab-research-more-row {
+  text-align: right;
+  margin: -2rem 0 1rem;
+  max-width: none;
+  line-height: 1;
+}
+
+.tmslab-research-more {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--tmslab-clay);
+  text-decoration: none;
+}
+
+.tmslab-research-more:hover,
+.tmslab-research-more:focus {
+  color: var(--tmslab-link);
+  text-decoration: none;
+}
+
+.tmslab-research-more-arrow {
+  display: inline-block;
+  margin-left: 0.15rem;
+  transition: transform 0.2s ease;
+}
+
+.tmslab-research-more:hover .tmslab-research-more-arrow,
+.tmslab-research-more:focus .tmslab-research-more-arrow {
+  transform: translateX(4px);
 }
 
 /* ====================================================
@@ -438,16 +575,9 @@ html[data-theme="dark"] .tmslab-research-tile:hover {
    — match the new h2 rhythm.
    ==================================================== */
 
-.layout-about .post > article > h2 {
-  font-size: 1.95rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  max-width: 85ch;
-  margin: 4.5rem 0 1.75rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid var(--tmslab-rule);
-}
-
+/* Layout-injected headings (news + selected publications) wrap
+   their text in <a>; keep that link the heading's color, not the
+   theme link color, so the centered headings read as headings.  */
 .layout-about .post > article > h2 a {
   color: inherit !important;
 }
@@ -475,12 +605,1752 @@ html[data-theme="dark"] .tmslab-research-tile:hover {
 
   .tmslab-research-grid,
   .tmslab-cta-grid {
-    gap: 1.25rem;
+    gap: 1.5rem;
     margin: 2rem 0 2.5rem;
   }
 
-  .tmslab-research-tile,
+  /* CTA card padding only — research cards have no padding,
+     they rely on the image for visual weight. */
   .tmslab-cta-card {
     padding: 1.5rem 1.25rem;
   }
+}
+
+/* ====================================================
+   9. RESEARCH PAGE — funding stats, current-grant cards,
+   past-grants table, trainee recognition.
+   New classes prefixed `tmslab-research-page-` /
+   `tmslab-grant-` / `tmslab-stat-` / `tmslab-trainee-`
+   to avoid colliding with the homepage research grid.
+   ==================================================== */
+
+.tmslab-research-page {
+  /* Section h2 matches the homepage centered + accent-bar pattern. */
+  h2 {
+    font-size: 1.85rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    text-align: center;
+    margin: 4rem 0 1.5rem;
+    color: var(--global-text-color, var(--tmslab-ink));
+    position: relative;
+  }
+
+  h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--tmslab-clay);
+    border-radius: 2px;
+    margin: 0.6rem auto 0;
+  }
+}
+
+/* --- Intro section --- */
+
+.tmslab-research-page-intro {
+  margin: 1.5rem 0 3rem;
+}
+
+.tmslab-research-page-intro-text {
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+  text-align: left;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--global-text-color, var(--tmslab-ink));
+}
+
+/* --- Funding at a glance --- */
+
+.tmslab-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.tmslab-stat {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: var(--tmslab-cream);
+  border-radius: 4px;
+}
+
+.tmslab-stat-num {
+  display: block;
+  font-size: 2.6rem;
+  font-weight: 200;
+  color: var(--tmslab-clay);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6rem;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.tmslab-stat-label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--tmslab-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* Variant for sponsors tile — the "number" is text. */
+.tmslab-stat--text .tmslab-stat-num {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin-top: 0.3rem;
+  margin-bottom: 0.7rem;
+}
+
+/* --- Current grants cards --- */
+
+.tmslab-grants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.tmslab-grant-card {
+  position: relative;
+  padding: 1.4rem 1.5rem 1.3rem;
+  background: var(--tmslab-cream);
+  border-radius: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Subtle terracotta left bar marks Chou-PI grants — visually
+   distinguishes flagship grants from collaborations. */
+.tmslab-grant-card--pi {
+  border-left: 3px solid var(--tmslab-clay);
+  padding-left: 1.4rem;
+}
+
+.tmslab-grant-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(44, 36, 22, 0.08);
+}
+
+.tmslab-grant-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.tmslab-grant-pill {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.tmslab-grant-pill--type-pi {
+  background: var(--tmslab-clay);
+  color: #faf7f2;
+}
+
+.tmslab-grant-pill--type-coi {
+  background: var(--tmslab-sand);
+  color: #faf7f2;
+}
+
+.tmslab-grant-pill--agency {
+  background: transparent;
+  color: var(--tmslab-ink-soft);
+  border: 1px solid var(--tmslab-rule);
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.tmslab-grant-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 0.45rem;
+  color: var(--tmslab-ink);
+  letter-spacing: -0.005em;
+}
+
+.tmslab-grant-fulltitle {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--tmslab-ink-soft);
+  line-height: 1.5;
+  margin: 0 0 0.85rem;
+  max-width: none;
+}
+
+.tmslab-grant-meta {
+  font-size: 0.86rem;
+  color: var(--tmslab-ink-soft);
+  margin: 0;
+  line-height: 1.5;
+  max-width: none;
+}
+
+.tmslab-grant-meta .tmslab-dot {
+  margin: 0 0.4rem;
+  color: var(--tmslab-clay);
+  font-weight: 700;
+}
+
+/* --- Past grants table --- */
+
+/* Caption above the scroll panel — sets expectations that
+   there is more content than what's immediately visible.   */
+.tmslab-grants-table-caption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--tmslab-ink-soft);
+  font-style: italic;
+  margin: 0 auto 0.75rem;
+  max-width: 600px;
+}
+
+/* Capped scroll panel — shows ~4 rows up front, header stays
+   sticky while users scroll the rest. Soft border + radius
+   make it read as a contained window rather than an open list. */
+.tmslab-grants-table-wrap {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 380px;
+  margin: 1rem 0 3rem;
+  border: 1px solid var(--tmslab-rule);
+  border-radius: 4px;
+  /* Slim, terracotta-tinted scrollbar so the "scroll for more"
+     affordance is visible without being intrusive.            */
+  scrollbar-width: thin;
+  scrollbar-color: var(--tmslab-clay) transparent;
+}
+
+.tmslab-grants-table-wrap::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tmslab-grants-table-wrap::-webkit-scrollbar-thumb {
+  background: var(--tmslab-clay);
+  border-radius: 4px;
+}
+
+.tmslab-grants-table-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tmslab-grants-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.tmslab-grants-table th,
+.tmslab-grants-table td {
+  text-align: left;
+  padding: 0.85rem 0.85rem;
+  vertical-align: top;
+}
+
+/* Sticky header — stays visible at the top of the scroll panel
+   so the column labels never disappear while scrolling.        */
+.tmslab-grants-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--tmslab-clay);
+  color: #faf7f2;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.tmslab-grants-table tbody tr {
+  border-bottom: 1px solid var(--tmslab-rule);
+}
+
+.tmslab-grants-table tbody tr:nth-child(even) {
+  background: var(--tmslab-sand-light);
+}
+
+.tmslab-grants-table .col-period {
+  white-space: nowrap;
+  width: 13%;
+  color: var(--tmslab-ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.tmslab-grants-table .col-title {
+  width: 49%;
+  font-weight: 500;
+  color: var(--tmslab-ink);
+  line-height: 1.45;
+}
+
+.tmslab-grants-table .col-title em {
+  display: block;
+  font-size: 0.85em;
+  color: var(--tmslab-ink-soft);
+  font-weight: 400;
+  margin-top: 0.15rem;
+}
+
+.tmslab-grants-table .col-role {
+  width: 12%;
+  white-space: nowrap;
+  color: var(--tmslab-ink-soft);
+}
+
+.tmslab-grants-table .col-agency {
+  width: 18%;
+  color: var(--tmslab-ink-soft);
+}
+
+.tmslab-grants-table .col-type {
+  width: 8%;
+  white-space: nowrap;
+  color: var(--tmslab-clay);
+  font-weight: 600;
+}
+
+/* --- Trainee Recognition (lives on the People page now) ---
+   The grid + card classes below are referenced from the
+   "Awards & Honors" section in _pages/people.md. The old
+   `.tmslab-research-page-trainees` band wrapper was removed
+   when the section moved off the Research page. */
+
+.tmslab-people-section-lead {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--tmslab-ink-soft);
+  margin: 0.85rem auto 2rem;
+  max-width: 600px;
+}
+
+.tmslab-trainees-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.tmslab-trainee-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tmslab-trainee-card > img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--tmslab-sand-light);
+  box-shadow: 0 4px 12px rgba(44, 36, 22, 0.12);
+}
+
+.tmslab-trainee-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--tmslab-ink);
+  margin: 0 0 0.55rem;
+  line-height: 1.3;
+}
+
+.tmslab-trainee-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--tmslab-ink-soft);
+  line-height: 1.55;
+  max-width: none;
+}
+
+.tmslab-trainee-card ul li {
+  margin-bottom: 0.4rem;
+  max-width: none;
+}
+
+.tmslab-trainee-card ul em {
+  font-size: 0.78rem;
+  display: block;
+  margin-top: 0.1rem;
+  opacity: 0.85;
+}
+
+/* Team card — three small overlapping circular photos. */
+.tmslab-trainee-card--team .tmslab-trainee-photos {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  padding-left: 18px; /* offset for overlap */
+}
+
+.tmslab-trainee-card--team .tmslab-trainee-photos img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--tmslab-cream);
+  box-shadow: 0 4px 12px rgba(44, 36, 22, 0.12);
+  margin-left: -18px;
+}
+
+/* Mobile tweaks for the research page */
+@media (max-width: 640px) {
+  .tmslab-research-page h2 {
+    font-size: 1.5rem;
+    margin: 3rem 0 1.25rem;
+  }
+
+  .tmslab-stats-grid,
+  .tmslab-grants-grid,
+  .tmslab-trainees-grid {
+    gap: 1rem;
+  }
+
+  .tmslab-stat {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .tmslab-stat-num {
+    font-size: 2.1rem;
+  }
+
+  .tmslab-grant-card {
+    padding: 1.25rem 1.25rem 1.15rem;
+  }
+
+  .tmslab-grant-card--pi {
+    padding-left: 1.1rem;
+  }
+
+  .tmslab-grants-table {
+    font-size: 0.85rem;
+  }
+
+  .tmslab-grants-table th,
+  .tmslab-grants-table td {
+    padding: 0.6rem 0.5rem;
+  }
+}
+
+/* ====================================================
+   10. PEOPLE PAGE — PI hero, current-member subsections,
+   alumni grid. New classes prefixed `tmslab-pi-` /
+   `tmslab-people-`. The legacy `.people-grid` and
+   `.person-card` classes (originally inline-styled in
+   _pages/people.md) are now defined here so the page
+   markup can stay style-free.
+   ==================================================== */
+
+/* Section H2 + subsection H3: same centered + accent-bar
+   pattern as the homepage. */
+.tmslab-people-page h2.section-heading {
+  font-size: 1.85rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--global-text-color, var(--tmslab-ink));
+  margin: 4rem 0 0;
+  padding: 0;
+  border-bottom: none;
+  position: relative;
+}
+
+.tmslab-people-page h2.section-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--tmslab-clay);
+  border-radius: 2px;
+  margin: 0.6rem auto 0;
+}
+
+.tmslab-people-page h2.section-heading:first-of-type {
+  margin-top: 1.5rem;
+}
+
+.tmslab-people-subheading {
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: -0.005em;
+  color: var(--tmslab-ink);
+  margin: 3rem 0 1.5rem;
+  padding: 0;
+}
+
+.tmslab-people-subheading::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: var(--tmslab-clay);
+  border-radius: 2px;
+  margin: 0.45rem auto 0;
+  opacity: 0.7;
+}
+
+/* --- PI hero: 2-column (photo | content) on desktop --- */
+
+.tmslab-pi {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 4rem;
+  margin: 1.5rem 0 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .tmslab-pi {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+}
+
+.tmslab-pi-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tmslab-pi-photo img {
+  width: 400px;
+  height: 400px;
+  max-width: 100%;
+  object-fit: cover;
+  /* Bias the square crop toward the upper portion of the source
+     photo so Dr. Chou's head/hair stays comfortably inside the
+     frame instead of being clipped at the top edge. */
+  object-position: center 20%;
+  border-radius: 8px;
+  border: 1px solid var(--tmslab-sand-light);
+  box-shadow: 0 8px 24px rgba(44, 36, 22, 0.14);
+}
+
+/* Social icon row sits directly under the photo — no caption
+   between them anymore (the right column already says "Principal
+   Investigator" and lists "Director, Brain Imaging and TMS
+   Laboratory" under Affiliations).                              */
+.tmslab-pi-social {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.tmslab-pi-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--tmslab-rule);
+  border-radius: 6px;
+  color: var(--tmslab-ink-soft);
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: color 0.18s ease, border-color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.tmslab-pi-social a:hover {
+  color: var(--tmslab-clay);
+  border-color: var(--tmslab-clay);
+  background-color: var(--tmslab-sand-light);
+}
+
+/* Content column */
+.tmslab-pi-content {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .tmslab-pi-content {
+    text-align: center;
+  }
+}
+
+.tmslab-pi-name {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--tmslab-ink);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0 0 0.4rem;
+  padding: 0;
+}
+
+.tmslab-pi-role {
+  font-size: 0.78rem;
+  color: var(--tmslab-clay);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.tmslab-pi-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--tmslab-clay);
+  border: none;
+  margin: 0 0 1.75rem;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .tmslab-pi-divider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.tmslab-pi-content h3 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--tmslab-ink);
+  margin: 1.5rem 0 0.85rem; /* Tighter rhythm between Affiliations → Research Focus */
+  padding: 0;
+}
+
+.tmslab-pi-content h3:first-of-type {
+  margin-top: 0;
+}
+
+/* Stack consecutive bio paragraphs cleanly. */
+.tmslab-pi-bio + .tmslab-pi-bio {
+  margin-top: 0.85rem;
+}
+
+.tmslab-pi-affiliations {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--tmslab-ink);
+  max-width: none;
+}
+
+.tmslab-pi-affiliations li {
+  padding-left: 1rem;
+  position: relative;
+  max-width: none;
+}
+
+.tmslab-pi-affiliations li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--tmslab-clay);
+}
+
+.tmslab-pi-bio {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--tmslab-ink);
+  margin: 0;
+  max-width: none;
+}
+
+/* --- Member card grid (was inline-styled in people.md) --- */
+
+.tmslab-people-page .people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.tmslab-people-page .person-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.tmslab-people-page .person-card img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--global-divider-color, #e8dfcd);
+}
+
+.tmslab-people-page .person-card .name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin: 0 0 0.25rem;
+  color: var(--global-text-color, var(--tmslab-ink));
+  max-width: none;
+}
+
+.tmslab-people-page .person-card .role {
+  font-size: 0.8rem;
+  color: var(--tmslab-clay);
+  margin: 0 0 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  max-width: none;
+}
+
+.tmslab-people-page .person-card .bio {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--global-text-color-light, var(--tmslab-ink-soft));
+  margin: 0;
+  max-width: none;
+}
+
+/* --- CV button (postdoc/research-scientist tier only) --- */
+
+.tmslab-cv-btn {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  margin-top: 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--tmslab-clay);
+  background: transparent;
+  border: 1px solid var(--tmslab-clay);
+  border-radius: 3px;
+  text-decoration: none;
+  line-height: 1.4;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.tmslab-cv-btn:hover,
+.tmslab-cv-btn:focus {
+  background-color: var(--tmslab-clay);
+  color: var(--tmslab-cream);
+  text-decoration: none;
+}
+
+/* ====================================================
+   11. NEWS TICKER — site-wide thin strip below the
+   fixed navbar. Single anchor wrapping prefix +
+   rotating text + "all news" CTA. JS rotation logic
+   lives in /assets/js/news-ticker.js.
+   ==================================================== */
+
+.tmslab-ticker {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  height: 44px;
+  padding: 0 1.5rem;
+  background: var(--tmslab-sand-light);
+  border-bottom: 1px solid var(--tmslab-rule);
+  font-size: 0.9rem;
+  color: var(--tmslab-ink-soft);
+  text-decoration: none;
+  /* Sits below the fixed navbar (body has padding-top: 57px
+     when .fixed-top-nav is applied, so this strip lands just
+     beneath the navbar in the visible viewport). */
+}
+
+.tmslab-ticker:hover,
+.tmslab-ticker:focus {
+  text-decoration: none;
+}
+
+.tmslab-ticker-prefix {
+  flex: 0 0 auto;
+  width: 130px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tmslab-clay);
+}
+
+/* Stage for the rotating items — single fixed-height
+   container, items absolutely stacked inside.            */
+.tmslab-ticker-text {
+  position: relative;
+  flex: 1 1 auto;
+  height: 1.4em;
+  overflow: hidden;
+  min-width: 0; /* allow flex item to shrink below content size */
+}
+
+.tmslab-ticker-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--tmslab-ink-soft);
+  line-height: 1.4;
+}
+
+.tmslab-ticker-item.is-active {
+  opacity: 1;
+}
+
+.tmslab-ticker:hover .tmslab-ticker-item.is-active {
+  color: var(--tmslab-ink);
+}
+
+.tmslab-ticker-link {
+  flex: 0 0 80px;
+  text-align: right;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--tmslab-clay);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .tmslab-ticker {
+    padding: 0 1rem;
+    gap: 0.75rem;
+  }
+
+  .tmslab-ticker-prefix {
+    width: auto;
+    font-size: 0.68rem;
+  }
+
+  /* Hide the right-side CTA on mobile to save space; the
+     entire strip is still clickable so users can reach
+     the full news page. */
+  .tmslab-ticker-link {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tmslab-ticker-item {
+    transition: none;
+  }
+}
+
+/* ====================================================
+   12. CONTACT PAGE — heading + 2-col (info | form) + map
+   New classes prefixed `tmslab-contact-*`.
+   ==================================================== */
+
+/* Hide layout's default post-header on the contact page so we
+   render our own centered heading inside the page wrapper.   */
+.post:has(.tmslab-contact-page) > .post-header {
+  display: none;
+}
+
+.tmslab-contact-page {
+  margin: 1rem 0 4rem;
+}
+
+/* --- Heading + subtitle --- */
+
+.tmslab-contact-page h1 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-align: center;
+  margin: 1.5rem 0 1rem;
+  color: var(--tmslab-ink);
+  position: relative;
+}
+
+.tmslab-contact-page h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--tmslab-clay);
+  border-radius: 2px;
+  margin: 0.7rem auto 0;
+}
+
+.tmslab-contact-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--tmslab-ink-soft);
+  margin: 0 auto 3rem;
+  max-width: 560px;
+  line-height: 1.55;
+}
+
+/* --- Two-column grid (info | form) --- */
+
+.tmslab-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .tmslab-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* --- Contact info column --- */
+
+.tmslab-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.tmslab-contact-block h3 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--tmslab-clay);
+  margin: 0 0 0.35rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.tmslab-contact-block h3 i {
+  font-size: 0.85rem;
+  width: 16px;
+  text-align: center;
+  color: var(--tmslab-clay);
+}
+
+.tmslab-contact-block p,
+.tmslab-contact-block address {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--tmslab-ink);
+  font-style: normal;
+  max-width: none;
+}
+
+.tmslab-contact-block a {
+  color: var(--tmslab-ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+
+.tmslab-contact-block a:hover,
+.tmslab-contact-block a:focus {
+  color: var(--tmslab-clay);
+  border-bottom-color: var(--tmslab-clay);
+}
+
+/* --- Form column --- */
+
+.tmslab-contact-callout {
+  font-size: 0.88rem;
+  color: var(--tmslab-ink-soft);
+  background: var(--tmslab-sand-light);
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--tmslab-clay);
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+  max-width: none;
+}
+
+.tmslab-contact-callout a {
+  color: var(--tmslab-clay);
+  font-weight: 600;
+}
+
+.tmslab-contact-success {
+  font-size: 1rem;
+  color: var(--tmslab-ink);
+  background: var(--tmslab-cream);
+  border: 1px solid var(--tmslab-clay);
+  padding: 1.25rem;
+  border-radius: 4px;
+  text-align: center;
+  margin: 0 0 1.5rem;
+  font-weight: 500;
+  max-width: none;
+}
+
+.tmslab-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tmslab-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.tmslab-form-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--tmslab-clay);
+}
+
+.tmslab-contact-form input[type="text"],
+.tmslab-contact-form input[type="email"],
+.tmslab-contact-form select {
+  border: none;
+  border-bottom: 1px solid var(--tmslab-sand);
+  background: transparent;
+  padding: 0.7rem 0.25rem;
+  font-size: 1rem;
+  color: var(--tmslab-ink);
+  font-family: inherit;
+  line-height: 1.45;
+  outline: none;
+  transition: border-color 0.18s ease, border-width 0.18s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Custom select chevron — terracotta, no native browser arrow. */
+.tmslab-contact-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23a0522d'><path d='M4 6l4 4 4-4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 14px 14px;
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+.tmslab-contact-form textarea {
+  border: 1px solid var(--tmslab-sand);
+  border-radius: 4px;
+  background: transparent;
+  padding: 0.85rem;
+  font-size: 1rem;
+  color: var(--tmslab-ink);
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 140px;
+  outline: none;
+  transition: border-color 0.18s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tmslab-contact-form input:focus,
+.tmslab-contact-form select:focus {
+  border-bottom-color: var(--tmslab-clay);
+  border-bottom-width: 2px;
+  /* Keep total height stable: subtract 1px from padding to compensate. */
+  padding-bottom: calc(0.7rem - 1px);
+}
+
+.tmslab-contact-form textarea:focus {
+  border-color: var(--tmslab-clay);
+  box-shadow: inset 0 -1px 0 var(--tmslab-clay);
+}
+
+/* Submit button */
+.tmslab-button {
+  display: inline-block;
+  background: var(--tmslab-clay);
+  color: #faf7f2;
+  border: none;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: 3px;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  transition: background-color 0.18s ease, transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.tmslab-button:hover,
+.tmslab-button:focus {
+  background: var(--tmslab-link);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(44, 36, 22, 0.18);
+}
+
+.tmslab-contact-helper {
+  font-size: 0.85rem;
+  color: var(--tmslab-ink-soft);
+  font-style: italic;
+  margin: 1.25rem 0 0;
+  max-width: none;
+}
+
+/* --- Map section --- */
+
+.tmslab-contact-map h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: -0.01em;
+  margin: 2rem 0 1.5rem;
+  color: var(--tmslab-ink);
+  position: relative;
+}
+
+.tmslab-contact-map h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--tmslab-clay);
+  border-radius: 2px;
+  margin: 0.55rem auto 0;
+}
+
+.tmslab-contact-map-wrap {
+  width: 100%;
+  border: 1px solid var(--tmslab-sand-light);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(44, 36, 22, 0.08);
+}
+
+.tmslab-contact-map-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 400px;
+  border: 0;
+  /* Subtle warm tint so the map blends with the desert palette.
+     If this looks muddy or makes labels hard to read, delete
+     the `filter` line. */
+  filter: saturate(0.9) hue-rotate(-6deg);
+}
+
+@media (max-width: 640px) {
+  .tmslab-contact-map-wrap iframe {
+    height: 320px;
+  }
+}
+
+/* ====================================================
+   13. PARTICIPATE-IN-A-STUDY MODAL — site-wide popup
+   triggered by [data-tmslab-open-modal="participate"].
+   Backdrop click + close button + Escape key all close.
+   Behavior in /assets/js/participate-modal.js.
+   ==================================================== */
+
+/* Hidden by default. JS sets aria-hidden="false" on open. */
+.tmslab-modal {
+  display: none;
+}
+
+.tmslab-modal[aria-hidden="false"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 1rem;
+  animation: tmslab-modal-fade 0.2s ease-out;
+}
+
+@keyframes tmslab-modal-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tmslab-modal[aria-hidden="false"] {
+    animation: none;
+  }
+}
+
+.tmslab-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 14, 10, 0.65);
+  cursor: pointer;
+}
+
+.tmslab-modal-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--tmslab-cream);
+  border-top: 4px solid var(--tmslab-clay);
+  border-radius: 8px;
+  padding: 2.5rem;
+  box-shadow: 0 24px 64px rgba(20, 14, 10, 0.35);
+}
+
+.tmslab-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--tmslab-ink-soft);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.tmslab-modal-close:hover,
+.tmslab-modal-close:focus {
+  color: var(--tmslab-clay);
+  background-color: var(--tmslab-sand-light);
+  outline: none;
+}
+
+.tmslab-modal-card h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin: 0 0 0.6rem;
+  padding: 0;
+  border: none;
+  color: var(--tmslab-ink);
+  text-align: left;
+  max-width: none;
+}
+
+/* Drop the centered ::after accent inside the modal — heading
+   is already differentiated by the card chrome. */
+.tmslab-modal-card h2::after {
+  display: none;
+}
+
+.tmslab-modal-intro {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--tmslab-ink-soft);
+  margin: 0 0 1.5rem;
+  max-width: none;
+}
+
+.tmslab-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Side-by-side rows (first/last name, email/phone). */
+.tmslab-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 540px) {
+  .tmslab-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Reuse the contact-page form-field style; the .tmslab-form-field
+   and .tmslab-form-label classes are defined in section 12.
+   Inputs/select/textarea share the same selectors as the contact
+   form so we re-target them here, scoped to the modal. */
+
+.tmslab-modal-form input[type="text"],
+.tmslab-modal-form input[type="email"],
+.tmslab-modal-form input[type="tel"],
+.tmslab-modal-form select {
+  border: none;
+  border-bottom: 1px solid var(--tmslab-sand);
+  background: transparent;
+  padding: 0.55rem 0.25rem;
+  font-size: 0.95rem;
+  color: var(--tmslab-ink);
+  font-family: inherit;
+  line-height: 1.45;
+  outline: none;
+  transition: border-color 0.18s ease, border-width 0.18s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tmslab-modal-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23a0522d'><path d='M4 6l4 4 4-4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 14px 14px;
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+.tmslab-modal-form textarea {
+  border: 1px solid var(--tmslab-sand);
+  border-radius: 4px;
+  background: transparent;
+  padding: 0.7rem;
+  font-size: 0.95rem;
+  color: var(--tmslab-ink);
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 80px;
+  outline: none;
+  transition: border-color 0.18s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tmslab-modal-form input:focus,
+.tmslab-modal-form select:focus {
+  border-bottom-color: var(--tmslab-clay);
+  border-bottom-width: 2px;
+  padding-bottom: calc(0.55rem - 1px);
+}
+
+.tmslab-modal-form textarea:focus {
+  border-color: var(--tmslab-clay);
+  box-shadow: inset 0 -1px 0 var(--tmslab-clay);
+}
+
+.tmslab-modal-note {
+  font-size: 0.78rem;
+  color: var(--tmslab-ink-soft);
+  font-style: italic;
+  margin: 0.25rem 0 0;
+  line-height: 1.5;
+  max-width: none;
+}
+
+/* Lock body scroll while modal is open. */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Section 14 (floating "Participate" pill) was removed — the
+   inline triggers on the Join Us and Research pages plus the
+   homepage CTA cards covered the same need without the
+   persistent visual clutter. Modal markup + JS still ship
+   site-wide so any data-tmslab-open-modal trigger works. */
+
+/* ====================================================
+   15. INLINE CTA blocks (used on Join Us + Research pages)
+   ==================================================== */
+
+.tmslab-inline-cta {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.tmslab-button-large {
+  font-size: 1.05rem;
+  padding: 1rem 2rem;
+  letter-spacing: 0.04em;
+}
+
+.tmslab-cta-inline {
+  background: var(--tmslab-sand-light);
+  border-left: 3px solid var(--tmslab-clay);
+  padding: 0.85rem 1.25rem;
+  margin: 1.5rem auto 2.5rem;
+  font-size: 0.95rem;
+  color: var(--tmslab-ink);
+  border-radius: 4px;
+  max-width: 720px;
+}
+
+.tmslab-cta-inline a {
+  color: var(--tmslab-clay);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.18s ease;
+}
+
+.tmslab-cta-inline a:hover,
+.tmslab-cta-inline a:focus {
+  border-bottom-color: var(--tmslab-clay);
+}
+
+/* ====================================================
+   16. Toast — confirmation after Formsubmit redirect
+   ==================================================== */
+
+.tmslab-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translate(-50%, 1rem);
+  z-index: 1100;
+  padding: 0.85rem 1.5rem;
+  background: var(--tmslab-clay);
+  color: #faf7f2;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 8px 22px rgba(44, 36, 22, 0.28);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  max-width: calc(100vw - 2rem);
+  text-align: center;
+}
+
+.tmslab-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tmslab-toast {
+    transition: none;
+  }
+}
+
+/* ====================================================
+   17. GALLERY PAGE — true masonry via CSS column-count,
+   captions on hover, click-to-open lightbox. Photos are
+   auto-discovered from /assets/img/gallery/ at build time
+   (see _pages/gallery.md). Lightbox JS is in
+   /assets/js/gallery-lightbox.js.
+   ==================================================== */
+
+/* Page heading + intro */
+
+.tmslab-gallery-header {
+  margin: 1rem 0 2.5rem;
+}
+
+.tmslab-gallery-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--tmslab-ink-soft);
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+.tmslab-gallery-empty {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--tmslab-ink-soft);
+  font-style: italic;
+  margin: 4rem auto;
+  max-width: 480px;
+}
+
+/* Masonry grid — CSS columns let images keep their natural
+   aspect ratios and pack vertically without JS. */
+
+.tmslab-gallery-grid {
+  column-count: 3;
+  column-gap: 1rem;
+  margin: 0 0 3rem;
+}
+
+@media (max-width: 900px) {
+  .tmslab-gallery-grid { column-count: 2; }
+}
+
+@media (max-width: 560px) {
+  .tmslab-gallery-grid { column-count: 1; }
+}
+
+.tmslab-gallery-item {
+  break-inside: avoid;
+  margin: 0 0 1rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--tmslab-sand-light);
+  box-shadow: 0 4px 14px rgba(44, 36, 22, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tmslab-gallery-item:focus {
+  outline: 3px solid var(--tmslab-clay);
+  outline-offset: 2px;
+}
+
+.tmslab-gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.tmslab-gallery-item:hover,
+.tmslab-gallery-item:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(44, 36, 22, 0.18);
+}
+
+.tmslab-gallery-item:hover img,
+.tmslab-gallery-item:focus-within img {
+  transform: scale(1.04);
+}
+
+/* Caption overlay — hidden by default, fades up on hover. */
+.tmslab-gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(20, 14, 10, 0.85) 0%,
+    rgba(20, 14, 10, 0) 100%
+  );
+  color: var(--tmslab-cream, #faf7f2);
+  padding: 2rem 1rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.tmslab-gallery-item:hover .tmslab-gallery-caption,
+.tmslab-gallery-item:focus-within .tmslab-gallery-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tmslab-gallery-item,
+  .tmslab-gallery-item img,
+  .tmslab-gallery-caption {
+    transition: none;
+  }
+}
+
+/* --- Lightbox overlay (built dynamically by JS) --- */
+
+.tmslab-lightbox {
+  display: none;
+}
+
+.tmslab-lightbox[aria-hidden="false"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.tmslab-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 14, 10, 0.92);
+  cursor: pointer;
+  z-index: 0;
+}
+
+.tmslab-lightbox-figure {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tmslab-lightbox-img {
+  max-width: 90vw;
+  max-height: 75vh;
+  object-fit: contain;
+  display: block;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+  background: var(--tmslab-cream);
+  border-radius: 4px;
+}
+
+.tmslab-lightbox-caption {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--tmslab-cream, #faf7f2);
+  text-align: center;
+  letter-spacing: 0.01em;
+  max-width: 90vw;
+}
+
+.tmslab-lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1px solid rgba(250, 247, 242, 0.4);
+  border-radius: 6px;
+  color: var(--tmslab-cream, #faf7f2);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.tmslab-lightbox-close:hover,
+.tmslab-lightbox-close:focus {
+  background: rgba(250, 247, 242, 0.12);
+  border-color: var(--tmslab-cream, #faf7f2);
+  outline: none;
+}
+
+.tmslab-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: 1px solid rgba(250, 247, 242, 0.4);
+  border-radius: 50%;
+  color: var(--tmslab-cream, #faf7f2);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.tmslab-lightbox-nav:hover,
+.tmslab-lightbox-nav:focus {
+  background: rgba(250, 247, 242, 0.12);
+  border-color: var(--tmslab-cream, #faf7f2);
+  outline: none;
+}
+
+.tmslab-lightbox-prev { left: 1.5rem; }
+.tmslab-lightbox-next { right: 1.5rem; }
+
+@media (max-width: 640px) {
+  .tmslab-lightbox-nav { display: none; }
+  .tmslab-lightbox-close { top: 0.5rem; right: 0.5rem; }
+}
+
+/* ====================================================
+   18. RESEARCH THEMES — long-form expanded version on
+   the Research page (the homepage uses the short
+   image-card grid in section 4). Two-column rows:
+   figure on the left, title + description + pubs on
+   the right. Stacks on mobile.
+   ==================================================== */
+
+.tmslab-themes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  margin: 1.5rem 0 3rem;
+}
+
+.tmslab-theme-row {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .tmslab-theme-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.tmslab-theme-img {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(44, 36, 22, 0.10);
+}
+
+.tmslab-theme-img img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+}
+
+.tmslab-theme-content {
+  text-align: left;
+}
+
+.tmslab-theme-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  color: var(--tmslab-ink);
+  margin: 0 0 0.75rem;
+}
+
+.tmslab-theme-desc {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--tmslab-ink);
+  margin: 0 0 0.85rem;
+  max-width: none;
+}
+
+.tmslab-theme-pubs {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--tmslab-ink-soft);
+  margin: 0;
+  padding-top: 0.6rem;
+  border-top: 1px dotted var(--tmslab-rule);
+  max-width: none;
+}
+
+.tmslab-theme-pubs em {
+  font-style: italic;
 }

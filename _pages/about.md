@@ -8,20 +8,24 @@ subtitle: Brain Imaging and TMS Laboratory &mdash; University of Arizona
 # Dr. Chou's bio + photo lives on /people/. The hero below
 # is the visual landing.
 
-selected_papers: true
+# Selected publications and the layout-injected News section are
+# disabled here. We render News inline in the markdown below
+# (between Research themes and Join us) so Join us stays at the
+# very bottom of the page.
+selected_papers: false
 social: false
 
 announcements:
-  enabled: true
+  enabled: false
   scrollable: true
-  limit: 5
+  limit: 3
 
 latest_posts:
   enabled: false
 ---
 
 <div class="tmslab-hero">
-  <img src="{{ '/assets/img/hero/tucson_placeholder.jpg' | relative_url }}" alt="Tucson desert landscape" class="tmslab-hero-img">
+  <img src="{{ '/assets/img/hero/tucson_skyline.jpg' | relative_url }}" alt="Downtown Tucson skyline at sunset with Sentinel Peak (the A Mountain) at right" class="tmslab-hero-img">
   <div class="tmslab-hero-overlay">
     <p class="tmslab-hero-kicker">University of Arizona</p>
     <h1>Brain Imaging and TMS Laboratory</h1>
@@ -34,7 +38,7 @@ latest_posts:
   <h2 class="tmslab-study-heading">What we study</h2>
 
   <p class="tmslab-study-intro">
-    Our research at the <strong>Brain Imaging and TMS Laboratory</strong> focuses on the integration of transcranial magnetic stimulation (TMS), magnetic resonance imaging (MRI), electroencephalography (EEG), behavioral measures, AD plasma biomarkers, and the gut microbiome. Our primary objectives are:
+    The Brain Imaging and TMS Laboratory studies how the aging brain can be supported and strengthened. Our work centers on <strong>mild cognitive impairment, Alzheimer's disease, and cognitive aging</strong>, integrating transcranial magnetic stimulation (TMS), magnetic resonance imaging (MRI), electroencephalography (EEG), behavioral measures, AD plasma biomarkers, and the gut microbiome. Our three primary objectives:
   </p>
 
   <div class="tmslab-objectives-grid">
@@ -59,10 +63,6 @@ latest_posts:
 
   </div>
 
-  <p class="tmslab-study-caption">
-    Particular focus on mild cognitive impairment, Alzheimer's disease, and cognitive aging.
-  </p>
-
 </section>
 
 ---
@@ -71,36 +71,43 @@ latest_posts:
 
 <div class="tmslab-research-grid">
 
-  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-tile">
-    <h4>TMS &amp; memory enhancement</h4>
-    <p>Image-guided TMS protocols to improve memory in older adults and MCI.</p>
+  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-card">
+    <div class="tmslab-research-card-img">
+      <img src="{{ '/assets/img/research/01_tms_memory.jpg' | relative_url }}" alt="Image-guided TMS for memory enhancement" loading="lazy">
+    </div>
+    <div class="tmslab-research-card-body">
+      <h4 class="tmslab-research-card-title">Image-guided TMS for memory enhancement</h4>
+      <p class="tmslab-research-card-desc">Developing personalized, neuroimaging-guided TMS protocols to improve memory in older adults and MCI.</p>
+      <span class="tmslab-research-card-arrow" aria-hidden="true">→</span>
+    </div>
   </a>
 
-  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-tile">
-    <h4>Cognitive aging &amp; Alzheimer's</h4>
-    <p>Mechanisms of cognitive decline and identifying those at risk.</p>
+  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-card">
+    <div class="tmslab-research-card-img">
+      <img src="{{ '/assets/img/research/02_biomarkers.jpg' | relative_url }}" alt="TMS-derived biomarkers of brain health" loading="lazy">
+    </div>
+    <div class="tmslab-research-card-body">
+      <h4 class="tmslab-research-card-title">TMS-derived biomarkers of brain health</h4>
+      <p class="tmslab-research-card-desc">Using TMS-EEG and motor-evoked measures to characterize cortical excitability and plasticity in aging.</p>
+      <span class="tmslab-research-card-arrow" aria-hidden="true">→</span>
+    </div>
   </a>
 
-  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-tile">
-    <h4>Concurrent TMS &amp; fMRI</h4>
-    <p>Novel methods for real-time imaging of TMS-induced brain activity.</p>
+  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-card">
+    <div class="tmslab-research-card-img">
+      <img src="{{ '/assets/img/research/03_tms_fmri.jpg' | relative_url }}" alt="Concurrent TMS-fMRI and neuroimaging methods" loading="lazy">
+    </div>
+    <div class="tmslab-research-card-body">
+      <h4 class="tmslab-research-card-title">Concurrent TMS-fMRI and neuroimaging methods</h4>
+      <p class="tmslab-research-card-desc">Developing methods for real-time imaging of TMS-induced brain activity and causal network mapping.</p>
+      <span class="tmslab-research-card-arrow" aria-hidden="true">→</span>
+    </div>
   </a>
 
-  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-tile">
-    <h4>Cortical excitability</h4>
-    <p>TMS-derived measures as biomarkers of brain health and disease.</p>
-  </a>
+</div>
 
-  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-tile">
-    <h4>Gut–brain axis</h4>
-    <p>How the gut microbiome shapes the aging brain.</p>
-  </a>
-
-  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-tile">
-    <h4>Sleep &amp; default mode network</h4>
-    <p>TMS modulation of sleep and its impact on cognition.</p>
-  </a>
-
+<div class="tmslab-research-more-row">
+  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-more" aria-label="See all research themes">More <span class="tmslab-research-more-arrow" aria-hidden="true">&rarr;</span></a>
 </div>
 
 ---
