@@ -18,7 +18,7 @@ function determineGiscusTheme() {
 
   let giscusAttributes = {
     src: "https://giscus.app/client.js",
-    "data-repo": "hangbinzhang/tmslab",
+    "data-repo": "Brain-Imaging-and-TMS-Laboratory/tmslab",
     "data-repo-id": "",
     "data-category": "Comments",
     "data-category-id": "",
