@@ -13,6 +13,23 @@
       <meta http-equiv="refresh" content="3; url={{ redirect }}">
     {% endif %}
     {% include head.liquid %}
+    <!-- Font-size accessibility toggle: preload class applied to
+         <html> *before* body renders, so saved "large" / "xlarge"
+         preferences don't flash the regular size on first paint.
+         Main JS in /assets/js/font-toggle.js takes over after load,
+         syncs body classes, and clears these preload classes. -->
+    <script>
+      (function () {
+        try {
+          var size = localStorage.getItem("tmslab-font-size");
+          if (size === "large") {
+            document.documentElement.classList.add("font-size-large-preload");
+          } else if (size === "xlarge") {
+            document.documentElement.classList.add("font-size-xlarge-preload");
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
 
   <!-- Body -->
@@ -63,7 +80,37 @@
          without the persistent visual clutter. -->
     {% include participate_modal.liquid %}
 
+    <!-- Font-size accessibility toggle — bottom-left floating pill.
+         Sits opposite the Participate-modal triggers (which live on
+         Join Us + Research via the bottom-right pattern) so the two
+         floating UIs don't collide on any page.                     -->
+    <div class="tmslab-font-toggle" role="group" aria-label="Adjust text size">
+      <button type="button"
+              class="tmslab-font-toggle-btn"
+              data-font-size="regular"
+              aria-label="Regular text size"
+              aria-pressed="true">
+        <span class="tmslab-font-toggle-a" style="font-size: 0.85em;">A</span>
+      </button>
+      <button type="button"
+              class="tmslab-font-toggle-btn"
+              data-font-size="large"
+              aria-label="Large text size"
+              aria-pressed="false">
+        <span class="tmslab-font-toggle-a" style="font-size: 1em;">A</span>
+      </button>
+      <button type="button"
+              class="tmslab-font-toggle-btn"
+              data-font-size="xlarge"
+              aria-label="Extra large text size"
+              aria-pressed="false">
+        <span class="tmslab-font-toggle-a" style="font-size: 1.2em;">A</span>
+      </button>
+    </div>
+    <div id="tmslab-font-toggle-status" class="sr-only" aria-live="polite"></div>
+
     <script src="{{ '/assets/js/participate-modal.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/font-toggle.js' | relative_url }}" defer></script>
 
     <!-- JavaScripts -->
     {% include scripts.liquid %}

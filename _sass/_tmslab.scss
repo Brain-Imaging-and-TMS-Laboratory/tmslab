@@ -5,6 +5,62 @@
    so we override without `!important` wherever possible.
    ============================================================= */
 
+/* --- Font-size accessibility toggle ---
+   Target audience includes older adults (50-85). We honor the
+   user's browser/OS base font size via `font-size: 100%` on <html>
+   and scale everything proportionally via a CSS custom property
+   flipped on the body (via JS) or on <html> (via inline preload
+   script to prevent flash-of-unstyled-size on page load).        */
+
+:root {
+  --tmslab-font-scale: 1;
+}
+
+/* Body classes flip the scale when the main JS finishes loading
+   and restores the user's saved preference from localStorage.  */
+body.font-size-large {
+  --tmslab-font-scale: 1.25;
+}
+
+body.font-size-xlarge {
+  --tmslab-font-scale: 1.5;
+}
+
+/* Html preload classes are set by an inline <head> script before
+   body renders, eliminating the flash. The main JS removes these
+   classes after it syncs body classes.                           */
+html.font-size-large-preload {
+  --tmslab-font-scale: 1.25;
+}
+
+html.font-size-xlarge-preload {
+  --tmslab-font-scale: 1.5;
+}
+
+/* 100% honors the browser/OS default font size (which users can
+   set globally). Multiplying by the scale variable lets our
+   toggle make everything an additional 25% / 50% bigger. Using
+   100% (not `1rem`) avoids any circular-reference edge case when
+   setting font-size on the root element.                        */
+html {
+  font-size: calc(100% * var(--tmslab-font-scale, 1));
+}
+
+/* Screen-reader-only utility: visually hidden but still read
+   aloud by assistive tech. Used by the aria-live status div for
+   the font-size toggle.                                         */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* --- Desert palette tokens (fallbacks) ---
    _themes.scss already defines --global-* tokens. These are local
    names used by the homepage components below.                     */
@@ -2738,4 +2794,97 @@ html[data-theme="dark"] .tmslab-study-card {
   border: none;
   border-top: 1px solid var(--tmslab-sand-light, #efe6d6);
   margin: 3rem 0 2rem;
+}
+
+/* ====================================================
+   21. FONT-SIZE ACCESSIBILITY TOGGLE — bottom-left pill
+   Three "A" buttons (regular / large / extra-large).
+   JS in /assets/js/font-toggle.js wires clicks → body
+   class + localStorage. Inline <head> script in
+   _layouts/default.liquid primes the html preload class
+   on first paint to avoid flash-of-unstyled-size.
+   ==================================================== */
+
+.tmslab-font-toggle {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 100;
+  background: #ffffff;
+  border: 1px solid var(--tmslab-sand-light, #efe6d6);
+  border-radius: 999px;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  box-shadow: 0 4px 16px rgba(44, 36, 22, 0.12);
+}
+
+@media (max-width: 640px) {
+  .tmslab-font-toggle {
+    bottom: 1rem;
+    left: 1rem;
+    padding: 0.25rem;
+  }
+}
+
+html[data-theme="dark"] .tmslab-font-toggle {
+  background: var(--global-card-bg-color);
+  border-color: var(--tmslab-sand-light, #efe6d6);
+}
+
+.tmslab-font-toggle-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  min-width: 44px; /* a11y: 44 px touch target on mobile */
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tmslab-ink-soft, #5a4a36);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  padding: 0;
+  font-family: inherit;
+}
+
+/* Scale the visual hit area back down on desktop while keeping
+   the 44×44 touch target on narrow viewports. */
+@media (min-width: 641px) {
+  .tmslab-font-toggle-btn {
+    min-width: 36px;
+    min-height: 36px;
+  }
+}
+
+.tmslab-font-toggle-btn:hover {
+  color: var(--tmslab-ink, #2c2416);
+  background: var(--tmslab-sand-light, #efe6d6);
+}
+
+.tmslab-font-toggle-btn[aria-pressed="true"] {
+  background: var(--tmslab-clay, #b8654a);
+  color: var(--tmslab-cream, #faf7f2);
+}
+
+.tmslab-font-toggle-btn[aria-pressed="true"]:hover {
+  /* Keep the active state visually dominant even on hover. */
+  background: var(--tmslab-clay, #b8654a);
+  color: var(--tmslab-cream, #faf7f2);
+}
+
+.tmslab-font-toggle-btn:focus-visible {
+  outline: 2px solid var(--tmslab-clay, #b8654a);
+  outline-offset: 2px;
+}
+
+.tmslab-font-toggle-a {
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
 }
