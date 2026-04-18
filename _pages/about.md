@@ -1,96 +1,130 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
-subtitle: "Director: Ying-hui Chou, ScD — University of Arizona"
+subtitle: Brain Imaging and TMS Laboratory &mdash; University of Arizona
 
-profile:
-  align: right
-  image: chou.jpg
-  image_circular: false
-  more_info: >
-    <p>Department of Psychology</p>
-    <p>University of Arizona</p>
-    <p>Tucson, AZ 85721</p>
+# PI photo / address intentionally not shown on homepage —
+# Dr. Chou's bio + photo lives on /people/. The hero below
+# is the visual landing.
+
+selected_papers: true
+social: false
 
 announcements:
   enabled: true
-  scrollable: true # adds a vertical scroll bar if news items overflow
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  scrollable: true
+  limit: 5
 
 latest_posts:
   enabled: false
-
-selected_papers: true
-social: true
 ---
 
-We use brain imaging and transcranial magnetic stimulation (TMS) to uncover mechanisms of memory, aging, and neurodegenerative disease — and to develop image-guided TMS therapies for the people those diseases affect most.
-
-## What we do
-
-The Brain Imaging and TMS Laboratory, directed by Dr. Ying-hui Chou, focuses on the integration of transcranial magnetic stimulation (TMS), magnetic resonance imaging (MRI), electroencephalography (EEG), behavioral measures, AD plasma biomarkers, and the gut microbiome. Our primary objectives are:
-
-1. Developing image-guided TMS therapeutic protocols to enhance memory.
-2. Investigating causal relationships between brain–behavior and brain region-to-region interactions.
-3. Exploring TMS-derived and imaging-based biomarkers for early diagnosis and prediction of therapeutic outcomes.
-
-Our lab is particularly interested in applying this multi-modal approach to studying mild cognitive impairment, Alzheimer's disease, and cognitive aging.
-
-## Research areas
-
-<!-- TODO: Replace the tile titles, one-line descriptions, and `/research/` deep-links
-     once the real research areas are written in _projects/*.md. Each tile links to
-     the project page with `{slug}` as the slug of that _projects/*.md file. -->
-
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2 mb-4">
-  <div class="col">
-    <div class="card h-100 p-3">
-      <h5 class="card-title"><a href="{{ '/research/' | relative_url }}">Image-guided TMS for memory</a></h5>
-      <p class="card-text text-muted mb-0">TODO: one-line description of image-guided TMS protocols to enhance episodic memory.</p>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100 p-3">
-      <h5 class="card-title"><a href="{{ '/research/' | relative_url }}">Brain–behavior causal mapping</a></h5>
-      <p class="card-text text-muted mb-0">TODO: one-line description of TMS + fMRI/EEG for causal inference.</p>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100 p-3">
-      <h5 class="card-title"><a href="{{ '/research/' | relative_url }}">Alzheimer's disease biomarkers</a></h5>
-      <p class="card-text text-muted mb-0">TODO: imaging + plasma biomarkers for early AD diagnosis.</p>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100 p-3">
-      <h5 class="card-title"><a href="{{ '/research/' | relative_url }}">Cognitive aging &amp; MCI</a></h5>
-      <p class="card-text text-muted mb-0">TODO: mechanisms of age-related cognitive change and MCI.</p>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100 p-3">
-      <h5 class="card-title"><a href="{{ '/research/' | relative_url }}">Gut–brain axis</a></h5>
-      <p class="card-text text-muted mb-0">TODO: gut microbiome and neurodegeneration.</p>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100 p-3">
-      <h5 class="card-title"><a href="{{ '/research/' | relative_url }}">Methods &amp; tools</a></h5>
-      <p class="card-text text-muted mb-0">TODO: multimodal pipelines (MRI, EEG, TMS coil navigation).</p>
-    </div>
+<div class="tmslab-hero">
+  <img src="{{ '/assets/img/hero/tucson_placeholder.jpg' | relative_url }}" alt="Tucson desert landscape" class="tmslab-hero-img">
+  <div class="tmslab-hero-overlay">
+    <p class="tmslab-hero-kicker">University of Arizona</p>
+    <h1>Brain Imaging and TMS Laboratory</h1>
+    <p class="tmslab-hero-tagline">Advancing the understanding of memory enhancement, brain-behavior relationships,<br>and biomarkers in neurodegenerative disorders</p>
   </div>
 </div>
 
-<p class="text-center mt-3 mb-5">
-  <a class="btn btn-outline-primary" href="{{ '/research/' | relative_url }}">See all research →</a>
-</p>
+<section class="tmslab-study">
+
+  <h2 class="tmslab-study-heading">What we study</h2>
+
+  <p class="tmslab-study-intro">
+    Our research at the <strong>Brain Imaging and TMS Laboratory</strong> focuses on the integration of transcranial magnetic stimulation (TMS), magnetic resonance imaging (MRI), electroencephalography (EEG), behavioral measures, AD plasma biomarkers, and the gut microbiome. Our primary objectives are:
+  </p>
+
+  <div class="tmslab-objectives-grid">
+
+    <article class="tmslab-objective-card">
+      <span class="tmslab-objective-num">01</span>
+      <h3 class="tmslab-objective-title">Image-guided TMS protocols</h3>
+      <p class="tmslab-objective-desc">Developing therapeutic TMS protocols guided by individual neuroimaging to enhance memory.</p>
+    </article>
+
+    <article class="tmslab-objective-card">
+      <span class="tmslab-objective-num">02</span>
+      <h3 class="tmslab-objective-title">Causal brain dynamics</h3>
+      <p class="tmslab-objective-desc">Investigating causal relationships between brain, behavior, and region-to-region interactions.</p>
+    </article>
+
+    <article class="tmslab-objective-card">
+      <span class="tmslab-objective-num">03</span>
+      <h3 class="tmslab-objective-title">TMS-derived biomarkers</h3>
+      <p class="tmslab-objective-desc">Exploring TMS-derived and imaging-based biomarkers for early diagnosis and treatment response prediction.</p>
+    </article>
+
+  </div>
+
+  <p class="tmslab-study-caption">
+    Particular focus on mild cognitive impairment, Alzheimer's disease, and cognitive aging.
+  </p>
+
+</section>
+
+---
+
+## Research themes
+
+<div class="tmslab-research-grid">
+
+  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-tile">
+    <h4>TMS &amp; memory enhancement</h4>
+    <p>Image-guided TMS protocols to improve memory in older adults and MCI.</p>
+  </a>
+
+  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-tile">
+    <h4>Cognitive aging &amp; Alzheimer's</h4>
+    <p>Mechanisms of cognitive decline and identifying those at risk.</p>
+  </a>
+
+  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-tile">
+    <h4>Concurrent TMS &amp; fMRI</h4>
+    <p>Novel methods for real-time imaging of TMS-induced brain activity.</p>
+  </a>
+
+  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-tile">
+    <h4>Cortical excitability</h4>
+    <p>TMS-derived measures as biomarkers of brain health and disease.</p>
+  </a>
+
+  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-tile">
+    <h4>Gut–brain axis</h4>
+    <p>How the gut microbiome shapes the aging brain.</p>
+  </a>
+
+  <a href="{{ '/research/' | relative_url }}" class="tmslab-research-tile">
+    <h4>Sleep &amp; default mode network</h4>
+    <p>TMS modulation of sleep and its impact on cognition.</p>
+  </a>
+
+</div>
+
+---
 
 ## Join us
 
-We welcome study participants and new lab members — graduate students, postdocs, and undergraduate RAs.
+<div class="tmslab-cta-grid">
 
-<p class="mb-5">
-  <a class="btn btn-outline-primary me-2" href="{{ '/join/' | relative_url }}">Join a study or the lab →</a>
-  <a class="btn btn-outline-primary" href="{{ '/contact/' | relative_url }}">Contact us →</a>
-</p>
+  <a href="{{ '/join/' | relative_url }}" class="tmslab-cta-card">
+    <h4>Participate in a study</h4>
+    <p>We have four active studies recruiting adults aged 50–85. Compensation provided.</p>
+    <span class="tmslab-cta-arrow">Learn more &rarr;</span>
+  </a>
+
+  <a href="{{ '/join/' | relative_url }}" class="tmslab-cta-card">
+    <h4>Join the lab</h4>
+    <p>Graduate students, postdocs, and undergraduates: we are looking for motivated researchers.</p>
+    <span class="tmslab-cta-arrow">Get in touch &rarr;</span>
+  </a>
+
+  <a href="{{ '/contact/' | relative_url }}" class="tmslab-cta-card">
+    <h4>Contact us</h4>
+    <p>Psychology Building &amp; TMS Laboratory, University of Arizona, Tucson.</p>
+    <span class="tmslab-cta-arrow">See details &rarr;</span>
+  </a>
+
+</div>

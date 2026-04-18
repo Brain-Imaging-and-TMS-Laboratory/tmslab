@@ -1,0 +1,486 @@
+/* =============================================================
+   TMS Lab custom styles — _sass/_tmslab.scss
+   Loaded by assets/css/main.scss via `@use "tmslab";` (last).
+   Selector strategy: keep specificity just above al-folio defaults
+   so we override without `!important` wherever possible.
+   ============================================================= */
+
+/* --- Desert palette tokens (fallbacks) ---
+   _themes.scss already defines --global-* tokens. These are local
+   names used by the homepage components below.                     */
+:root {
+  --tmslab-clay:       #b8654a;
+  --tmslab-sand:       #8b7355;
+  --tmslab-cream:      #faf7f2;
+  --tmslab-ink:        #2c2416;
+  --tmslab-ink-soft:   #5a4a36;
+  --tmslab-link:       #a0522d;
+  --tmslab-sand-light: #efe6d6;
+  --tmslab-rule:       rgba(184, 101, 74, 0.35);
+}
+
+html[data-theme="dark"] {
+  --tmslab-clay:       #d4936e;
+  --tmslab-sand:       #c9a982;
+  --tmslab-cream:      #1f1a14;
+  --tmslab-ink:        #e8ddc7;
+  --tmslab-ink-soft:   #b8a68a;
+  --tmslab-link:       #e0a878;
+  --tmslab-sand-light: #2d2419;
+  --tmslab-rule:       rgba(212, 147, 110, 0.4);
+}
+
+/* ====================================================
+   1. Homepage container width
+   ==================================================== */
+
+.container.layout-about {
+  max-width: 1180px;
+}
+
+/* ====================================================
+   1b. Navbar — wider spacing between items, centered on
+   wider viewports. Applies site-wide.
+   ==================================================== */
+
+@media (min-width: 768px) {
+  #navbar .navbar-nav {
+    /* Override Bootstrap's `ml-auto` (right-push) so items
+       flow with even gaps rather than bunching on the right. */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    gap: 0.6rem;
+  }
+
+  #navbar .navbar-nav .nav-item .nav-link {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* ====================================================
+   2. Typography & spacing — homepage feel
+   Aim for a Reinhart-style airy layout: looser
+   line-height, larger heading rhythm, lighter weights,
+   thinner rules, more whitespace between sections.
+   Scoped to .layout-about to keep other pages alone.
+   ==================================================== */
+
+.layout-about {
+  /* Body copy: looser, slightly larger. Cap at ~68ch (the
+     typographically comfortable reading width). Direct-child
+     selector intentional — tile/card grids set their own widths. */
+  .post > article > .clearfix {
+    > p,
+    > ol,
+    > ul {
+      max-width: 68ch;
+    }
+  }
+
+  p,
+  li {
+    line-height: 1.75;
+    font-size: 1.12rem;
+    color: var(--global-text-color, var(--tmslab-ink));
+  }
+
+  /* Section headings — bigger, lighter, with breathing room
+     and a hairline terracotta rule below. Width matches body
+     copy (85ch) so the underline ends where the text wraps,
+     instead of running across the whole 1180px container.    */
+  h2 {
+    font-size: 1.95rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    max-width: 85ch;
+    margin: 4.5rem 0 1.75rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--tmslab-rule);
+    color: var(--global-text-color, var(--tmslab-ink));
+  }
+
+  h3,
+  h4 {
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+
+  /* Markdown horizontal rules — invisible; we let the h2
+     border do the section-divider work.                     */
+  hr {
+    border: 0;
+    height: 0;
+    margin: 0;
+  }
+
+  /* Ordered list inside "What we do": more breathing room. */
+  ol {
+    padding-left: 1.4rem;
+  }
+  ol > li {
+    margin-bottom: 0.85rem;
+  }
+
+  /* Strong text: subtle clay tint, not heavy black. */
+  strong {
+    color: var(--global-text-color, var(--tmslab-ink));
+    font-weight: 600;
+  }
+}
+
+/* ====================================================
+   2b. "What we study" section — left-aligned heading
+   with a short terracotta accent bar, then a 3-card
+   objectives grid, then a soft italic tagline.
+   ==================================================== */
+
+.layout-about .tmslab-study {
+  margin: 5rem 0 3rem;
+}
+
+/* Heading: left-aligned, no full-width rule, with a
+   short terracotta accent bar under the text.            */
+.layout-about .tmslab-study-heading {
+  font-size: 1.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-align: left;
+  max-width: none;
+  margin: 0 0 1.4rem;
+  padding: 0 0 0.85rem;
+  border-bottom: none;
+  position: relative;
+}
+
+.layout-about .tmslab-study-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--tmslab-clay);
+  border-radius: 2px;
+  margin-top: 0.85rem;
+}
+
+.layout-about .tmslab-study-intro {
+  max-width: 68ch;
+  margin: 0 0 2.75rem;
+  font-size: 1.12rem;
+  line-height: 1.75;
+  color: var(--global-text-color, var(--tmslab-ink));
+}
+
+/* The objectives grid — 3 columns on desktop, stacks on mobile. */
+.tmslab-objectives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+  margin: 0 0 2rem;
+}
+
+.tmslab-objective-card {
+  position: relative;
+  padding: 1.5rem 1.5rem 1.75rem 1.75rem;
+  background: var(--tmslab-cream);
+  border-left: 3px solid var(--tmslab-clay);
+  border-radius: 0 4px 4px 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tmslab-objective-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(44, 36, 22, 0.09);
+}
+
+html[data-theme="dark"] .tmslab-objective-card:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+.tmslab-objective-num {
+  display: block;
+  font-size: 2.6rem;
+  font-weight: 200;
+  line-height: 1;
+  color: var(--tmslab-clay);
+  letter-spacing: -0.02em;
+  margin: 0 0 0.85rem;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.tmslab-objective-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  margin: 0 0 0.55rem;
+  color: var(--tmslab-ink);
+}
+
+.tmslab-objective-desc {
+  font-size: 0.96rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--tmslab-ink-soft);
+  max-width: none;
+}
+
+.layout-about .tmslab-study-caption {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--tmslab-ink-soft);
+  margin: 1.25rem 0 0;
+  max-width: 68ch;
+}
+
+/* ====================================================
+   3. HERO — full-bleed image band with overlaid text
+   ==================================================== */
+
+/* Hide the default page header on the homepage — the lab name
+   and tagline live in the hero overlay below. */
+.layout-about .post > .post-header {
+  display: none;
+}
+
+.tmslab-hero {
+  position: relative;
+  clear: both;
+  width: 100vw;
+  left: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: -1.5rem;
+  margin-bottom: 0;
+  overflow: hidden;
+  max-height: 460px;
+}
+
+.tmslab-hero-img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.62);
+}
+
+.tmslab-hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 clamp(1.5rem, 6vw, 5rem);
+  max-width: 1180px;
+  margin: 0 auto;
+  color: #faf7f2;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+}
+
+.tmslab-hero-overlay h1,
+.tmslab-hero-overlay h2 {
+  font-size: clamp(2rem, 4.4vw, 3.2rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  margin: 0 0 1.1rem;
+  max-width: 820px;
+  color: #faf7f2;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.tmslab-hero-overlay p {
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  font-weight: 300;
+  max-width: 820px; /* match the h1 width above */
+  line-height: 1.55;
+  margin: 0;
+  color: #faf7f2;
+  opacity: 0.95;
+}
+
+.tmslab-hero-overlay .tmslab-hero-kicker {
+  font-size: clamp(0.78rem, 0.9vw, 0.92rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin: 0 0 1rem;
+  opacity: 0.9;
+  color: #faf7f2;
+}
+
+.tmslab-hero-overlay .tmslab-hero-tagline {
+  margin-top: 0.25rem;
+}
+
+/* ====================================================
+   4. RESEARCH THEMES — airy tile grid
+   ==================================================== */
+
+.tmslab-research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+  margin: 2.5rem 0 2rem;
+}
+
+.tmslab-research-tile {
+  display: block;
+  padding: 2rem 1.75rem 2.25rem;
+  background: var(--tmslab-sand-light, #efe6d6);
+  border-radius: 6px;
+  text-decoration: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  color: var(--tmslab-ink, #2c2416) !important;
+}
+
+.tmslab-research-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(44, 36, 22, 0.12);
+}
+
+html[data-theme="dark"] .tmslab-research-tile:hover {
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+}
+
+.tmslab-research-tile h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 0.75rem;
+  color: var(--tmslab-clay, #b8654a) !important;
+}
+
+.tmslab-research-tile p {
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+  color: var(--tmslab-ink-soft, #5a4a36) !important;
+}
+
+/* ====================================================
+   5. CALL-TO-ACTION cards
+   ==================================================== */
+
+.tmslab-cta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+  margin: 2.5rem 0 4rem;
+}
+
+.tmslab-cta-card {
+  display: flex;
+  flex-direction: column;
+  padding: 2.25rem 2rem;
+  background: transparent;
+  border: 1px solid var(--global-divider-color, var(--tmslab-sand-light));
+  border-radius: 6px;
+  text-decoration: none !important;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tmslab-cta-card:hover {
+  border-color: var(--tmslab-clay, #b8654a);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(44, 36, 22, 0.08);
+}
+
+.tmslab-cta-card h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.85rem;
+  color: var(--tmslab-ink, #2c2416) !important;
+}
+
+.tmslab-cta-card p {
+  font-size: 0.98rem !important;
+  line-height: 1.65 !important;
+  color: var(--tmslab-ink-soft, #5a4a36) !important;
+  margin: 0 0 1.25rem !important;
+  flex: 1;
+}
+
+.tmslab-cta-arrow {
+  color: var(--tmslab-clay, #b8654a) !important;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+}
+
+/* ====================================================
+   6. Profile sidebar — quieter on the homepage so it
+   doesn't compete with the hero / research tiles.
+   ==================================================== */
+
+.layout-about .profile {
+  margin-top: 0.5rem;
+}
+
+.layout-about .profile .more-info {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--global-text-color-light, var(--tmslab-ink-soft));
+  margin-top: 0.75rem;
+}
+
+.layout-about .profile .more-info p {
+  margin-bottom: 0.15rem;
+}
+
+/* ====================================================
+   7. News & selected publications headings on homepage
+   — match the new h2 rhythm.
+   ==================================================== */
+
+.layout-about .post > article > h2 {
+  font-size: 1.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  max-width: 85ch;
+  margin: 4.5rem 0 1.75rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--tmslab-rule);
+}
+
+.layout-about .post > article > h2 a {
+  color: inherit !important;
+}
+
+/* News table on homepage: looser rows. */
+.layout-about .news .table th,
+.layout-about .news .table td {
+  padding: 0.8rem 0.5rem;
+  font-size: 0.98rem;
+}
+
+/* ====================================================
+   8. Mobile
+   ==================================================== */
+
+@media (max-width: 640px) {
+  .tmslab-hero { max-height: 320px; }
+  .tmslab-hero-img { height: 320px; }
+
+  .layout-about h2,
+  .layout-about .post > article > h2 {
+    font-size: 1.55rem;
+    margin: 3rem 0 1.25rem;
+  }
+
+  .tmslab-research-grid,
+  .tmslab-cta-grid {
+    gap: 1.25rem;
+    margin: 2rem 0 2.5rem;
+  }
+
+  .tmslab-research-tile,
+  .tmslab-cta-card {
+    padding: 1.5rem 1.25rem;
+  }
+}

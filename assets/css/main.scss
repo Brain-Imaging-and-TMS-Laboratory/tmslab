@@ -37,3 +37,7 @@
 @use "font-awesome/brands";
 @use "font-awesome/solid";
 @use "font-awesome/regular";
+
+// TMS Lab custom styles — must come last so its rules win cascade ties
+// against al-folio defaults at equal specificity.
+@use "tmslab";
