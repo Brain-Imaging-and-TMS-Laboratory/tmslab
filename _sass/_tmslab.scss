@@ -27,9 +27,15 @@ html.font-size-big {
    set globally). Multiplying by the scale variable lets our
    toggle make everything an additional 35% bigger. Using 100%
    (not `1rem`) avoids any circular-reference edge case when
-   setting font-size on the root element.                       */
+   setting font-size on the root element.
+   NOTE: The calc() expression is wrapped in #{"..."} interpolation
+   so Sass treats it as an opaque string. Without this, Sass's
+   math engine parses the `--` in `--tmslab-font-scale` as two
+   subtraction operators inside calc(), producing broken output
+   like `calc(100% * var( -  - tmslab - font - scale, 1))` after
+   compression — the toggle then silently fails on deploy.       */
 html {
-  font-size: calc(100% * var(--tmslab-font-scale, 1));
+  font-size: #{"calc(100% * var(--tmslab-font-scale, 1))"};
 }
 
 /* Screen-reader-only utility: visually hidden but still read

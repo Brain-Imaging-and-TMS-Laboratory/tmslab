@@ -50,7 +50,7 @@ nav_order: 8
         <input type="hidden" name="_subject" value="TMS Lab website inquiry">
 
         <!-- After-submit redirect with a flag the success banner JS reads. -->
-        <input type="hidden" name="_next" value="https://hangbinzhang.github.io/tmslab/contact/?sent=1">
+        <input type="hidden" name="_next" value="https://brain-imaging-and-tms-laboratory.github.io/tmslab/contact/?sent=1">
 
         <label class="tmslab-form-field">
           <span class="tmslab-form-label">Name</span>
