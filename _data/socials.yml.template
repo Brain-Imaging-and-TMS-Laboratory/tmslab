@@ -1,0 +1,14 @@
+# Social links shown in the site header/footer and /people/ profiles.
+# Filled-in entries render as icons; leave blank to hide.
+# TODO: Fill in Dr. Chou's real handles/IDs.
+
+email: # e.g. ychou@arizona.edu
+scholar_userid: # Google Scholar user ID (from your profile URL &user=XXXX)
+orcid_id: # ORCID iD, e.g. 0000-0000-0000-0000
+researchgate: # ResearchGate username
+linkedin_username: # LinkedIn username (after linkedin.com/in/)
+x_username: # X / Twitter handle (without @) — for the lab account
+youtube: # YouTube channel path (after youtube.com/)
+github_username: # GitHub username, if applicable
+
+rss_icon: true # comment this line to hide the RSS icon

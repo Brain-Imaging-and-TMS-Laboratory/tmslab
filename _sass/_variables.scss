@@ -32,10 +32,30 @@ $grey-900: #212529;
 $white-color: #ffffff !default;
 $black-color: #000000 !default;
 
+// -----------------------------------------------------------------------------
+// Desert palette (Southwest / Sonoran Desert theme)
+// -----------------------------------------------------------------------------
+// Light mode
+$desert-terracotta: #b8654a !default; // primary accent (warm clay)
+$desert-sand: #8b7355 !default; // secondary accent (earth brown)
+$desert-sandstone: #faf7f2 !default; // page background
+$desert-ink: #2c2416 !default; // body text
+$desert-sienna: #a0522d !default; // links
+$desert-light-sand: #efe6d6 !default; // highlights / subtle backgrounds
+$desert-divider-light: rgba(44, 36, 22, 0.12);
+
+// Dark mode
+$desert-terracotta-light: #d4936e !default; // lighter terracotta for dark bg
+$desert-deep-brown: #1f1a14 !default; // page background (dark)
+$desert-card-dark: #2a2319 !default; // card background (dark)
+$desert-cream: #e8ddc7 !default; // body text (dark)
+$desert-apricot: #e0a878 !default; // links (dark)
+$desert-divider-dark: rgba(232, 221, 199, 0.14);
+
 // Theme colors
 
-$code-bg-color-light: rgba($purple-color, 0.05);
-$code-bg-color-dark: #2c3237 !default;
+$code-bg-color-light: rgba($desert-terracotta, 0.06);
+$code-bg-color-dark: #2c2418 !default;
 
 // Font awesome location
 $fa-font-path: "../webfonts";
