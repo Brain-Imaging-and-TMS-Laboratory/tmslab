@@ -1,37 +1,34 @@
 ---
 layout: page
-title: Contact
 permalink: /contact/
+title: Contact
+description: Get in touch with the Brain Imaging and TMS Lab.
 nav: true
 nav_order: 7
-description: Contact information for the Brain Imaging and TMS Lab.
 ---
 
-<!-- TODO: Fill in real office/lab room numbers, phone, and the correct email address. -->
+## Contact Information
 
-## Brain Imaging and TMS Lab
+**Phone.** [520-626-7755](tel:520-626-7755)
 
-**Director:** Ying-hui Chou, ScD
+**Email.** [yinghuichou@arizona.edu](mailto:yinghuichou@arizona.edu)
 
-**Department of Psychology**
-University of Arizona
+### Offices
+
+**Psychology Building**
+1503 East University Blvd.
 Tucson, AZ 85721
 
-**Email:** [TODO@arizona.edu](mailto:TODO@arizona.edu)
-
-**Office:** _TODO: building and room number_
-**Lab:** _TODO: building and room number_
+**TMS Laboratory**
+1230 N Cherry Ave
+Tucson, AZ 85719
 
 ---
 
-### Getting here
+### For prospective participants
 
-_TODO: short note on the building location / parking / campus map link._
+If you're interested in taking part in one of our studies, please see our [Join Us](/tmslab/join/) page for descriptions of each active study and eligibility criteria.
 
-<!-- Optional embed (uncomment and replace with real coordinates):
-<iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!..."
-  width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
--->
+### For prospective trainees
+
+We welcome applications from graduate students, postdoctoral researchers, and undergraduates. Please email Dr. Chou directly with your CV and a brief statement of research interests.
