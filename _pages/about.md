@@ -42,7 +42,7 @@ latest_posts:
     <div class="tmslab-hero-overlay-inner">
       <p class="tmslab-hero-kicker">University of Arizona</p>
       <h1>Brain Imaging and TMS Laboratory</h1>
-      <p class="tmslab-hero-tagline">Advancing the understanding of memory enhancement, brain-behavior relationships,<br>and biomarkers in neurodegenerative disorders</p>
+      <p class="tmslab-hero-tagline">Advancing the understanding of memory enhancement, <br> brain-behavior relationships,and biomarkers in neurodegenerative disorders</p>
     </div>
   </div>
 </div>

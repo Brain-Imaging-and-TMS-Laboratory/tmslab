@@ -35,7 +35,7 @@ html.font-size-big {
    like `calc(100% * var( -  - tmslab - font - scale, 1))` after
    compression — the toggle then silently fails on deploy.       */
 html {
-  font-size: #{"calc(100% * var(--tmslab-font-scale, 1))"};
+  font-size: #{"calc(100% * var(--tmslab-font-scale, 1))"} !important;
 }
 
 /* Screen-reader-only utility: visually hidden but still read
