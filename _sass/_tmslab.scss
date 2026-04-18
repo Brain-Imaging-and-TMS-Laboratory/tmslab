@@ -7,35 +7,17 @@
 
 /* --- Font-size accessibility toggle ---
    Target audience includes older adults (50-85). Two sizes:
-   Regular (1×) and Big (1.35×). The class flip lives on <html>
-   itself (NOT body) — CSS custom properties inherit down, not
-   up, so setting the scale variable on body would never reach
-   the `html { font-size: ... }` declaration above.              */
-
-:root {
-  --tmslab-font-scale: 1;
-}
-
-/* Single class pattern on <html> — used by both the inline
-   preload script (fires in <head>, prevents flash-of-unstyled-
-   size on reload) and the main font-toggle.js (syncs on click). */
+   Regular (browser default, typically 16px) and Big (135% = ~21.6px).
+   The class flip lives on <html> itself (NOT body) so it beats
+   Bootstrap's `html { font-size }` declaration on specificity.
+   !important is required because Bootstrap's production CSS wins
+   specificity otherwise. Earlier attempts used a CSS custom
+   property inside calc() on <html>, but Sass's math engine
+   parses the `--` in `--tmslab-font-scale` as subtraction
+   operators under compression, producing broken output. A plain
+   percentage sidesteps the whole issue.                         */
 html.font-size-big {
-  --tmslab-font-scale: 1.35;
-}
-
-/* 100% honors the browser/OS default font size (which users can
-   set globally). Multiplying by the scale variable lets our
-   toggle make everything an additional 35% bigger. Using 100%
-   (not `1rem`) avoids any circular-reference edge case when
-   setting font-size on the root element.
-   NOTE: The calc() expression is wrapped in #{"..."} interpolation
-   so Sass treats it as an opaque string. Without this, Sass's
-   math engine parses the `--` in `--tmslab-font-scale` as two
-   subtraction operators inside calc(), producing broken output
-   like `calc(100% * var( -  - tmslab - font - scale, 1))` after
-   compression — the toggle then silently fails on deploy.       */
-html {
-  font-size: #{"calc(100% * var(--tmslab-font-scale, 1))"} !important;
+  font-size: 135% !important;
 }
 
 /* Screen-reader-only utility: visually hidden but still read
