@@ -44,12 +44,12 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/tmslab/gallery/";
           },
-        },{id: "nav-join-us",
-          title: "Join Us",
+        },{id: "nav-participate",
+          title: "Participate",
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/tmslab/join/";
+            window.location.href = "/tmslab/participate/";
           },
         },{id: "nav-contact",
           title: "Contact",
