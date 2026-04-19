@@ -93,7 +93,7 @@ nav_order: 7
     </div>
     <div class="tmslab-reach-out-contact">
       <span class="tmslab-reach-out-contact-label">Email</span>
-      <a href="mailto:yinghuichou@arizona.edu" class="tmslab-reach-out-contact-value">yinghuichou@arizona.edu</a>
+      <a href="mailto:tmslab@arizona.edu" class="tmslab-reach-out-contact-value">tmslab@arizona.edu</a>
     </div>
   </div>
 </section>

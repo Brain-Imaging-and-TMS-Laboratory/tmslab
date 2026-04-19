@@ -26,7 +26,7 @@ nav_order: 8
       </p>
 
       <p>
-        <strong>Graduate students and postdoctoral researchers</strong> should email Dr. Chou directly at <a href="mailto:yinghuichou@arizona.edu">yinghuichou@arizona.edu</a> with a CV and a brief statement of research interests. Graduate applicants are also encouraged to apply through the <a href="https://psychology.arizona.edu/graduate-programs">Psychology Ph.D. program</a> at the University of Arizona.
+        <strong>Graduate students and postdoctoral researchers</strong> should email Dr. Chou directly at <a href="mailto:tmslab@arizona.edu">tmslab@arizona.edu</a> with a CV and a brief statement of research interests. Graduate applicants are also encouraged to apply through the <a href="https://psychology.arizona.edu/graduate-programs">Psychology Ph.D. program</a> at the University of Arizona.
       </p>
 
       <p>
@@ -75,7 +75,7 @@ nav_order: 8
         </div>
         <div>
           <div class="tmslab-contact-label">Email</div>
-          <div class="tmslab-contact-value"><a href="mailto:yinghuichou@arizona.edu">yinghuichou@arizona.edu</a></div>
+          <div class="tmslab-contact-value"><a href="mailto:tmslab@arizona.edu">tmslab@arizona.edu</a></div>
         </div>
         <div>
           <div class="tmslab-contact-label">Psychology Building</div>

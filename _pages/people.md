@@ -17,7 +17,7 @@ nav_order: 4
       <a href="https://scholar.google.com/citations?user=eIZKmoIAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar profile (opens in a new tab)" title="Google Scholar">
         <i class="ai ai-google-scholar"></i>
       </a>
-      <a href="mailto:yinghuichou@arizona.edu" aria-label="Email Dr. Chou" title="Email">
+      <a href="mailto:tmslab@arizona.edu" aria-label="Email Dr. Chou" title="Email">
         <i class="fa-solid fa-envelope"></i>
       </a>
     </div>
@@ -347,4 +347,4 @@ nav_order: 4
 
 ---
 
-*Interested in joining the lab? Email Dr. Chou at <a href="mailto:yinghuichou@arizona.edu">yinghuichou@arizona.edu</a> or see the [Contact](/tmslab/contact/) page.*
+*Interested in joining the lab? Email Dr. Chou at <a href="mailto:tmslab@arizona.edu">tmslab@arizona.edu</a> or see the [Contact](/tmslab/contact/) page.*
