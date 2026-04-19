@@ -197,6 +197,9 @@ ninja.data = [{
           section: "News",},{id: "news-congratulations-to-hangbin-for-being-selected-to-receive-the-graduate-summer-fellowship",
           title: 'Congratulations to Hangbin for being selected to receive the Graduate Summer Fellowship!',
           description: "",
+          section: "News",},{id: "news-we-are-excited-to-share-that-our-project-targeting-sleep-to-preserve-memory-accelerated-theta-burst-stimulation-and-at-home-sleep-eeg-to-enhance-cognitive-health-in-aging-has-been-funded-by-the-mcknight-cami-core-pilot-program-mpis-ying-hui-chou-and-christian-agudelo",
+          title: 'We are excited to share that our project, “Targeting Sleep to Preserve Memory:...',
+          description: "",
           section: "News",},{
       id: 'light-theme',
       title: 'Change theme to light',
