@@ -10,7 +10,7 @@ Built with [Jekyll](https://jekyllrb.com/) on a customized [al-folio](https://gi
 docker compose up
 ```
 
-Site runs at http://localhost:8080 with live reload.
+Site runs at https://brain-imaging-and-tms-laboratory.github.io/tmslab/ with live reload.
 
 ## Deployment
 
