@@ -1,12 +1,29 @@
 ---
 layout: page
-permalink: /join/
-title: Join Us
+permalink: /participate/
+title: Participate
 nav: true
 nav_order: 7
 ---
 
-Our lab conducts studies on memory, cognitive aging, and brain stimulation. Review the active studies below, then reach out by phone, email, or our online inquiry form. [What is TMS? &rarr;](#what-is-tms)
+<h1 class="tmslab-participate-title">Ready to participate?</h1>
+
+<p class="tmslab-participate-intro">
+  Our lab conducts studies on memory, cognitive aging, and transcranial magnetic stimulation (TMS). New to TMS? <a href="#what-is-tms">Watch our short intro video &rarr;</a>
+</p>
+
+<p class="tmslab-participate-lead">
+  Please review the active studies below, then click the button to fill out our short interest form. Our team will contact you with details about eligibility and scheduling.
+</p>
+
+<div class="tmslab-participate-cta">
+  <a href="#"
+     class="tmslab-reach-out-button"
+     data-tmslab-open-modal="participate"
+     aria-haspopup="dialog">
+    Sign up to participate
+  </a>
+</div>
 
 <p class="tmslab-themes-label">Active Studies</p>
 
@@ -60,37 +77,23 @@ Our lab conducts studies on memory, cognitive aging, and brain stimulation. Revi
 
       <p>Emerging evidence suggests that dietary ketones may influence neural plasticity. This study combines ketone supplementation with Transcranial Magnetic Stimulation (TMS) to investigate the downstream neural interactions between metabolic and stimulation-based approaches to brain health.</p>
 
-      <p class="tmslab-study-eligibility">Full eligibility criteria and study details will be shared during initial screening. Use the "Sign up to participate" button below to express interest, and our team will follow up with more information.</p>
+      <p class="tmslab-study-eligibility">Full eligibility criteria and study details will be shared during initial screening. Use the "Sign up to participate" button above to express interest, and our team will follow up with more information.</p>
     </div>
   </div>
 </div>
 
 <p class="tmslab-irb-note">All studies are reviewed and approved by The University of Arizona Institutional Review Board.</p>
 
-<section class="tmslab-reach-out">
-  <h3>Ready to participate?</h3>
-  <p class="tmslab-reach-out-lead">
-    Fill out our short interest form and our team will contact you with details about eligibility and scheduling.
-  </p>
-
-  <a href="#"
-     class="tmslab-reach-out-button"
-     data-tmslab-open-modal="participate"
-     aria-haspopup="dialog">
-    Sign up to participate
-  </a>
-
-  <div class="tmslab-reach-out-alt">
-    <p class="tmslab-reach-out-alt-label">Prefer to talk to us directly?</p>
-    <div class="tmslab-reach-out-contacts">
-      <div class="tmslab-reach-out-contact">
-        <span class="tmslab-reach-out-contact-label">Call</span>
-        <a href="tel:+15206267755" class="tmslab-reach-out-contact-value">(520) 626-7755</a>
-      </div>
-      <div class="tmslab-reach-out-contact">
-        <span class="tmslab-reach-out-contact-label">Email</span>
-        <a href="mailto:yinghuichou@arizona.edu" class="tmslab-reach-out-contact-value">yinghuichou@arizona.edu</a>
-      </div>
+<section class="tmslab-reach-out tmslab-reach-out--footer">
+  <p class="tmslab-reach-out-alt-label">Prefer to talk to us directly?</p>
+  <div class="tmslab-reach-out-contacts">
+    <div class="tmslab-reach-out-contact">
+      <span class="tmslab-reach-out-contact-label">Call</span>
+      <a href="tel:+15206267755" class="tmslab-reach-out-contact-value">(520) 626-7755</a>
+    </div>
+    <div class="tmslab-reach-out-contact">
+      <span class="tmslab-reach-out-contact-label">Email</span>
+      <a href="mailto:yinghuichou@arizona.edu" class="tmslab-reach-out-contact-value">yinghuichou@arizona.edu</a>
     </div>
   </div>
 </section>
@@ -113,17 +116,5 @@ Our lab conducts studies on memory, cognitive aging, and brain stimulation. Revi
     Video credit: <a href="https://www.youtube.com/watch?v=RWJaaZoruyY" target="_blank" rel="noopener noreferrer">original source on YouTube</a>
   </p>
 </div>
-
-<hr class="tmslab-divider">
-
-<p class="tmslab-themes-label">Join the Lab</p>
-
-We welcome applications from prospective graduate students, postdoctoral researchers, and undergraduates interested in cognitive neuroscience, transcranial magnetic stimulation, and neuroimaging research.
-
-**Graduate students** &mdash; apply through the [Psychology Ph.D. program](https://psychology.arizona.edu/graduate) at the University of Arizona.
-
-**Postdoctoral researchers** &mdash; email Dr. Chou directly at [yinghuichou@arizona.edu](mailto:yinghuichou@arizona.edu) with your CV and research interests.
-
-**Undergraduates** &mdash; reach out with your CV and a brief statement of interest.
 
 <script src="{{ '/assets/js/flyer-lightbox.js' | relative_url }}" defer></script>

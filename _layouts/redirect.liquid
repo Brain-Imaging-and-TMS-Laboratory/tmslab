@@ -1,0 +1,16 @@
+---
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting&hellip;</title>
+    <link rel="canonical" href="{{ page.redirect | relative_url }}">
+    <meta http-equiv="refresh" content="0; url={{ page.redirect | relative_url }}">
+    <meta name="robots" content="noindex">
+  </head>
+  <body>
+    <p>Redirecting to <a href="{{ page.redirect | relative_url }}">{{ page.redirect | relative_url }}</a>&hellip;</p>
+    <script>window.location.replace("{{ page.redirect | relative_url }}");</script>
+  </body>
+</html>

@@ -130,7 +130,7 @@ latest_posts:
 
 <div class="tmslab-cta-grid">
 
-  <a href="{{ '/join/' | relative_url }}" class="tmslab-cta-card">
+  <a href="{{ '/participate/' | relative_url }}" class="tmslab-cta-card">
     <h4>Participate in a study</h4>
     <p>We have four active studies recruiting adults aged 50–85. Compensation provided.</p>
     <span class="tmslab-cta-arrow">Learn more &rarr;</span>
@@ -141,6 +141,25 @@ latest_posts:
     <p>Graduate students, postdocs, and undergraduates: we are looking for motivated researchers.</p>
     <span class="tmslab-cta-arrow">Get in touch &rarr;</span>
   </a>
+
+  <div class="tmslab-cta-card tmslab-cta-card--multi">
+    <h4>Find us</h4>
+    <p>Two locations on the University of Arizona campus. Tap to open in maps.</p>
+    <a class="tmslab-cta-card-link"
+       href="https://www.google.com/maps/search/?api=1&amp;query=1503+E+University+Blvd,+Tucson,+AZ+85721"
+       target="_blank"
+       rel="noopener noreferrer">
+      <span>Psychology Building</span>
+      <span class="tmslab-cta-card-link-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a class="tmslab-cta-card-link"
+       href="https://www.google.com/maps/search/?api=1&amp;query=1230+N+Cherry+Ave,+Tucson,+AZ+85719"
+       target="_blank"
+       rel="noopener noreferrer">
+      <span>BSRL/TMS Laboratory</span>
+      <span class="tmslab-cta-card-link-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
 
   {% comment %}
     Donate card — re-enable when we have the UArizona Foundation giving link.

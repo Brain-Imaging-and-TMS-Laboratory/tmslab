@@ -18,6 +18,26 @@ nav_order: 8
     <h1>Contact</h1>
     <p class="tmslab-contact-subtitle">For research inquiries, study participation, or to join the lab.</p>
 
+    <section class="tmslab-contact-trainees" markdown="0">
+      <h2>Prospective students, postdocs, and collaborators</h2>
+
+      <p>
+        We welcome inquiries from prospective graduate students, postdoctoral researchers, and undergraduates interested in cognitive neuroscience, transcranial magnetic stimulation, and neuroimaging research.
+      </p>
+
+      <p>
+        <strong>Graduate students and postdoctoral researchers</strong> should email Dr. Chou directly at <a href="mailto:yinghuichou@arizona.edu">yinghuichou@arizona.edu</a> with a CV and a brief statement of research interests. Graduate applicants are also encouraged to apply through the <a href="https://psychology.arizona.edu/graduate">Psychology Ph.D. program</a> at the University of Arizona.
+      </p>
+
+      <p>
+        <strong>Undergraduate students</strong> are welcome to reach out with a short statement of interest. We accept new undergraduate researchers on a rolling basis.
+      </p>
+
+      <p>
+        For collaborations, speaking invitations, or media inquiries, please use the form below or email Dr. Chou directly.
+      </p>
+    </section>
+
     <p class="tmslab-themes-label">Send us a message</p>
 
     <div class="tmslab-form-card">
@@ -69,16 +89,6 @@ nav_order: 8
     </div>
 
   </div>
-
-  <section class="tmslab-contact-trainees">
-    <h2>Prospective students and postdocs</h2>
-    <p>
-      Interested in joining the lab? Email Dr. Chou at <a href="mailto:yinghuichou@arizona.edu">yinghuichou@arizona.edu</a> with your CV, a brief statement of research interests, and how your background aligns with our work. We welcome inquiries from graduate students, postdoctoral fellows, and undergraduates.
-    </p>
-    <p>
-      For detailed information about our research areas and opportunities, visit the <a href="{{ '/join/' | relative_url }}">Join Us page</a>.
-    </p>
-  </section>
 
   <section class="tmslab-contact-map">
 

@@ -662,6 +662,56 @@ html[data-theme="dark"] .tmslab-research-card-body {
   letter-spacing: 0.02em;
 }
 
+/* Multi-link variant — the card outer is a <div> instead of an
+   <a>, because it contains two distinct map links. Hover lift is
+   disabled on the card itself; hover state lives on each inner
+   row. Used on the homepage "Find us" card for the two locations. */
+.tmslab-cta-card--multi:hover {
+  transform: none;
+  border-color: var(--global-divider-color, var(--tmslab-sand-light));
+  box-shadow: none;
+}
+
+.tmslab-cta-card--multi > p {
+  margin-bottom: 0.25rem !important;
+  flex: 0 0 auto;
+}
+
+.tmslab-cta-card-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  color: var(--tmslab-ink, #2c2416) !important;
+  text-decoration: none !important;
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--tmslab-sand-light, #efe6d6);
+  transition: color 0.18s ease;
+}
+
+.tmslab-cta-card-link:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.tmslab-cta-card-link:hover,
+.tmslab-cta-card-link:focus {
+  color: var(--tmslab-clay, #b8654a) !important;
+}
+
+.tmslab-cta-card-link-arrow {
+  color: var(--tmslab-clay, #b8654a);
+  font-weight: 600;
+  margin-left: 0.75rem;
+  transition: transform 0.18s ease;
+}
+
+.tmslab-cta-card-link:hover .tmslab-cta-card-link-arrow,
+.tmslab-cta-card-link:focus .tmslab-cta-card-link-arrow {
+  transform: translateX(3px);
+}
+
 /* ====================================================
    6. Profile sidebar — quieter on the homepage so it
    doesn't compete with the hero / research tiles.
@@ -1837,15 +1887,15 @@ html[data-theme="dark"] .tmslab-form-card {
 
 /* --- Map section (two side-by-side single-pin embeds) --- */
 
-/* Prospective-students-and-postdocs block — sits between the
-   contact form and the map section. Quiet layout, centered
-   column, separator rule on top so it reads as a distinct but
-   related section to the form above. */
+/* Prospective-students-and-postdocs block — sits at the top of
+   the Contact page, immediately below the subtitle and above
+   the "Send us a message" form. A soft bottom rule separates
+   it from the form section below. */
 .tmslab-contact-trainees {
   max-width: 760px;
-  margin: 3rem auto 0;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--tmslab-sand-light, #efe6d6);
+  margin: 1.5rem auto 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--tmslab-sand-light, #efe6d6);
 }
 
 .tmslab-contact-trainees h2 {
@@ -2893,6 +2943,99 @@ html[data-theme="dark"] .tmslab-study-card {
 .tmslab-reach-out {
   margin: 3rem 0 2rem;
   text-align: center;
+}
+
+/* Footer variant of the reach-out block — used on /participate/
+   as a quieter secondary path (Call + Email) AFTER the study
+   cards. Separated from the content above by a soft sand-light
+   rule; centered text because the parent .tmslab-reach-out
+   already applies `text-align: center`. */
+.tmslab-reach-out--footer {
+  margin: 2.5rem 0;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--tmslab-sand-light, #efe6d6);
+}
+
+/* --- Participate page header override ---
+   The nav label stays "Participate" (from page.title) while the
+   H1 rendered at the top of the page body is "Ready to
+   participate?". We hide al-folio's auto-generated post-header
+   on this page and render a custom h1 in the content.          */
+.post:has(.tmslab-participate-title) > .post-header {
+  display: none !important;
+}
+
+.tmslab-participate-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--tmslab-ink, #2c2416);
+  margin: 0.5rem 0 1.25rem;
+  letter-spacing: -0.01em;
+  padding: 0;
+  border: none;
+}
+
+.tmslab-participate-title::after {
+  content: none; /* cancel any inherited accent bar */
+}
+
+@media (max-width: 640px) {
+  .tmslab-participate-title {
+    font-size: 1.9rem;
+  }
+}
+
+/* Short orienting sentence under the H1 — sets the subject
+   matter of the page (memory, aging, TMS) plus a link to the
+   "What is TMS?" primer. Quiet body treatment. */
+.tmslab-participate-intro {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--tmslab-ink-soft, #5a4a36);
+  margin: 0 0 1.25rem;
+  max-width: 720px;
+}
+
+/* Action-oriented lead directly above the Sign-up button —
+   slightly darker than the orienting intro so it reads as the
+   "here's what to do" sentence. */
+.tmslab-participate-lead {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--tmslab-ink, #2c2416);
+  margin: 0 0 1.5rem;
+  max-width: 720px;
+}
+
+.tmslab-participate-intro a,
+.tmslab-participate-lead a {
+  color: var(--tmslab-clay, #b8654a);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.tmslab-participate-intro a:hover,
+.tmslab-participate-intro a:focus,
+.tmslab-participate-lead a:hover,
+.tmslab-participate-lead a:focus {
+  border-bottom-color: var(--tmslab-clay, #b8654a);
+}
+
+/* Button wrapper — controls spacing above the Active Studies
+   section. Button itself keeps its own inline-block + transform
+   styling from .tmslab-reach-out-button. */
+.tmslab-participate-cta {
+  margin: 0 0 3rem;
+}
+
+/* Hide the empty `<p class="post-description">` that the layout
+   always renders. When the front matter has no `description:`
+   field this `<p>` is empty and otherwise would leave a blank
+   line between the H1 and the first content block. */
+.post-description:empty {
+  display: none;
 }
 
 .tmslab-reach-out h3 {

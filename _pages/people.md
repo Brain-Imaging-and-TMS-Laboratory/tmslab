@@ -347,4 +347,4 @@ nav_order: 4
 
 ---
 
-*Interested in joining the lab? See our [Join Us](/tmslab/join/) page or email Dr. Chou at <a href="mailto:yinghuichou@arizona.edu">yinghuichou@arizona.edu</a>.*
+*Interested in joining the lab? Email Dr. Chou at <a href="mailto:yinghuichou@arizona.edu">yinghuichou@arizona.edu</a> or see the [Contact](/tmslab/contact/) page.*
