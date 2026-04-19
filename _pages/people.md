@@ -41,7 +41,7 @@ nav_order: 4
     <img src="{{ '/assets/img/people/sundman.jpg' | relative_url }}" alt="Mark Sundman" class="tmslab-member-photo">
     <h3 class="tmslab-member-name">Mark Sundman, M.S., Ph.D.</h3>
     <span class="tmslab-member-role">Research Scientist</span>
-    <p class="tmslab-member-bio">Ph.D. in Psychology (Cognition and Neural Systems), University of Arizona. M.S. in Integrative Medicine, George Washington University.</p>
+    <p class="tmslab-member-bio">Ph.D. in Psychology (CNS track), University of Arizona. M.S. in Integrative Medicine, George Washington University. B.S. om Exercose Scoemce, Elon University</p>
     <div class="tmslab-member-links"></div>
   </div>
 
@@ -49,7 +49,7 @@ nav_order: 4
     <img src="{{ '/assets/img/people/liu_yilin.jpg' | relative_url }}" alt="Yilin Liu" class="tmslab-member-photo">
     <h3 class="tmslab-member-name">Yilin Liu, M.S., Ph.D.</h3>
     <span class="tmslab-member-role">Research Scientist</span>
-    <p class="tmslab-member-bio">Ph.D. in CNS Psychology, University of Arizona.</p>
+    <p class="tmslab-member-bio">Ph.D. in Psychology (CNS track), University of Arizona.</p>
     <div class="tmslab-member-links"></div>
   </div>
 
@@ -157,7 +157,7 @@ nav_order: 4
          onerror="this.style.visibility='hidden'">
     <div class="tmslab-alumnus-info">
       <p class="tmslab-alumnus-name">Yu-Chin (Allison) Chen, MD, PhD</p>
-      <p class="tmslab-alumnus-role">Postdoctoral Associate</p>
+      <p class="tmslab-alumnus-role">Graduate student | Postdoctoral Associate</p>
       <p class="tmslab-alumnus-now">Now: Research Manager, SeattleNTC</p>
     </div>
   </div>
