@@ -27,8 +27,11 @@
     const trackWidth = track.scrollWidth;
     if (!trackWidth) return;
     const scrollDistance = trackWidth / 2;
-    const targetSpeedPxPerSec = 55;
-    const duration = Math.max(30, scrollDistance / targetSpeedPxPerSec);
+    // Lower = slower. 30 px/sec is a relaxed reading pace; bump
+    // toward 50 if the ticker starts to feel sluggish once many
+    // news items are added.
+    const targetSpeedPxPerSec = 30;
+    const duration = Math.max(45, scrollDistance / targetSpeedPxPerSec);
     track.style.animationDuration = duration + "s";
   }
 
