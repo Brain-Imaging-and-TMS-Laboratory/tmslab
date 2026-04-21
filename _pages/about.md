@@ -173,7 +173,7 @@ latest_posts:
 
   <a href="{{ '/participate/' | relative_url }}" class="tmslab-cta-card">
     <h4>Participate in a study</h4>
-    <p>We have four active studies recruiting adults aged 50–85. Compensation provided.</p>
+    <p>We have active studies recruiting adults aged 18–85. Compensation provided.</p>
     <span class="tmslab-cta-arrow">Learn more &rarr;</span>
   </a>
 

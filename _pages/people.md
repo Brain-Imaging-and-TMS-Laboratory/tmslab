@@ -81,7 +81,7 @@ nav_order: 4
     <img src="{{ '/assets/img/people/zhang_hangbin.jpg' | relative_url }}" alt="Hangbin Zhang" class="tmslab-member-photo">
     <h3 class="tmslab-member-name">Hangbin Zhang, M.S.</h3>
     <span class="tmslab-member-role">Graduate Student</span>
-    <p class="tmslab-member-bio">M.S. in Experimental Psychology with Data Science, University of Manchester, UK.</p>
+    <p class="tmslab-member-bio">M.S. in Experimental Psychology with Data Science, University of Manchester, UK. Pursuing a Ph.D. in Psychology (CNS track).</p>
     <div class="tmslab-member-links"></div>
   </div>
 
@@ -89,7 +89,7 @@ nav_order: 4
     <img src="{{ '/assets/img/people/norman.jpg' | relative_url }}" alt="Sarah Norman" class="tmslab-member-photo">
     <h3 class="tmslab-member-name">Sarah Norman, B.S.</h3>
     <span class="tmslab-member-role">Graduate Student</span>
-    <p class="tmslab-member-bio">B.S. in Psychology, Washington State University.</p>
+    <p class="tmslab-member-bio">B.S. in Psychology, Washington State University. Pursuing a Ph.D. in Psychology (CNS track).</p>
     <div class="tmslab-member-links"></div>
   </div>
 
@@ -98,6 +98,14 @@ nav_order: 4
     <h3 class="tmslab-member-name">Reyna Hickey, B.S.</h3>
     <span class="tmslab-member-role">Graduate Student</span>
     <p class="tmslab-member-bio">B.S. in Neuroscience, University of Illinois. Pursuing a Ph.D. in Clinical Psychology.</p>
+    <div class="tmslab-member-links"></div>
+  </div>
+
+  <div class="tmslab-member-card">
+    <img src="{{ '/assets/img/people/ceili.jpg' | relative_url }}" alt="Ceili Olney" class="tmslab-member-photo">
+    <h3 class="tmslab-member-name">Ceili Olney, B.S.</h3>
+    <span class="tmslab-member-role">Graduate Student</span>
+    <p class="tmslab-member-bio">B.S. in Neuroscience and Cognitive Science, Psychological Science from the University of Arizona. Pursuing a Ph.D. in Clinical Translational Sciences.</p>
     <div class="tmslab-member-links"></div>
   </div>
 
