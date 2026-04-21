@@ -2785,6 +2785,34 @@ body.modal-open {
   line-height: 1.6;
 }
 
+/* Extra formal-screening call-out, sits below the eligibility
+   blocks inside a study card. Sand-light background + terracotta
+   link treatment so it reads as "next step" rather than body prose. */
+.tmslab-study-screening {
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+  padding: 0.85rem 1rem;
+  background: var(--tmslab-sand-light, #efe6d6);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: var(--tmslab-ink, #2c2416);
+  line-height: 1.6;
+}
+
+.tmslab-study-screening a {
+  color: var(--tmslab-clay, #b8654a);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.tmslab-study-screening a:hover,
+.tmslab-study-screening a:focus {
+  border-bottom-color: var(--tmslab-clay, #b8654a);
+}
+
 /* Dark mode — swap white for the card background token so
    the card still reads as a raised surface. */
 html[data-theme="dark"] .tmslab-study-card {

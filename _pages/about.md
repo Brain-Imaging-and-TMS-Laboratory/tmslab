@@ -183,24 +183,14 @@ latest_posts:
     <span class="tmslab-cta-arrow">Get in touch &rarr;</span>
   </a>
 
-  <div class="tmslab-cta-card tmslab-cta-card--multi">
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=1230+N+Cherry+Ave,+Tucson,+AZ+85719"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="tmslab-cta-card">
     <h4>Find us</h4>
-    <p>Two locations on the University of Arizona campus. Tap to open in maps.</p>
-    <a class="tmslab-cta-card-link"
-       href="https://www.google.com/maps/search/?api=1&amp;query=1503+E+University+Blvd,+Tucson,+AZ+85721"
-       target="_blank"
-       rel="noopener noreferrer">
-      <span>Psychology Building</span>
-      <span class="tmslab-cta-card-link-arrow" aria-hidden="true">&rarr;</span>
-    </a>
-    <a class="tmslab-cta-card-link"
-       href="https://www.google.com/maps/search/?api=1&amp;query=1230+N+Cherry+Ave,+Tucson,+AZ+85719"
-       target="_blank"
-       rel="noopener noreferrer">
-      <span>BSRL/TMS Laboratory</span>
-      <span class="tmslab-cta-card-link-arrow" aria-hidden="true">&rarr;</span>
-    </a>
-  </div>
+    <p>TMS Laboratory &mdash; 1230 N Cherry Ave, Tucson, AZ 85719.</p>
+    <span class="tmslab-cta-arrow">Open in Maps &rarr;</span>
+  </a>
 
   {% comment %}
     Donate card — re-enable when we have the UArizona Foundation giving link.

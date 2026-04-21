@@ -102,10 +102,10 @@ nav_order: 8
     <div class="tmslab-map-grid">
 
       <div class="tmslab-map-card">
-        <p class="tmslab-map-name">Psychology Building</p>
+        <p class="tmslab-map-name">Psychology Department </p>
         <iframe
           src="https://maps.google.com/maps?q=1503+E+University+Blvd,+Tucson,+AZ+85721&z=15&output=embed"
-          title="Psychology Building map"
+          title="Psychology Department map"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen></iframe>
@@ -117,10 +117,10 @@ nav_order: 8
       </div>
 
       <div class="tmslab-map-card">
-        <p class="tmslab-map-name">TMS Laboratory</p>
+        <p class="tmslab-map-name">TMS Laboratory </p>
         <iframe
           src="https://maps.google.com/maps?q=1230+N+Cherry+Ave,+Tucson,+AZ+85719&z=15&output=embed"
-          title="TMS Laboratory map"
+          title="TMS Laboratory map (for study participation)"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen></iframe>

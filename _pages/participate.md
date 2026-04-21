@@ -42,6 +42,11 @@ nav_order: 7
       <p class="tmslab-study-eligibility"><strong>You may be eligible if you are:</strong> 50&ndash;85 years old, experiencing memory complaints, right-handed, and fluent in English (it does not have to be your first language).</p>
 
       <p class="tmslab-study-eligibility"><strong>What's involved:</strong> Three blocks of non-invasive brain stimulation (two blocks of 5 sessions), MRI scans, cognitive testing, blood draws, and a cheek swab. All visits are in person at the University of Arizona (1230 N Cherry Ave, Tucson).</p>
+
+      <p class="tmslab-study-screening">
+        <strong>Have a few more minutes?</strong> Complete our short formal screening to confirm your exact eligibility:
+        <a href="https://redcap.link/GFTMS" target="_blank" rel="noopener noreferrer">redcap.link/GFTMS &rarr;</a>
+      </p>
     </div>
 
     <aside class="tmslab-study-card-aside">
