@@ -15,8 +15,15 @@ Rules:
 - Lowercase letters only
 - Supported formats: `.jpg`, `.jpeg`, `.png`, `.webp`
 
-The gallery will auto-sort by date (newest first) and display captions like
-"Lab retreat" with the date "Jun 2024" shown below.
+## What happens on the gallery page
 
-Files without a date prefix still work — they just won't have a date label
-and will appear at the bottom.
+**Files matching the convention** show:
+- a hover caption (e.g., `Lab retreat`)
+- a "Mon YYYY" date label (e.g., `Jun 2024`)
+- sorted newest-first
+
+**Files NOT matching the convention** still display, but with:
+- no caption overlay at all (photo only)
+- sorted after all dated photos
+
+So if you want a clean photo-only thumbnail, you can drop a file in with any name (e.g., `IMG_2938.jpg`). If you want it labeled, rename to the `YYYY-MM-DD_description.jpg` format.
