@@ -1513,16 +1513,19 @@ html[data-theme="dark"] .tmslab-grant-card {
 }
 
 /* 3-column grid with named areas so name + role share the top
-   row of the text column while bio/links span the full text
-   width underneath. Text stays in its column — never wraps
-   under the photo. */
+   row of the text column while bio/toggle/links span the full
+   text width underneath. Text stays in its column — never wraps
+   under the photo. Explicit `toggle` row means the "Read more"
+   button (appended by bio-expand.js) always lands right below
+   the bio, both on desktop and mobile. */
 .tmslab-member-card {
   display: grid;
   grid-template-columns: 180px auto 1fr;
   grid-template-areas:
-    "photo name  role"
-    "photo bio   bio"
-    "photo links links";
+    "photo name   role"
+    "photo bio    bio"
+    "photo toggle toggle"
+    "photo links  links";
   column-gap: 1.5rem;
   row-gap: 0.35rem;
   align-items: start;
@@ -1597,12 +1600,14 @@ html[data-theme="dark"] .tmslab-grant-card {
    Sits in column 2-3 just below the bio, so it inherits the
    text column's left edge (lines up with the bio). */
 .tmslab-bio-toggle {
-  /* Grid placement for member cards — ignored when the parent
-     is the PI section's flex column. */
-  grid-column: 2 / -1;
+  /* Member cards: lands in the dedicated "toggle" grid area
+     directly below the bio row. Falls through on any container
+     that doesn't define that area (e.g., the PI section, where
+     it's ignored and the button simply flows as a block child). */
+  grid-area: toggle;
   justify-self: start;
-  /* Flex fallback for the PI content column so the button
-     doesn't stretch full-width along the cross-axis. */
+  /* Flex fallback for non-grid parents so the button doesn't
+     stretch full-width along the cross-axis. */
   align-self: flex-start;
   appearance: none;
   -webkit-appearance: none;
@@ -1636,9 +1641,9 @@ html[data-theme="dark"] .tmslab-grant-card {
 }
 
 /* Narrow viewport: collapse to a single column. Everything
-   stacks with natural flow — photo on top, then name/role
-   (both shrink to one line each since `justify-self: start`
-   already left-aligns them), then bio, then links. */
+   stacks with natural flow — photo, name, role, bio, toggle,
+   links. The `toggle` row is always present in the template
+   so the "Read more" button never orphans into a phantom cell. */
 @media (max-width: 560px) {
   .tmslab-member-card {
     grid-template-columns: 1fr;
@@ -1647,6 +1652,7 @@ html[data-theme="dark"] .tmslab-grant-card {
       "name"
       "role"
       "bio"
+      "toggle"
       "links";
   }
 
