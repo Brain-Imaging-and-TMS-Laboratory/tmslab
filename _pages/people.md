@@ -26,9 +26,19 @@ nav_order: 4
   <div class="tmslab-pi-content">
     <h2 class="tmslab-pi-name">Ying-hui Chou, Sc.D.</h2>
     <p class="tmslab-pi-role">Principal Investigator &middot; Director, Brain Imaging and TMS Laboratory</p>
-    <p class="tmslab-pi-bio">Dr. Chou directs the Brain Imaging and TMS Laboratory at the University of Arizona. Her research integrates brain imaging and transcranial magnetic stimulation to develop image-guided therapeutic protocols and identify biomarkers for mild cognitive impairment, Alzheimer's disease, and cognitive aging.</p>
     <!-- TODO: Confirm Dr. Chou's current academic rank (Associate Professor was assumed — update if different). -->
-    <p class="tmslab-pi-affiliations">Associate Professor, Department of Psychology. Faculty member at BIO5 Institute, Evelyn F. McKnight Brain Institute, and Arizona Center on Aging.</p>
+    <ul class="tmslab-pi-affiliations">
+      <li>Associate Professor of Psychology, Cognition and Neural Systems Program</li>
+      <li>Graduate Interdisciplinary Programs in Cognitive Science and Neuroscience</li>
+      <li>Research Associate, Arizona Center on Aging</li>
+      <li>Evelyn F. McKnight Brain Institute</li>
+      <li>University of Arizona</li>
+    </ul>
+  </div>
+
+  <div class="tmslab-pi-biography">
+    <h3 class="tmslab-pi-biography-heading">Biography</h3>
+    <p class="tmslab-pi-bio">Dr. Ying-hui Chou is the director of the Brain Imaging and Transcranial Magnetic Stimulation (TMS) Laboratory at the University of Arizona. Her research has focused primarily on the cognitive and clinical neuroscience of aging and neurodegenerative disorders. Within this framework, Dr. Chou's laboratory is particularly interested in integrating brain imaging and TMS techniques to (1) develop image-guided therapeutic TMS protocols and (2) explore TMS-derived and image-based biomarkers for early diagnosis and prediction of therapeutic outcomes for individuals with mild cognitive impairment, Alzheimer's disease, as well as Parkinson's disease. Dr. Chou teaches undergraduate and graduate level courses in cognitive neuroscience, brain rehabilitation, and brain connectivity at the University of Arizona.</p>
   </div>
 
 </section>
@@ -41,7 +51,7 @@ nav_order: 4
     <img src="{{ '/assets/img/people/sundman.jpg' | relative_url }}" alt="Mark Sundman" class="tmslab-member-photo">
     <h3 class="tmslab-member-name">Mark Sundman, M.S., Ph.D.</h3>
     <span class="tmslab-member-role">Research Scientist</span>
-    <p class="tmslab-member-bio">Ph.D. in Psychology (CNS track), University of Arizona. M.S. in Integrative Medicine, George Washington University. B.S. om Exercose Scoemce, Elon University</p>
+    <p class="tmslab-member-bio">Mark earned his Ph.D. in Psychology (Cognition and Neural Systems) from the University of Arizona, and his M.S. in Integrative Medicine from George Washington University. He earned his B.S. in Exercise Science from Elon University.</p>
     <div class="tmslab-member-links"></div>
   </div>
 
@@ -65,7 +75,7 @@ nav_order: 4
     <img src="{{ '/assets/img/people/ugonna.jpg' | relative_url }}" alt="Chidi Ugonna" class="tmslab-member-photo">
     <h3 class="tmslab-member-name">Chidi Ugonna, M.S.</h3>
     <span class="tmslab-member-role">Research Specialist</span>
-    <p class="tmslab-member-bio">M.S. in Biomedical Engineering, Rutgers University. Develops MRI-based tools to identify, understand, and treat neurodegenerative disorders.</p>
+    <p class="tmslab-member-bio">Chidi is interested in developing tools and techniques that use Magnetic Resonance Imaging (MRI) to help identify, understand, and treat neurodegenerative disorders. Chidi obtained his Master's degree in Biomedical Engineering from Rutgers University.</p>
     <div class="tmslab-member-links"></div>
   </div>
 
@@ -110,10 +120,18 @@ nav_order: 4
   </div>
 
   <div class="tmslab-member-card">
+    <img src="{{ '/assets/img/people/cody.jpg' | relative_url }}" alt="Cody Moxam" class="tmslab-member-photo">
+    <h3 class="tmslab-member-name">Cody Moxam, M.S.</h3>
+    <span class="tmslab-member-role">Graduate Student</span>
+    <p class="tmslab-member-bio">Cody Moxam received his M.S. in Biomedical Engineering with a focus in Neuroengineering from Johns Hopkins University, where he also concentrated in Electrical Engineering and Computer Science with an emphasis on Artificial Intelligence. His current research focuses on translating advanced signal processing and analytical methods into novel biomarkers and therapeutic strategies for cognitive aging, mild cognitive impairment, and Alzheimer’s disease. He is also building toward a future research program in AI-driven closed-loop neuromodulation. Cody pursues these goals simply to improve the standard of care for patients around the world in hopes of improving the lives of them and their loved ones. He is currently pursuing an MD/PhD at the University of Arizona.</p>
+    <div class="tmslab-member-links"></div>
+  </div>
+
+  <div class="tmslab-member-card">
     <img src="{{ '/assets/img/people/lai.jpg' | relative_url }}" alt="Kaitlyn Lai" class="tmslab-member-photo">
     <h3 class="tmslab-member-name">Kaitlyn Lai</h3>
     <span class="tmslab-member-role">Undergraduate Researcher</span>
-    <p class="tmslab-member-bio">B.S. in Neuroscience and Cognitive Science, minor in Health and Human Values. Interests: TMS effects on connectivity and cognition in MCI and Alzheimer's disease.</p>
+    <p class="tmslab-member-bio">Kaitlyn is currently working towards her Bachelor of Science degree in Neuroscience and Cognitive Science with a minor in Health and Human Values. Her research interests include how TMS can affect functional connectivity and cognition among individuals with mild cognitive impairment or Alzheimer's disease.</p>
     <div class="tmslab-member-links"></div>
   </div>
 
@@ -121,7 +139,7 @@ nav_order: 4
     <img src="{{ '/assets/img/people/arnold.jpg' | relative_url }}" alt="Gavin Arnold" class="tmslab-member-photo">
     <h3 class="tmslab-member-name">Gavin Arnold</h3>
     <span class="tmslab-member-role">Undergraduate Researcher</span>
-    <p class="tmslab-member-bio">B.S. in Biochemistry, minors in Neuroscience and Public Health. Interests: treatment options for neurodegenerative diseases.</p>
+    <p class="tmslab-member-bio">Gavin is currently working towards his Bachelor of Science in Biochemistry with minors in Neuroscience and Public Health. His research interests include exploring and improving different treatment options for neurodegenerative diseases.</p>
     <div class="tmslab-member-links"></div>
   </div>
 
@@ -356,3 +374,5 @@ nav_order: 4
 ---
 
 *Interested in joining the lab? Email Dr. Chou at <a href="mailto:tmslab@arizona.edu">tmslab@arizona.edu</a> or see the [Contact](/tmslab/contact/) page.*
+
+<script src="{{ '/assets/js/bio-expand.js' | relative_url }}" defer></script>

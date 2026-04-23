@@ -1245,31 +1245,74 @@ html[data-theme="dark"] .tmslab-grant-card {
 
 /* Section H2 + subsection H3: same centered + accent-bar
    pattern as the homepage. */
+/* Section headings: left-aligned with a full-width sand-light
+   rule below and a shorter terracotta tick on the left overlapping
+   the rule. Anchors each section's start to the content below. */
 .tmslab-people-page h2.section-heading {
+  position: relative;
   font-size: 1.85rem;
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.25;
-  text-align: center;
+  text-align: left;
   color: var(--global-text-color, var(--tmslab-ink));
-  margin: 4rem 0 0;
-  padding: 0;
-  border-bottom: none;
-  position: relative;
+  margin: 4rem 0 1.75rem;
+  padding: 0 0 0.75rem;
+  border-bottom: 1px solid var(--tmslab-sand-light, #efe6d6);
 }
 
 .tmslab-people-page h2.section-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 80px;
+  height: 2px;
+  background: var(--tmslab-clay);
+  border-radius: 1px;
+}
+
+.tmslab-people-page h2.section-heading:first-of-type {
+  margin-top: 1.5rem;
+}
+
+/* Page-header anchor on /people/ — terracotta accent bar below
+   the h1 + subtitle so the title block reads as one unified
+   chunk, not two floating lines above empty space. */
+.post:has(.tmslab-people-page) > .post-header {
+  padding-bottom: 0;
+  margin-bottom: 2.25rem;
+  position: relative;
+}
+
+.post:has(.tmslab-people-page) > .post-header::after {
   content: "";
   display: block;
   width: 60px;
   height: 3px;
   background: var(--tmslab-clay);
   border-radius: 2px;
-  margin: 0.6rem auto 0;
+  margin-top: 1rem;
 }
 
-.tmslab-people-page h2.section-heading:first-of-type {
-  margin-top: 1.5rem;
+.post:has(.tmslab-people-page) > .post-header .post-description {
+  font-size: 0.95rem;
+  color: var(--tmslab-ink-soft, #5a4a36);
+  margin: 0.5rem 0 0;
+  max-width: 60ch;
+}
+
+/* Hairline divider between each current-member row. Gives the
+   page a directory-style rhythm and keeps the next card from
+   feeling orphaned relative to the one above. */
+.tmslab-members-grid > .tmslab-member-card {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--tmslab-sand-light, #efe6d6);
+}
+
+.tmslab-members-grid > .tmslab-member-card:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 /* --- PI section: single clean block (photo + content, no
@@ -1277,13 +1320,18 @@ html[data-theme="dark"] .tmslab-grant-card {
 
 .tmslab-pi-section {
   display: grid;
-  /* 280px matches the computed width of a Current Members card
-     (members grid uses minmax(220px, 1fr); at 930px container
-     with 3 cols + 2rem gaps the cards render at ~278px). Using
-     a fixed 280px here keeps Dr. Chou's portrait visually
-     equivalent in size to the member cards below. */
+  /* Two-row layout (Reinhart-style). Row 1: photo on the left,
+     name + role + affiliations on the right. Row 2: full-width
+     Biography block below both columns. 280px photo column
+     matches the computed width of a Current Members card.
+     Row-gap kept tight so the biography sits close to the photo
+     + social icons above; column-gap is wider for side-by-side
+     breathing room. */
   grid-template-columns: 280px 1fr;
-  gap: 2.5rem;
+  grid-template-areas:
+    "photo content"
+    "bio   bio";
+  gap: 1.5rem 2.5rem;
   margin: 2rem 0 4rem;
   align-items: start;
 }
@@ -1344,7 +1392,12 @@ html[data-theme="dark"] .tmslab-grant-card {
   color: var(--tmslab-clay, #b8654a);
 }
 
+.tmslab-pi-photo {
+  grid-area: photo;
+}
+
 .tmslab-pi-content {
+  grid-area: content;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1374,62 +1427,114 @@ html[data-theme="dark"] .tmslab-grant-card {
   text-transform: none;
 }
 
-.tmslab-pi-bio {
-  font-size: 0.98rem;
-  line-height: 1.7;
-  color: var(--tmslab-ink, #2c2416);
-  margin: 0.5rem 0 0;
-  max-width: 60ch;
+/* Biography block — full-width row below the photo+content
+   grid. Thin top rule separates it from the metadata above.
+   Bio flows naturally (no clamp) since it's no longer bounded
+   by the photo's height, and uses the full container width
+   like the member cards below. */
+.tmslab-pi-biography {
+  grid-area: bio;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--tmslab-sand-light, #efe6d6);
 }
 
-.tmslab-pi-affiliations {
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: var(--tmslab-ink-soft, #5a4a36);
+.tmslab-pi-biography-heading {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tmslab-clay, #b8654a);
+  margin: 0 0 0.9rem;
+  padding: 0;
+  border: none;
+}
+
+.tmslab-pi-biography-heading::after {
+  content: none;
+}
+
+.tmslab-pi-bio {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--tmslab-ink, #2c2416);
   margin: 0;
-  max-width: 60ch;
+  max-width: none;
+}
+
+/* Affiliations block — CV-style list: "**Bold Role**, regular
+   institution" on each row, repeated. The vertical column of
+   bold role names on the left acts as the visual anchor, so no
+   kicker label or bullets are needed (Reinhart Lab pattern). */
+.tmslab-pi-affiliations {
   list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  max-width: 60ch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--tmslab-ink, #2c2416);
+}
+
+.tmslab-pi-affiliations li {
+  margin: 0;
   padding: 0;
 }
 
-/* --- Current Members: single unified grid ---
-   Role-based subsections collapsed into one grid. Each card
-   has consistent height via flex + fixed min-height. Bios are
-   trimmed to ~2 sentences so cards stay readable at 220px. */
+.tmslab-pi-affiliations li strong {
+  font-weight: 700;
+  color: var(--tmslab-ink, #2c2416);
+}
+
+/* --- Current Members: vertical list of photo + intro ---
+   One card per row; photo left (180px), content right (flex).
+   Intended for longer bios — same horizontal rhythm as the PI
+   section above, so the whole People page reads as a coherent
+   directory. On narrow viewports (<560px) the card stacks with
+   photo on top. */
 
 .tmslab-members-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 2.25rem;
   margin-top: 1.5rem;
 }
 
-@media (max-width: 560px) {
-  .tmslab-members-grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 1.25rem;
-  }
-}
-
+/* 3-column grid with named areas so name + role share the top
+   row of the text column while bio/links span the full text
+   width underneath. Text stays in its column — never wraps
+   under the photo. */
 .tmslab-member-card {
-  display: flex;
-  flex-direction: column;
-  min-height: 380px;
-  gap: 0.4rem;
+  display: grid;
+  grid-template-columns: 180px auto 1fr;
+  grid-template-areas:
+    "photo name  role"
+    "photo bio   bio"
+    "photo links links";
+  column-gap: 1.5rem;
+  row-gap: 0.35rem;
+  align-items: start;
 }
 
 .tmslab-member-photo {
-  width: 100%;
+  grid-area: photo;
+  width: 180px;
+  height: 180px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: center 20%;
   border-radius: 6px;
-  margin-bottom: 0.5rem;
+  margin: 0;
   box-shadow: 0 1px 6px rgba(44, 36, 22, 0.06);
 }
 
 .tmslab-member-name {
-  font-size: 0.95rem;
+  grid-area: name;
+  align-self: end;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--tmslab-ink, #2c2416);
   margin: 0;
@@ -1439,6 +1544,9 @@ html[data-theme="dark"] .tmslab-grant-card {
 }
 
 .tmslab-member-role {
+  grid-area: role;
+  align-self: end;
+  justify-self: start;
   display: inline-block;
   font-size: 0.72rem;
   font-weight: 600;
@@ -1448,26 +1556,99 @@ html[data-theme="dark"] .tmslab-grant-card {
   background: transparent;
   border: 1px solid var(--tmslab-clay, #b8654a);
   border-radius: 3px;
-  align-self: flex-start;
-  margin: 0.1rem 0 0.35rem;
+  margin: 0 0 0 0.1rem;
+  white-space: nowrap;
 }
 
+/* Bio is line-clamped to 5 lines so it never extends past the
+   photo's bottom edge. JS (/assets/js/bio-expand.js) measures
+   each bio and appends a terracotta "Read more" button only
+   when the content actually overflows the clamp; the button
+   toggles the `.is-expanded` class which releases the clamp. */
 .tmslab-member-bio {
-  font-size: 0.82rem;
-  line-height: 1.5;
-  color: var(--tmslab-ink-soft, #5a4a36);
-  margin: 0;
-  flex-grow: 1;
+  grid-area: bio;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--tmslab-ink, #2c2416);
+  margin: 0.35rem 0 0;
   max-width: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
 }
 
-/* Optional links row — always present so card heights stay
-   consistent, even when a card has no links. */
+.tmslab-member-bio.is-expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+/* Expand toggle — appended by JS only when a bio overflows.
+   Sits in column 2-3 just below the bio, so it inherits the
+   text column's left edge (lines up with the bio). */
+.tmslab-bio-toggle {
+  /* Grid placement for member cards — ignored when the parent
+     is the PI section's flex column. */
+  grid-column: 2 / -1;
+  justify-self: start;
+  /* Flex fallback for the PI content column so the button
+     doesn't stretch full-width along the cross-axis. */
+  align-self: flex-start;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0.35rem 0;
+  margin-top: 0.15rem;
+  color: var(--tmslab-clay, #b8654a);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.tmslab-bio-toggle:hover,
+.tmslab-bio-toggle:focus {
+  border-bottom-color: var(--tmslab-clay, #b8654a);
+  outline: none;
+}
+
 .tmslab-member-links {
-  margin-top: 0.5rem;
-  min-height: 30px;
+  grid-area: links;
+  margin-top: 0.25rem;
   display: flex;
   gap: 0.5rem;
+}
+
+.tmslab-member-links:empty {
+  display: none;
+}
+
+/* Narrow viewport: collapse to a single column. Everything
+   stacks with natural flow — photo on top, then name/role
+   (both shrink to one line each since `justify-self: start`
+   already left-aligns them), then bio, then links. */
+@media (max-width: 560px) {
+  .tmslab-member-card {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "name"
+      "role"
+      "bio"
+      "links";
+  }
+
+  .tmslab-member-photo {
+    max-width: 180px;
+  }
+
+  .tmslab-member-name,
+  .tmslab-member-role {
+    align-self: start;
+  }
 }
 
 .tmslab-member-link {
