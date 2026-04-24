@@ -159,6 +159,14 @@ nav_order: 4
     <div class="tmslab-member-links"></div>
   </div>
 
+  <div class="tmslab-member-card">
+    <img src="{{ '/assets/img/people/amanda.jpg' | relative_url }}" alt="Amanda Wiley" class="tmslab-member-photo">
+    <h3 class="tmslab-member-name">Amanda Wiley</h3>
+    <span class="tmslab-member-role">Undergraduate Researcher</span>
+    <p class="tmslab-member-bio">B.S in Biology with an emphasis on Biomedical Science, minor in Religious Studies.</p>
+    <div class="tmslab-member-links"></div>
+  </div>
+
 </div>
 
 <h2 class="section-heading">Alumni</h2>
