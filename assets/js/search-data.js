@@ -203,6 +203,9 @@ ninja.data = [{
           section: "News",},{id: "news-we-are-excited-to-share-that-our-project-targeting-sleep-to-preserve-memory-accelerated-theta-burst-stimulation-and-at-home-sleep-eeg-to-enhance-cognitive-health-in-aging-has-been-funded-by-the-mcknight-cami-core-pilot-program-mpis-ying-hui-chou-and-christian-agudelo",
           title: 'We are excited to share that our project, “Targeting Sleep to Preserve Memory:...',
           description: "",
+          section: "News",},{id: "news-congratulations-to-carol-chen-on-her-acceptance-to-the-university-of-arizona-college-of-medicine-tucson-a-very-well-deserved-achievement",
+          title: 'Congratulations to Carol Chen on her acceptance to the University of Arizona College...',
+          description: "",
           section: "News",},{
       id: 'light-theme',
       title: 'Change theme to light',
