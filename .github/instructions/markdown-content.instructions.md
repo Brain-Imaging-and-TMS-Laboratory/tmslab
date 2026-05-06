@@ -188,7 +188,7 @@ def hello():
 1. Create file: `_posts/YYYY-MM-DD-my-post.md`
 2. Add frontmatter with `layout: post`, `title`, `date`, `categories`
 3. Write markdown content
-4. Test: `docker compose up` → http://localhost:8080/blog
+4. Test: `bundle exec jekyll serve --livereload` → http://localhost:4000/tmslab/blog
 5. Post will appear in reverse chronological order
 
 ### Creating a Project Entry
@@ -196,7 +196,7 @@ def hello():
 1. Create file: `_projects/project-name.md`
 2. Add frontmatter with `layout: page`, `title`, `description`, `img`, `importance`
 3. Write markdown content describing the project
-4. Test: `docker compose up` → http://localhost:8080/projects
+4. Test: `bundle exec jekyll serve --livereload` → http://localhost:4000/tmslab/projects
 
 ### Adding Images
 
@@ -220,8 +220,7 @@ def hello():
 2. **Date format:** Check `YYYY-MM-DD` format is correct
 3. **Build test:**
    ```bash
-   docker compose down
-   docker compose up
+   bundle exec jekyll serve --livereload
    # Wait for "Server running" message
    # Navigate to your content in browser
    # Verify formatting, images, and links work
@@ -272,6 +271,6 @@ npx prettier --write .
 When creating or editing content:
 
 - Follow the frontmatter structure for your content type
-- Test locally with `docker compose up` to verify appearance
+- Test locally with `bundle exec jekyll serve --livereload` to verify appearance
 - Check date format, filename format, and image paths
 - Only search for advanced features if frontmatter or markdown error messages appear

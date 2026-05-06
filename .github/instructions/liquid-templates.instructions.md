@@ -50,14 +50,14 @@ Prettier with `@shopify/prettier-plugin-liquid` enforces formatting:
 
 - Edit `_includes/header.liquid`
 - Add links to navigation array in `_config.yml` (see yaml-configuration.instructions.md)
-- Test by viewing site in browser: `docker compose up` → http://localhost:8080
+- Test by viewing site in browser: `bundle exec jekyll serve --livereload` → http://localhost:4000/tmslab/
 
 ### Adding a New Component Include
 
 1. Create new file in `_includes/mycomponent.liquid`
 2. Use Liquid syntax for conditionals, loops, and variable output
 3. Call it from templates: `{% include mycomponent.liquid %}`
-4. Test: `docker compose up`
+4. Test: `bundle exec jekyll serve --livereload`
 
 ### Adjusting Styling with Liquid
 
@@ -78,14 +78,13 @@ Prettier with `@shopify/prettier-plugin-liquid` enforces formatting:
 2. **Build test:**
 
    ```bash
-   docker compose down
-   docker compose up
-   # Wait 30 seconds, check for errors in output
+   bundle exec jekyll serve --livereload
+   # Wait for "Server running" message, check for errors in output
    # No "Unknown tag" messages should appear
    ```
 
 3. **Visual verification:**
-   - Open http://localhost:8080
+   - Open http://localhost:4000/tmslab/
    - Check that your changes rendered correctly
    - Verify no broken layout or missing content
 
@@ -95,6 +94,6 @@ When working with Liquid templates:
 
 - Use `_includes/` and `_layouts/` as reference for syntax patterns
 - Follow existing formatting in files (Prettier will enforce consistency)
-- Always test locally before pushing (build must succeed)
+- Always test locally before pushing with `bundle exec jekyll serve` (build must succeed)
 - For configuration changes, see yaml-configuration.instructions.md
 - Only search for additional details if error messages reference unfamiliar Liquid tags or Jekyll concepts

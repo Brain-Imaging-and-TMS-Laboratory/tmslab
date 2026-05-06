@@ -64,13 +64,21 @@ In `_pages/people.md`, copy an existing `<div class="tmslab-member-card">` block
 
 ## Running the site locally (optional)
 
-Only needed if you want to preview changes before pushing.
+Only needed if you want to preview changes before pushing. Uses the project's native Ruby toolchain (rbenv-managed Ruby 3.2.2, Bundler).
 
 ```bash
-docker compose up
+bundle exec jekyll serve --livereload
 ```
 
-The site runs at <http://localhost:8080> with live reload.
+The site runs at <http://localhost:4000/tmslab/> (note the `/tmslab/` path — that's the configured `baseurl`). `--livereload` auto-refreshes the browser when files change. `Ctrl+C` to stop.
+
+First-time setup, or after a `Gemfile` change:
+
+```bash
+bundle install
+```
+
+If `bundle` or `ruby` isn't found, your shell hasn't picked up rbenv yet — open a new terminal or run `eval "$(rbenv init - zsh)"`.
 
 ---
 

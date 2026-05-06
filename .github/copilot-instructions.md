@@ -16,7 +16,7 @@
 - **Ruby:** 3.3.5 (primary CI/CD version), 3.2.2 (some workflows)
 - **Python:** 3.13 (for nbconvert, jupyter notebook support)
 - **Node.js:** Latest (for purgecss and prettier)
-- **Docker:** Uses prebuilt image `amirpourmand/al-folio:v0.16.3` (Ruby slim-based)
+- **Docker:** Inherited from upstream al-folio; NOT used by this lab — author runs Jekyll natively via rbenv
 
 **Build Dependencies (from Gemfile):**
 
@@ -38,45 +38,33 @@
 
 ## Building & Local Development
 
-### Docker (Recommended Approach)
+### Native Ruby (the actual workflow used in this repo)
 
-**Always use Docker for local development.** This ensures consistency with CI/CD and avoids Ruby/Python environment issues.
+**Use Bundler + Jekyll directly.** The author's machine runs rbenv-managed Ruby 3.2.2; do NOT recommend Docker — the `Dockerfile` and `docker-compose.yml` are inherited from upstream al-folio and aren't used here.
 
-**Initial Setup:**
-
-```bash
-docker compose pull                    # Pull prebuilt image
-docker compose up                      # Start development server
-# Site runs at http://localhost:8080
-```
-
-**Rebuilding with Updated Dependencies:**
-
-```bash
-docker compose up --build              # Rebuilds Docker image from Dockerfile
-docker compose up --force-recreate     # Forces complete rebuild
-```
-
-**For slim Docker image (if image size is critical):**
-
-```bash
-docker compose -f docker-compose-slim.yml up
-```
-
-**If Docker build fails:**
-
-- Check disk space and available RAM
-- Kill any existing jekyll processes: `docker compose down`
-- For M1/M2 Mac: Ensure Docker Desktop is up-to-date
-- Linux users may need Docker group permissions: `sudo usermod -aG docker $USER` (then logout/login)
-
-### Bundle/Jekyll (Legacy, Use Docker Instead)
+**Initial Setup (first time, or after Gemfile changes):**
 
 ```bash
 bundle install                         # Install Ruby gems
-pip install jupyter                    # Install Python dependencies
-bundle exec jekyll serve --port 4000   # Run at http://localhost:4000
 ```
+
+**Run the dev server:**
+
+```bash
+bundle exec jekyll serve --livereload  # Auto-rebuild + auto-refresh browser
+# Site runs at http://localhost:4000/tmslab/  (note the /tmslab/ baseurl)
+# Ctrl+C to stop
+```
+
+**Troubleshooting:**
+
+- `bundle: command not found` → rbenv shims aren't on PATH; open a new terminal or run `eval "$(rbenv init - zsh)"`
+- Port 4000 already in use → `lsof -i :4000 | grep LISTEN | awk '{print $2}' | xargs kill`
+- Stale `_site/` causing weirdness → `bundle exec jekyll clean` then re-serve
+
+### Docker (NOT used in this repo)
+
+The `Dockerfile`, `docker-compose.yml`, and `docker-compose-slim.yml` files are upstream al-folio template artifacts. The author has no Docker engine installed and no plans to use one. Do not suggest `docker compose` commands.
 
 ### Important Build Requirements
 
@@ -103,8 +91,7 @@ bundle exec jekyll serve --port 4000   # Run at http://localhost:4000
 - `_scripts/` – JavaScript files for functionality
 - `_teachings/` – Course and teaching entries
 - `assets/img/` – Images, profile pictures
-- `docker-compose.yml` – Docker compose configuration
-- `Dockerfile` – Docker image definition
+- `docker-compose.yml`, `Dockerfile` – upstream al-folio Docker configs (NOT used in this repo)
 - `Gemfile` & `Gemfile.lock` – Ruby dependency specifications
 - `package.json` – Node.js dependencies (prettier only)
 - `purgecss.config.js` – PurgeCSS configuration for production CSS optimization
@@ -155,18 +142,17 @@ npx prettier . --write
 2. **Local build test with Jekyll:**
 
 ```bash
-docker compose pull && docker compose up
-# Let it build (wait 30-60 seconds)
-# Visit http://localhost:8080 and verify site renders correctly
+bundle exec jekyll serve --livereload
+# Wait for "Server running" message
+# Visit http://localhost:4000/tmslab/ and verify site renders correctly
 # Exit with Ctrl+C
 ```
 
-3. **Or run full build simulation:**
+3. **Or run a one-shot production build:**
 
 ```bash
-docker compose up --build
-bundle exec jekyll build
-# Check for errors in output
+JEKYLL_ENV=production bundle exec jekyll build
+# Check for errors in output; output written to _site/
 ```
 
 ## Common Pitfalls & Workarounds
@@ -175,7 +161,7 @@ bundle exec jekyll build
 
 - **Problem:** Special characters (`:`, `&`, `#`) in values cause parse errors
 - **Solution:** Quote string values: `title: "My: Cool Site"`
-- **Debug:** Run locally to see detailed error: `bundle exec jekyll build`
+- **Debug:** Run locally to see detailed error: `bundle exec jekyll serve` (or `bundle exec jekyll build` for a one-shot build)
 
 ### "Unknown tag 'toc'" Error on Deployment
 
@@ -201,10 +187,10 @@ bundle exec jekyll build
   git add . && git commit -m "Format code with prettier"
   ```
 
-### Port 8080 or 4000 Already in Use
+### Port 4000 Already in Use
 
-- **Docker:** `docker compose down` then `docker compose up`
-- **Ruby:** Kill process: `lsof -i :4000 | grep LISTEN | awk '{print $2}' | xargs kill`
+- Kill the stale Jekyll process: `lsof -i :4000 | grep LISTEN | awk '{print $2}' | xargs kill`
+- Or pass a different port: `bundle exec jekyll serve --port 4001 --livereload`
 
 ### Related Posts Errors ("Zero vectors cannot be normalized")
 

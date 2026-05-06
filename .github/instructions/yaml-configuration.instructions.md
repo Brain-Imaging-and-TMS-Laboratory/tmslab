@@ -42,7 +42,7 @@ Look for `enabled: false/true` patterns. Common ones:
 If you modify `_config.yml`, verify syntax by running:
 
 ```bash
-docker compose up
+bundle exec jekyll serve --livereload
 # Site should start without YAML parse errors
 # Check output for "YAML parse error" or "valid YAML"
 ```
@@ -173,7 +173,7 @@ Co-author information for bibliography/publications.
 2. Keep entries alphabetically sorted
 3. Ensure `icon` identifiers match available icons (Academicons or Font Awesome)
 4. Use full profile URLs in `url` field
-5. Test: `docker compose up` → check social icons on site
+5. Test: `bundle exec jekyll serve --livereload` → check social icons on site
 
 ### Modifying Site Metadata
 
@@ -200,8 +200,7 @@ Update these in `_config.yml`:
 
    ```bash
    # Run Jekyll build to validate YAML
-   docker compose down
-   docker compose up
+   bundle exec jekyll serve --livereload
    # Wait for "Server running" message
    # Check output for "YAML parse error" messages
    ```
@@ -214,7 +213,7 @@ Update these in `_config.yml`:
    ```
 
 3. **Visual verification:**
-   - Open http://localhost:8080
+   - Open http://localhost:4000/tmslab/
    - Check that your changes appear correctly
    - Verify navigation, social links, and metadata work
    - Check site title and description in page source
@@ -243,7 +242,7 @@ Update these in `_config.yml`:
 
 When working with YAML configuration:
 
-- Always test locally with `docker compose up` after changes
+- Always test locally with `bundle exec jekyll serve --livereload` after changes
 - Quote any string containing special characters
 - Keep indentation consistent (2 spaces)
 - Check output for YAML parse errors before committing

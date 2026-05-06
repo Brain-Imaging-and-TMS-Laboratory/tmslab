@@ -165,7 +165,7 @@ In `search.liquid.js`:
 }
 ```
 
-3. Rebuild: `docker compose up` will regenerate `/assets/js/search-data.js`
+3. Rebuild: `bundle exec jekyll serve --livereload` will regenerate `/assets/js/search-data.js`
 
 ### Updating Gallery Functionality
 
@@ -197,15 +197,15 @@ Files in `_scripts/` are **excluded from Prettier formatting** (defined in `.pre
 ### Local Build Test
 
 ```bash
-docker compose up
-# Wait 30 seconds for Jekyll to build
+bundle exec jekyll serve --livereload
+# Wait for "Server running" message
 # Check for errors in terminal output
-# Visit http://localhost:8080 and verify functionality
+# Visit http://localhost:4000/tmslab/ and verify functionality
 ```
 
 ### Checking Generated Output
 
-After `docker compose up`, verify scripts compiled correctly:
+After `bundle exec jekyll serve`, verify scripts compiled correctly:
 
 ```bash
 # Check if script files exist in _site/assets/js/
@@ -241,7 +241,7 @@ When modifying JavaScript scripts:
 
 - `.liquid.js` files must have valid Liquid syntax AND valid JavaScript that remains valid after Jekyll processes the Liquid
 - Do NOT run Prettier on `_scripts/` files (they are in `.prettierignore` because of Liquid + JavaScript mixing)
-- Test locally with `docker compose up` to verify build succeeds and scripts work
+- Test locally with `bundle exec jekyll serve --livereload` to verify build succeeds and scripts work
 - For site-wide script inclusion, modify `_includes/scripts.liquid`
 - For configuration (feature flags, third-party URLs), see yaml-configuration.instructions.md
 - Reference the actual script files in `_scripts/` as examples when adding new functionality
