@@ -209,6 +209,9 @@ ninja.data = [{
           section: "News",},{id: "news-congratulations-to-carol-chen-and-shraddha-dwivedi-for-winning-first-place-at-the-honors-pinnacle-conference-in-the-exploratory-mini-grant-category-special-thanks-to-mark-sundman-for-his-outstanding-mentorship-and-support-of-their-work",
           title: 'Congratulations to Carol Chen and Shraddha Dwivedi for winning first place at the...',
           description: "",
+          section: "News",},{id: "news-congratulations-to-sarah-on-successfully-passing-her-master-s-project-defense",
+          title: 'Congratulations to Sarah on successfully passing her Master’s Project Defense!',
+          description: "",
           section: "News",},{
       id: 'light-theme',
       title: 'Change theme to light',
