@@ -82,7 +82,7 @@ nav_order: 4
   <div class="tmslab-member-card">
     <img src="{{ '/assets/img/people/hall_jd.jpg' | relative_url }}" alt="JD Hall" class="tmslab-member-photo">
     <h3 class="tmslab-member-name">JD Hall, M.S., Ph.D.</h3>
-    <span class="tmslab-member-role">Ph.D. Candidate</span>
+    <span class="tmslab-member-role">Ph.D.</span>
     <p class="tmslab-member-bio">M.A. in Psychology, University of Indianapolis. B.A. in Psychology, Indiana University &ndash; Purdue University Indianapolis.</p>
     <div class="tmslab-member-links"></div>
   </div>
@@ -91,7 +91,7 @@ nav_order: 4
     <img src="{{ '/assets/img/people/zhang_hangbin.jpg' | relative_url }}" alt="Hangbin Zhang" class="tmslab-member-photo">
     <h3 class="tmslab-member-name">Hangbin Zhang, M.S.</h3>
     <span class="tmslab-member-role">Graduate Student</span>
-    <p class="tmslab-member-bio">M.S. in Experimental Psychology with Data Science, University of Manchester, UK. Pursuing a Ph.D. in Psychology (CNS track).</p>
+    <p class="tmslab-member-bio">Hangbin is a Ph.D. student in the CNS track working on the aging–MCI–Alzheimer's continuum. His goal is to push intervention earlier, before the irreversible window closes. He combines repetitive TMS, functional MRI (ASL and BOLD), and diffusion MRI of hippocampal subfields to track plasticity and microstructural changes associated with cognitive aging. He's interested in pretty much anything that moves the needle on early detection, from optimizing ASL pipelines to developing more precise cognitive measurement tools. He also works on reproducible neuroimaging pipelines and on LLM-based neurolinguistic markers of cognitive aging, using language models as a bridge between cognition and brain function. Outside of research, he's been Instructor of Record for Methods in Cognitive Science (COGS 321) and Drugs, Brain, and Behavior (PSY 413). M.S. in Experimental Psychology with Data Science, University of Manchester. B.S. in Psychology, Southwest University.</p>
     <div class="tmslab-member-links"></div>
   </div>
 
