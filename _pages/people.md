@@ -97,17 +97,17 @@ nav_order: 4
 
   <div class="tmslab-member-card">
     <img src="{{ '/assets/img/people/norman.jpg' | relative_url }}" alt="Sarah Norman" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Sarah Norman, B.S.</h3>
+    <h3 class="tmslab-member-name">Sarah Norman, M.A.</h3>
     <span class="tmslab-member-role">Graduate Student</span>
-    <p class="tmslab-member-bio">B.S. in Psychology, Washington State University. Pursuing a Ph.D. in Psychology (CNS track).</p>
+    <p class="tmslab-member-bio">M.A. in Psychology, University of Arizona. B.S. in Psychology, Washington State University. Pursuing a Ph.D. in Psychology (CNS track).</p>
     <div class="tmslab-member-links"></div>
   </div>
 
   <div class="tmslab-member-card">
     <img src="{{ '/assets/img/people/hickey.jpg' | relative_url }}" alt="Reyna Hickey" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Reyna Hickey, B.S.</h3>
+    <h3 class="tmslab-member-name">Reyna Hickey, M.A.</h3>
     <span class="tmslab-member-role">Graduate Student</span>
-    <p class="tmslab-member-bio">B.S. in Neuroscience, University of Illinois. Pursuing a Ph.D. in Clinical Psychology.</p>
+    <p class="tmslab-member-bio">M.A. in Psychology, University of Arizona. B.S. in Neuroscience, University of Illinois. Pursuing a Ph.D. in Clinical Psychology.</p>
     <div class="tmslab-member-links"></div>
   </div>
 
