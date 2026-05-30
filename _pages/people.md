@@ -99,7 +99,7 @@ nav_order: 4
     <img src="{{ '/assets/img/people/norman.jpg' | relative_url }}" alt="Sarah Norman" class="tmslab-member-photo">
     <h3 class="tmslab-member-name">Sarah Norman, M.A.</h3>
     <span class="tmslab-member-role">Graduate Student</span>
-    <p class="tmslab-member-bio">M.A. in Psychology, University of Arizona. B.S. in Psychology, Washington State University. Pursuing a Ph.D. in Psychology (CNS track).</p>
+    <p class="tmslab-member-bio">Bio: Sarah Norman is a Ph.D. student in the Cognitive Neuroscience and Systems (CNS) program at the University of Arizona. Her research focuses on understanding age-related changes in cognition and brain function, with a particular interest in developing and optimizing noninvasive brain stimulation interventions to support cognitive health in older adults. She is especially interested in how individualized approaches to transcranial magnetic stimulation (TMS), informed by neuroimaging and electric field modeling, can improve cognitive outcomes across the aging spectrum, from healthy aging to mild cognitive impairment. Sarah's work integrates neuropsychological assessment, structural and functional MRI, diffusion tensor imaging (DTI), TMS, and computational modeling techniques such as SimNIBS to investigate the neural mechanisms underlying cognitive aging and intervention response. Outside of the lab, Sarah enjoys sewing, swimming and enjoying the Tucson food scene. M.A. in Psychology, University of Arizona. B.S. in Psychology, Washington State University. </p>
     <div class="tmslab-member-links"></div>
   </div>
 
