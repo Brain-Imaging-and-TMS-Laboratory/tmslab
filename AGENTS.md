@@ -9,7 +9,7 @@ Live URL: https://brain-imaging-and-tms-laboratory.github.io/tmslab/
 - Local dev (the author's actual workflow): `bundle exec jekyll serve --livereload` → http://localhost:4000/tmslab/ (auto-rebuild on file changes; livereload auto-refreshes the browser). Stop with `Ctrl+C`.
 - Ruby toolchain: rbenv-managed Ruby 3.2.2, Bundler 4.x. After `Gemfile`/`Gemfile.lock` changes, run `bundle install` before re-serving.
 - The `Dockerfile` and `docker-compose.yml` are inherited from upstream al-folio and are NOT used by the author. Don't suggest `docker compose up` — the author's Mac doesn't have a working Docker engine, and the native Ruby setup is faster anyway.
-- Deploy: GitHub Actions `.github/workflows/deploy.yml` runs on every push to `main` that touches source files, builds with `JEKYLL_ENV=production`, runs PurgeCSS, and pushes `_site/` to the `gh-pages` branch. Only two workflows matter: `deploy.yml` and `update-citations.yml`.
+- Deploy: GitHub Actions `.github/workflows/deploy.yml` runs on every push to `main` that touches source files, builds with `JEKYLL_ENV=production`, runs PurgeCSS, and pushes `_site/` to the `gh-pages` branch. The only workflow that matters is `deploy.yml` (the upstream `update-citations.yml` Google Scholar cron was removed — it was never configured for this lab).
 - Node/npm aren't installed on the author's Mac — don't try to run PurgeCSS locally. The CI installs `purgecss` globally and runs `purgecss -c purgecss.config.js` against `_site/`.
 
 ## Critical config (`_config.yml`)
