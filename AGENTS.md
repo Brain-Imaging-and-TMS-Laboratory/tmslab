@@ -22,7 +22,7 @@ Live URL: https://brain-imaging-and-tms-laboratory.github.io/tmslab/
 
 ## Page inventory
 
-Live pages in `_pages/` (linked from `_includes/header.liquid`): `about.md` (homepage), `research.md`, `publications.md`, `people.md`, `news.md`, `gallery.md`, `join.md`, `contact.md`. Plus `404.md`.
+Live pages in `_pages/` (linked from `_includes/header.liquid`): `about.md` (homepage), `research.md`, `publications.md`, `people.md`, `news.md`, `gallery.md`, `participate.md`, `contact.md`. Plus `404.md` and `join-redirect.md` (redirects the old `/join/` URL to `/participate/`).
 
 The nav does NOT include an "About" item — the site title in the navbar serves that role and links to the homepage.
 
@@ -89,7 +89,7 @@ Legacy Formsubmit history (honeypot, `_captcha`, `_next`, inline success banner,
 
 ## News ticker
 
-- Content source: `_news/*.md` files (each a single news item with front-matter).
+- Content source: `_news/*.md` files (each a single news item with front-matter). All current items use `inline: true` (one-line text, no standalone page). `bin/news YYYY-MM-DD "Text here"` scaffolds a new item with the correct filename and front matter (date is user-supplied, never auto-generated).
 - Rendered by `_includes/news_ticker.liquid` as a CSS-marquee (content duplicated twice for a seamless loop). No JS rotation.
 - Only renders on the homepage (guarded by `{% if page.layout == 'about' %}` in `_layouts/default.liquid`).
 - `prefers-reduced-motion: reduce` pauses the scroll.

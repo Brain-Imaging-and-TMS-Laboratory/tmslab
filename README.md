@@ -12,7 +12,15 @@ Most day-to-day updates touch just one file. Commit the change on the `main` bra
 
 ### Add a news item (shows up in the ticker + /news)
 
-Create a new file in `_news/` named `announcement_YYYY_MM_short-slug.md`:
+**Easiest way** — from the repo folder, run (date first, then the text):
+
+```bash
+bin/news 2026-05-07 "Congratulations to Sarah on passing her Master's defense!"
+```
+
+That creates a correctly named file in `_news/` with the date you typed. Review it, commit, push — done. (Optional third argument sets the filename slug: `bin/news 2026-05-07 "Long text..." sarah_defense`.)
+
+**Manual way** — create a file in `_news/` named `announcement_YYYY_MM_short-slug.md`:
 
 ```markdown
 ---
@@ -25,7 +33,9 @@ related_posts: false
 Your one-line news sentence goes here.
 ```
 
-The homepage ticker pulls the 5 most recent; the `/news/` page lists all.
+The homepage ticker pulls the 5 most recent; the `/news/` page lists all. Each news item is one small text file — that's just how Jekyll stores them; `inline: true` means it renders as a single line of text, with no separate page.
+
+**News with images:** omit `inline: true` and give the item a `title:`. The news list then shows the title as a link to its own page, and the file body becomes that page — you can write full Markdown there, including images (put them in `assets/img/` and reference with `![caption](/tmslab/assets/img/yourphoto.jpg)`). No item currently uses this mode, but it's supported.
 
 ### Add or edit a publication
 
@@ -44,6 +54,8 @@ Open `_bibliography/papers.bib` and add a BibTeX block at the top:
 
 Optional fields: `pdf`, `preview`, `selected`, `note`. Full field list at the top of `papers.bib`.
 
+Citation counts on the Publications page refresh automatically from Google Scholar three times a week (Mon/Wed/Fri) via the `update-citations` GitHub Action — no manual step needed.
+
 ### Add a hero photo (rotating homepage banner)
 
 Drop any `.jpg` / `.jpeg` / `.png` / `.webp` file into `assets/img/hero/`. It auto-appears in rotation on next build. Alphabetical order — prefix `01_`, `02_`, etc. if you want a specific sequence.
@@ -59,6 +71,10 @@ Open the matching `_pages/<name>.md` and edit the HTML directly. The structure i
 ### Add a lab member
 
 In `_pages/people.md`, copy an existing `<div class="tmslab-member-card">` block and update the fields. Save the photo as `assets/img/people/<lastname>.jpg` (square crop, ~400–800px).
+
+### Move a member to Alumni
+
+In `_pages/people.md`: delete their `tmslab-member-card` block from the Current Members grid, then copy an existing `tmslab-alumnus-card` block in the Alumni section and fill in their name, role(s) in the lab, and "Now: …" position. Keep their photo file in `assets/img/people/` — the alumni card reuses it (and hides itself gracefully if the photo is missing).
 
 ---
 

@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# Create a new inline (text-only) news item in _news/.
+#
+# Usage:
+#   bin/news 2026-05-07 "Congratulations to Sarah on passing her defense!"
+#   bin/news 2026-05-07 "Some longer text..." custom_slug
+#
+# The first argument is the news date (YYYY-MM-DD), used both in the
+# filename and the front matter (time fixed at 10:00 AM Arizona, same
+# as existing items). Front matter matches the existing _news/
+# convention exactly (layout: post, inline: true, related_posts: false).
+set -euo pipefail
+
+if [ $# -lt 2 ]; then
+  echo "Usage: bin/news YYYY-MM-DD \"News text (markdown ok)\" [slug]" >&2
+  echo "Example: bin/news 2026-05-07 \"Congratulations to Sarah!\"" >&2
+  exit 1
+fi
+
+newsdate="$1"
+text="$2"
+
+if ! printf '%s' "$newsdate" | grep -Eq '^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$'; then
+  echo "Error: first argument must be a date in YYYY-MM-DD form (got: $newsdate)" >&2
+  exit 1
+fi
+
+if [ $# -ge 3 ]; then
+  slug="$3"
+else
+  slug=$(printf '%s' "$text" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '_' | cut -c1-40)
+  slug="${slug#_}"
+  slug="${slug%_}"
+fi
+
+year="${newsdate%%-*}"
+month_day="${newsdate#*-}"
+month="${month_day%%-*}"
+
+dir="$(cd "$(dirname "$0")/.." && pwd)"
+file="$dir/_news/announcement_${year}_${month}_${slug}.md"
+
+if [ -e "$file" ]; then
+  echo "Already exists: $file" >&2
+  exit 1
+fi
+
+cat > "$file" <<EOF
+---
+layout: post
+date: $newsdate 10:00:00-0700
+inline: true
+related_posts: false
+---
+
+$text
+EOF
+
+echo "Created $file"
