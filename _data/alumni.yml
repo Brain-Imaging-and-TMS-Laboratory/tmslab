@@ -1,0 +1,105 @@
+# Lab alumni — rendered by _pages/people.md
+#
+# Order here = order on the page (currently grouped by former position,
+# roughly newest departure first within each group).
+#
+# Fields:
+#   name  (required) — displayed name, including post-nominals
+#   photo (optional) — filename inside assets/img/people/; if the file is
+#                      missing the <img> hides itself rather than showing
+#                      a broken-image icon
+#   alt   (optional) — image alt text; defaults to `name` if omitted
+#   role  (optional) — position held while in the lab
+#   now   (optional) — current position, rendered as "Now: <value>"
+#
+# TODO: Dr. Chou / Hangbin to fill in the missing `now:` entries.
+
+# --- Postdoctoral Associate ---
+- name: Yu-Chin (Allison) Chen, MD, PhD
+  photo: chen_yuchin.jpg
+  alt: Yu-Chin (Allison) Chen
+  role: Graduate student | Postdoctoral Associate
+  now: Research Manager, SeattleNTC
+
+# --- Graduate / Staff ---
+- name: Koeun Lim, PhD
+  photo: lim.jpg
+  alt: Koeun Lim
+  now: Data scientist at Biotronik Neuro
+
+- name: Bernadette De Vault, MS
+  photo: devault.jpg
+  alt: Bernadette De Vault
+  role: Master student
+
+- name: Lisbeth Haaheim, BS
+  photo: haaheim.jpg
+  alt: Lisbeth Haaheim
+  role: Clinical Research Coordinator
+  now: Clinical Research Coordinator at UofA
+
+- name: Hanna Siu, MS
+  photo: siu.jpg
+  alt: Hanna Siu
+  role: Research Data Support Specialist
+  now: Psychometrist at Banner Health
+
+# --- Medical Students / Staff ---
+- name: Christopher Trapani, MD
+  photo: trapani.jpg
+  alt: Christopher Trapani
+  role: Medical school student
+  now: >-
+    Resident in internal medicine/Neurology at Banner University Medical
+    Center/VA
+
+# --- Undergraduate Researchers ---
+- name: Catherine Jezerc, BS
+  photo: jezerc.jpg
+  alt: Catherine Jezerc
+  role: Undergraduate Researcher
+  now: Research Assistant at University of Pittsburgh
+
+- name: Viet Ton That, BS
+  photo: tonthat.jpg
+  alt: Viet Ton That
+  role: Undergraduate Researcher
+  now: Specialist, Business Intelligence COM Info Technology Services
+
+- name: Rudolph John Rodriguez, BS
+  photo: rodriguez.jpg
+  alt: Rudolph John Rodriguez
+  role: Undergraduate Researcher
+  now: PhD student in Physics
+
+- name: Madelynn Orlik, BS
+  photo: orlik.jpg
+  alt: Madelynn Orlik
+  role: Undergraduate Researcher
+
+- name: Tessa Spangler, BS
+  photo: spangler.jpg
+  alt: Tessa Spangler
+  role: Undergraduate Researcher
+  now: Medical school student at New York Medical College
+
+- name: Anthony Martinez, BS
+  photo: martinez.jpg
+  alt: Anthony Martinez
+  role: Undergraduate Researcher
+
+- name: Alison Lindstrom, BS
+  photo: lindstrom.jpg
+  alt: Alison Lindstrom
+  role: Undergraduate Researcher
+
+- name: Priyanka Velu, BS
+  photo: velu.jpg
+  alt: Priyanka Velu
+  role: Undergraduate Researcher
+
+- name: Jonny Baham, BS
+  photo: baham.jpg
+  alt: Jonny Baham
+  role: Undergraduate Researcher
+  now: Research Coordinator at Duke University

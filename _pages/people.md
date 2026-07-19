@@ -7,6 +7,12 @@ nav: true
 nav_order: 4
 ---
 
+{%- comment -%}
+  Member and alumni content lives in _data/members.yml and _data/alumni.yml.
+  To add, remove, or reorder people, edit those files — not this page.
+  The PI block below is one-of-a-kind and stays inline.
+{%- endcomment -%}
+
 <div class="tmslab-people-page">
 
 <section class="tmslab-pi-section">
@@ -46,349 +52,55 @@ nav_order: 4
 <h2 class="section-heading">Current Members</h2>
 
 <div class="tmslab-members-grid">
-
+  {%- for member in site.data.members %}
   <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/sundman.jpg' | relative_url }}" alt="Mark Sundman" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Mark Sundman, M.S., Ph.D.</h3>
-    <span class="tmslab-member-role">Research Scientist</span>
-    <p class="tmslab-member-bio">Mark earned his Ph.D. in Psychology (Cognition and Neural Systems) from the University of Arizona, and his M.S. in Integrative Medicine from George Washington University. He earned his B.S. in Exercise Science from Elon University.</p>
-    <div class="tmslab-member-links"></div>
+    <img src="{{ '/assets/img/people/' | append: member.photo | relative_url }}"
+         alt="{{ member.alt | default: member.name }}"
+         class="tmslab-member-photo"
+         loading="lazy">
+    <h3 class="tmslab-member-name">{{ member.name }}</h3>
+    <span class="tmslab-member-role">{{ member.role }}</span>
+    {%- if member.bio %}
+    <p class="tmslab-member-bio">{{ member.bio }}</p>
+    {%- endif %}
+    <div class="tmslab-member-links">
+      {%- for link in member.links %}
+      <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ link.label }}" title="{{ link.label }}"><i class="{{ link.icon }}"></i></a>
+      {%- endfor %}
+    </div>
   </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/liu_yilin.jpg' | relative_url }}" alt="Yilin Liu" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Yilin Liu, M.S., Ph.D.</h3>
-    <span class="tmslab-member-role">Research Scientist</span>
-    <p class="tmslab-member-bio">Ph.D. in Psychology (CNS track), University of Arizona.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/green.jpg' | relative_url }}" alt="Jacob Green" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Jacob (Jake) Green, M.S.</h3>
-    <span class="tmslab-member-role">Clinical Research Coordinator</span>
-    <p class="tmslab-member-bio">B.S. in Psychology, University of Arizona. M.S. in Psychology, Arizona State University.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/ugonna.jpg' | relative_url }}" alt="Chidi Ugonna" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Chidi Ugonna, M.S.</h3>
-    <span class="tmslab-member-role">Research Specialist</span>
-    <p class="tmslab-member-bio">Chidi is interested in developing tools and techniques that use Magnetic Resonance Imaging (MRI) to help identify, understand, and treat neurodegenerative disorders. Chidi obtained his Master's degree in Biomedical Engineering from Rutgers University.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/hall_jd.jpg' | relative_url }}" alt="JD Hall" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">JD Hall, M.S., Ph.D.</h3>
-    <span class="tmslab-member-role">Ph.D.</span>
-    <p class="tmslab-member-bio">M.A. in Psychology, University of Indianapolis. B.A. in Psychology, Indiana University &ndash; Purdue University Indianapolis.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/zhang_hangbin.jpg' | relative_url }}" alt="Hangbin Zhang" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Hangbin Zhang, M.S.</h3>
-    <span class="tmslab-member-role">Graduate Student</span>
-    <p class="tmslab-member-bio">Hangbin is a Ph.D. student in the CNS track working on the aging–MCI–Alzheimer's continuum. His goal is to push intervention earlier, before the irreversible window closes. He combines repetitive TMS, functional MRI (ASL and BOLD), and diffusion MRI of hippocampal subfields to track plasticity and microstructural changes associated with cognitive aging. He's interested in pretty much anything that moves the needle on early detection, from optimizing ASL pipelines to developing more precise cognitive measurement tools. He also works on reproducible neuroimaging pipelines and on LLM-based neurolinguistic markers of cognitive aging, using language models as a bridge between cognition and brain function. Outside of research, he's been Instructor of Record for Methods in Cognitive Science (COGS 321) and Drugs, Brain, and Behavior (PSY 413). M.S. in Experimental Psychology with Data Science, University of Manchester. B.S. in Psychology, Southwest University.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/norman.jpg' | relative_url }}" alt="Sarah Norman" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Sarah Norman, M.A.</h3>
-    <span class="tmslab-member-role">Graduate Student</span>
-    <p class="tmslab-member-bio">Bio: Sarah Norman is a Ph.D. student in the Cognitive Neuroscience and Systems (CNS) program at the University of Arizona. Her research focuses on understanding age-related changes in cognition and brain function, with a particular interest in developing and optimizing noninvasive brain stimulation interventions to support cognitive health in older adults. She is especially interested in how individualized approaches to transcranial magnetic stimulation (TMS), informed by neuroimaging and electric field modeling, can improve cognitive outcomes across the aging spectrum, from healthy aging to mild cognitive impairment. Sarah's work integrates neuropsychological assessment, structural and functional MRI, diffusion tensor imaging (DTI), TMS, and computational modeling techniques such as SimNIBS to investigate the neural mechanisms underlying cognitive aging and intervention response. Outside of the lab, Sarah enjoys sewing, swimming and enjoying the Tucson food scene. M.A. in Psychology, University of Arizona. B.S. in Psychology, Washington State University. </p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/hickey.jpg' | relative_url }}" alt="Reyna Hickey" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Reyna Hickey, M.A.</h3>
-    <span class="tmslab-member-role">Graduate Student</span>
-    <p class="tmslab-member-bio">M.A. in Psychology, University of Arizona. B.S. in Neuroscience, University of Illinois. Pursuing a Ph.D. in Clinical Psychology.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/ceili.jpg' | relative_url }}" alt="Ceili Olney" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Ceili Olney, B.S.</h3>
-    <span class="tmslab-member-role">Graduate Student</span>
-    <p class="tmslab-member-bio">B.S. in Neuroscience and Cognitive Science, Psychological Science from the University of Arizona. Pursuing a Ph.D. in Clinical Translational Sciences.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/cody.jpg' | relative_url }}" alt="Cody Moxam" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Cody Moxam, M.S.</h3>
-    <span class="tmslab-member-role">Graduate Student</span>
-    <p class="tmslab-member-bio">Cody Moxam received his M.S. in Biomedical Engineering with a focus in Neuroengineering from Johns Hopkins University, where he also concentrated in Electrical Engineering and Computer Science with an emphasis on Artificial Intelligence. His current research focuses on translating advanced signal processing and analytical methods into novel biomarkers and therapeutic strategies for cognitive aging, mild cognitive impairment, and Alzheimer’s disease. He is also building toward a future research program in AI-driven closed-loop neuromodulation. Cody pursues these goals simply to improve the standard of care for patients around the world in hopes of improving the lives of them and their loved ones. He is currently pursuing an MD/PhD at the University of Arizona.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/lai.jpg' | relative_url }}" alt="Kaitlyn Lai" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Kaitlyn Lai</h3>
-    <span class="tmslab-member-role">Undergraduate Researcher</span>
-    <p class="tmslab-member-bio">Kaitlyn is currently working towards her Bachelor of Science degree in Neuroscience and Cognitive Science with a minor in Health and Human Values. Her research interests include how TMS can affect functional connectivity and cognition among individuals with mild cognitive impairment or Alzheimer's disease.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/arnold.jpg' | relative_url }}" alt="Gavin Arnold" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Gavin Arnold</h3>
-    <span class="tmslab-member-role">Undergraduate Researcher</span>
-    <p class="tmslab-member-bio">Gavin is currently working towards his Bachelor of Science in Biochemistry with minors in Neuroscience and Public Health. His research interests include exploring and improving different treatment options for neurodegenerative diseases.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/chen_carol.jpg' | relative_url }}" alt="Carol Chen" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Carol Chen</h3>
-    <span class="tmslab-member-role">Undergraduate Researcher</span>
-    <p class="tmslab-member-bio">B.S. in Neuroscience and Cognitive Science, University of Arizona.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/dwivedi.jpg' | relative_url }}" alt="Shraddha Dwivedi" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Shraddha Dwivedi</h3>
-    <span class="tmslab-member-role">Undergraduate Researcher</span>
-    <p class="tmslab-member-bio">B.S. in Neuroscience &amp; Cognitive Science and Molecular &amp; Cellular Biology, minors in Biochemistry and Public Health.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/amanda.jpg' | relative_url }}" alt="Amanda Wiley" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Amanda Wiley</h3>
-    <span class="tmslab-member-role">Undergraduate Researcher</span>
-    <p class="tmslab-member-bio">B.S. in Biology with an emphasis on Biomedical Science, minor in Religious Studies.</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
-  <div class="tmslab-member-card">
-    <img src="{{ '/assets/img/people/frances_webb.jpg' | relative_url }}" alt="Frances Webb" class="tmslab-member-photo">
-    <h3 class="tmslab-member-name">Frances Webb</h3>
-    <span class="tmslab-member-role">Undergraduate Researcher</span>
-    <p class="tmslab-member-bio">B.S. in Neuroscience and Cognitive Science and Psychological Sciences</p>
-    <div class="tmslab-member-links"></div>
-  </div>
-
+  {%- endfor %}
 </div>
 
 <h2 class="section-heading">Alumni</h2>
 
-<!--
-  TODO: Hangbin / Dr. Chou to verify these entries:
-  - "Now at" entries — fill in current institution/position where possible
-  - Order — currently listed by departure (newest first, roughly).
-    Adjust if a different ordering makes more sense.
-
-  Photos intentionally not rendered for alumni (portraits are a
-  current-member treatment).
--->
 <div class="tmslab-alumni-list" markdown="0">
-
-  <!-- Postdoctoral Associate -->
+  {%- for alumnus in site.data.alumni %}
   <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/chen_yuchin.jpg' | relative_url }}"
-         alt="Yu-Chin (Allison) Chen"
+    {%- if alumnus.photo %}
+    <img src="{{ '/assets/img/people/' | append: alumnus.photo | relative_url }}"
+         alt="{{ alumnus.alt | default: alumnus.name }}"
          class="tmslab-alumnus-photo"
          loading="lazy"
          onerror="this.style.visibility='hidden'">
+    {%- endif %}
     <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Yu-Chin (Allison) Chen, MD, PhD</p>
-      <p class="tmslab-alumnus-role">Graduate student | Postdoctoral Associate</p>
-      <p class="tmslab-alumnus-now">Now: Research Manager, SeattleNTC</p>
+      <p class="tmslab-alumnus-name">{{ alumnus.name }}</p>
+      {%- if alumnus.role %}
+      <p class="tmslab-alumnus-role">{{ alumnus.role }}</p>
+      {%- endif %}
+      {%- if alumnus.now %}
+      <p class="tmslab-alumnus-now">Now: {{ alumnus.now }}</p>
+      {%- endif %}
     </div>
   </div>
-
-  <!-- Graduate / Staff -->
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/lim.jpg' | relative_url }}"
-         alt="Koeun Lim"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Koeun Lim, PhD</p>
-      <p class="tmslab-alumnus-now">Now: Data scientist at Biotronik Neuro</p>
-    </div>
-  </div>
-
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/devault.jpg' | relative_url }}"
-         alt="Bernadette De Vault"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Bernadette De Vault, MS</p>
-      <p class="tmslab-alumnus-role">Master student</p>
-    </div>
-  </div>
-
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/haaheim.jpg' | relative_url }}"
-         alt="Lisbeth Haaheim"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Lisbeth Haaheim, BS</p>
-      <p class="tmslab-alumnus-role">Clinical Research Coordinator</p>
-      <p class="tmslab-alumnus-now">Now: Clinical Research Coordinator at UofA</p>
-    </div>
-  </div>
-
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/siu.jpg' | relative_url }}"
-         alt="Hanna Siu"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Hanna Siu, MS</p>
-      <p class="tmslab-alumnus-role">Research Data Support Specialist</p>
-      <p class="tmslab-alumnus-now">Now: Psychometrist at Banner Health</p>
-    </div>
-  </div>
-
-  <!-- Medical Students / Staff -->
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/trapani.jpg' | relative_url }}"
-         alt="Christopher Trapani"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Christopher Trapani, MD</p>
-      <p class="tmslab-alumnus-role">Medical school student</p>
-      <p class="tmslab-alumnus-now">Resident in internal medicine/Neurology at Banner University Medical Center/VA</p>
-    </div>
-  </div>
-
-  <!-- Undergraduate Researchers -->
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/jezerc.jpg' | relative_url }}"
-         alt="Catherine Jezerc"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Catherine Jezerc, BS</p>
-      <p class="tmslab-alumnus-role">Undergraduate Researcher</p>
-      <p class="tmslab-alumnus-now">Now: Research Assistant at university of Pittsburgh</p>
-    </div>
-  </div>
-
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/tonthat.jpg' | relative_url }}"
-         alt="Viet Ton That"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Viet Ton That, BS</p>
-      <p class="tmslab-alumnus-role">Undegraduate Researcher</p>
-      <p class="tmslab-alumnus-now">Now: Specialist, Business Intelligence COM Info Technology Services</p>
-    </div>
-  </div>
-
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/rodriguez.jpg' | relative_url }}"
-         alt="Rudolph John Rodriguez"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Rudolph John Rodriguez, BS</p>
-      <p class="tmslab-alumnus-role">Undergraduate Researcher</p>
-      <p class="tmslab-alumnus-now">Now: PhD student in Physics</p>
-    </div>
-  </div>
-
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/orlik.jpg' | relative_url }}"
-         alt="Madelynn Orlik"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Madelynn Orlik, BS</p>
-      <p class="tmslab-alumnus-role">Undergraduate Researcher</p>
-    </div>
-  </div>
-
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/spangler.jpg' | relative_url }}"
-         alt="Tessa Spangler"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Tessa Spangler, BS</p>
-      <p class="tmslab-alumnus-role">Undergraduate Researcher</p>
-      <p class="tmslab-alumnus-now">Now: Medical school student at New York Medical College</p>
-    </div>
-  </div>
-
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/martinez.jpg' | relative_url }}"
-         alt="Anthony Martinez"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Anthony Martinez, BS</p>
-      <p class="tmslab-alumnus-role">Undergraduate Researcher</p>
-    </div>
-  </div>
-
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/lindstrom.jpg' | relative_url }}"
-         alt="Alison Lindstrom"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Alison Lindstrom, BS</p>
-      <p class="tmslab-alumnus-role">Undergraduate Researcher</p>
-    </div>
-  </div>
-
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/velu.jpg' | relative_url }}"
-         alt="Priyanka Velu"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Priyanka Velu, BS</p>
-      <p class="tmslab-alumnus-role">Undergraduate Researcher</p>
-    </div>
-  </div>
-
-  <div class="tmslab-alumnus-card">
-    <img src="{{ '/assets/img/people/baham.jpg' | relative_url }}"
-         alt="Jonny Baham"
-         class="tmslab-alumnus-photo"
-         loading="lazy"
-         onerror="this.style.visibility='hidden'">
-    <div class="tmslab-alumnus-info">
-      <p class="tmslab-alumnus-name">Jonny Baham, BS</p>
-      <p class="tmslab-alumnus-role">Undergraduate Researcher</p>
-      <p class="tmslab-alumnus-now">Now: Research Coordinator at Duke University</p>
-    </div>
-  </div>
-
+  {%- endfor %}
 </div>
 
 </div>
 
 ---
 
-*Interested in joining the lab? Email Dr. Chou at <a href="mailto:tmslab@arizona.edu">tmslab@arizona.edu</a> or see the [Contact](/tmslab/contact/) page.*
+*Interested in joining the lab? Email Dr. Chou at <a href="mailto:tmslab@arizona.edu">tmslab@arizona.edu</a> or see the [Contact]({{ '/contact/' | relative_url }}) page.*
 
 <script src="{{ '/assets/js/bio-expand.js' | relative_url }}" defer></script>
