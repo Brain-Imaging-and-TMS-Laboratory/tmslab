@@ -19,34 +19,28 @@
   photo: sundman.jpg
   alt: Mark Sundman
   bio: >-
-    Mark earned his Ph.D. in Psychology (Cognition and Neural Systems) from the
-    University of Arizona, and his M.S. in Integrative Medicine from George
-    Washington University. He earned his B.S. in Exercise Science from Elon
-    University.
+    Mark earned his Ph.D. in Psychology (Cognition and Neural Systems) from the University of Arizona, and his M.S. in Integrative Medicine from George Washington University. He earned his B.S. in Exercise Science from Elon University.
 
 - name: Yilin Liu, M.S., Ph.D.
   role: Research Scientist
   photo: liu_yilin.jpg
   alt: Yilin Liu
-  bio: Ph.D. in Psychology (CNS track), University of Arizona.
+  bio: >-
+    Ph.D. in Psychology (CNS track), University of Arizona.
 
 - name: Jacob (Jake) Green, M.S.
   role: Clinical Research Coordinator
   photo: green.jpg
   alt: Jacob Green
   bio: >-
-    B.S. in Psychology, University of Arizona. M.S. in Psychology, Arizona
-    State University.
+    B.S. in Psychology, University of Arizona. M.S. in Psychology, Arizona State University.
 
 - name: Chidi Ugonna, M.S.
   role: Research Specialist
   photo: ugonna.jpg
   alt: Chidi Ugonna
   bio: >-
-    Chidi is interested in developing tools and techniques that use Magnetic
-    Resonance Imaging (MRI) to help identify, understand, and treat
-    neurodegenerative disorders. Chidi obtained his Master's degree in
-    Biomedical Engineering from Rutgers University.
+    Chidi is interested in developing tools and techniques that use Magnetic Resonance Imaging (MRI) to help identify, understand, and treat neurodegenerative disorders. Chidi obtained his Master's degree in Biomedical Engineering from Rutgers University.
 
 # TODO: "Ph.D." is a credential, not a lab role. Confirm JD Hall's actual
 # position (Postdoctoral Researcher? Research Scientist?) and update.
@@ -55,128 +49,81 @@
   photo: hall_jd.jpg
   alt: JD Hall
   bio: >-
-    M.A. in Psychology, University of Indianapolis. B.A. in Psychology, Indiana
-    University &ndash; Purdue University Indianapolis.
+    M.A. in Psychology, University of Indianapolis. B.A. in Psychology, Indiana University &ndash; Purdue University Indianapolis.
 
 - name: Hangbin Zhang, M.S.
   role: Graduate Student
   photo: zhang_hangbin.jpg
   alt: Hangbin Zhang
   bio: >-
-    Hangbin is a Ph.D. student in the CNS track working on the
-    aging–MCI–Alzheimer's continuum. His goal is to push intervention earlier,
-    before the irreversible window closes. He combines repetitive TMS,
-    functional MRI (ASL and BOLD), and diffusion MRI of hippocampal subfields to
-    track plasticity and microstructural changes associated with cognitive
-    aging. He's interested in pretty much anything that moves the needle on
-    early detection, from optimizing ASL pipelines to developing more precise
-    cognitive measurement tools. He also works on reproducible neuroimaging
-    pipelines and on LLM-based neurolinguistic markers of cognitive aging, using
-    language models as a bridge between cognition and brain function. Outside of
-    research, he's been Instructor of Record for Methods in Cognitive Science
-    (COGS 321) and Drugs, Brain, and Behavior (PSY 413). M.S. in Experimental
-    Psychology with Data Science, University of Manchester. B.S. in Psychology,
-    Southwest University.
+    Hangbin is a Ph.D. student in the Cognition and Neural Systems track studying the entorhinal–hippocampal circuit, an early locus of Alzheimer's pathology. His work combines subregion-resolution diffusion MRI, ASL, BOLD fMRI, and EEG with connectivity-guided repetitive TMS to characterize this circuit and to test whether it remains modifiable at the prodromal stage. His current work tests whether hippocampal perfusion remains modifiable in mild cognitive impairment following network-guided theta-burst stimulation. In parallel, he develops embedding-based language markers as a scalable, low-cost index of entorhinal–hippocampal function, alongside work on reproducible neuroimaging pipelines. He holds an M.S. in Experimental Psychology with Data Science from the University of Manchester and a B.S. in Psychology from Southwest University.
 
 - name: Sarah Norman, M.A.
   role: Graduate Student
   photo: norman.jpg
   alt: Sarah Norman
   bio: >-
-    Sarah Norman is a Ph.D. student in the Cognitive Neuroscience and Systems
-    (CNS) program at the University of Arizona. Her research focuses on
-    understanding age-related changes in cognition and brain function, with a
-    particular interest in developing and optimizing noninvasive brain
-    stimulation interventions to support cognitive health in older adults. She
-    is especially interested in how individualized approaches to transcranial
-    magnetic stimulation (TMS), informed by neuroimaging and electric field
-    modeling, can improve cognitive outcomes across the aging spectrum, from
-    healthy aging to mild cognitive impairment. Sarah's work integrates
-    neuropsychological assessment, structural and functional MRI, diffusion
-    tensor imaging (DTI), TMS, and computational modeling techniques such as
-    SimNIBS to investigate the neural mechanisms underlying cognitive aging and
-    intervention response. Outside of the lab, Sarah enjoys sewing, swimming and
-    enjoying the Tucson food scene. M.A. in Psychology, University of Arizona.
-    B.S. in Psychology, Washington State University.
+    Sarah Norman is a Ph.D. student in the Cognitive Neuroscience and Systems (CNS) program at the University of Arizona. Her research focuses on understanding age-related changes in cognition and brain function, with a particular interest in developing and optimizing noninvasive brain stimulation interventions to support cognitive health in older adults. She is especially interested in how individualized approaches to transcranial magnetic stimulation (TMS), informed by neuroimaging and electric field modeling, can improve cognitive outcomes across the aging spectrum, from healthy aging to mild cognitive impairment. Sarah's work integrates neuropsychological assessment, structural and functional MRI, diffusion tensor imaging (DTI), TMS, and computational modeling techniques such as SimNIBS to investigate the neural mechanisms underlying cognitive aging and intervention response. Outside of the lab, Sarah enjoys sewing, swimming and enjoying the Tucson food scene. M.A. in Psychology, University of Arizona. B.S. in Psychology, Washington State University.
 
 - name: Reyna Hickey, M.A.
   role: Graduate Student
   photo: hickey.jpg
   alt: Reyna Hickey
   bio: >-
-    M.A. in Psychology, University of Arizona. B.S. in Neuroscience, University
-    of Illinois. Pursuing a Ph.D. in Clinical Psychology.
+    Reyna is a Ph.D. student in the Clinical Neuropsychology track working on early detection and intervention for cognitive impairment. Her goal is to identify treatments, and support for adults experience cognitive decline that allows for improvements to their daily lives, and preserves function. She combines neuropsychological assessments with neuroimaging (DTI, MRI, ASL etc.) and interventions (TMS, cognitive training, exercise) to study the potential of early intervention, before significant cognitive changes. Outside of research, Reyna is interested in neuropsychological assessment and supporting the community through Friends of Aphasia and other outreach work. Currently, Reyna holds a M.A. in Psychology from the University of Arizona, and a B.S. in Neuroscience from the University of Illinois.
 
 - name: Ceili Olney, B.S.
   role: Graduate Student
   photo: ceili.jpg
   alt: Ceili Olney
   bio: >-
-    B.S. in Neuroscience and Cognitive Science, Psychological Science from the
-    University of Arizona. Pursuing a Ph.D. in Clinical Translational Sciences.
+    B.S. in Neuroscience and Cognitive Science, Psychological Science from the University of Arizona. Pursuing a Ph.D. in Clinical Translational Sciences.
 
 - name: Cody Moxam, M.S.
   role: Graduate Student
   photo: cody.jpg
   alt: Cody Moxam
   bio: >-
-    Cody Moxam received his M.S. in Biomedical Engineering with a focus in
-    Neuroengineering from Johns Hopkins University, where he also concentrated
-    in Electrical Engineering and Computer Science with an emphasis on
-    Artificial Intelligence. His current research focuses on translating
-    advanced signal processing and analytical methods into novel biomarkers and
-    therapeutic strategies for cognitive aging, mild cognitive impairment, and
-    Alzheimer's disease. He is also building toward a future research program in
-    AI-driven closed-loop neuromodulation. Cody pursues these goals simply to
-    improve the standard of care for patients around the world in hopes of
-    improving the lives of them and their loved ones. He is currently pursuing
-    an MD/PhD at the University of Arizona.
+    Cody Moxam received his M.S. in Biomedical Engineering with a focus in Neuroengineering from Johns Hopkins University, where he also concentrated in Electrical Engineering and Computer Science with an emphasis on Artificial Intelligence. His current research focuses on translating advanced signal processing and analytical methods into novel biomarkers and therapeutic strategies for cognitive aging, mild cognitive impairment, and Alzheimer's disease. He is also building toward a future research program in AI-driven closed-loop neuromodulation. Cody pursues these goals simply to improve the standard of care for patients around the world in hopes of improving the lives of them and their loved ones. He is currently pursuing an MD/PhD at the University of Arizona.
 
 - name: Kaitlyn Lai
   role: Undergraduate Researcher
   photo: lai.jpg
   alt: Kaitlyn Lai
   bio: >-
-    Kaitlyn is currently working towards her Bachelor of Science degree in
-    Neuroscience and Cognitive Science with a minor in Health and Human Values.
-    Her research interests include how TMS can affect functional connectivity
-    and cognition among individuals with mild cognitive impairment or
-    Alzheimer's disease.
+    Kaitlyn is currently working towards her Bachelor of Science degree in Neuroscience and Cognitive Science with a minor in Health and Human Values. Her research interests include how TMS can affect functional connectivity and cognition among individuals with mild cognitive impairment or Alzheimer's disease.
 
 - name: Gavin Arnold
   role: Undergraduate Researcher
   photo: arnold.jpg
   alt: Gavin Arnold
   bio: >-
-    Gavin is currently working towards his Bachelor of Science in Biochemistry
-    with minors in Neuroscience and Public Health. His research interests
-    include exploring and improving different treatment options for
-    neurodegenerative diseases.
+    Gavin is currently working towards his Bachelor of Science in Biochemistry with minors in Neuroscience and Public Health. His research interests include exploring and improving different treatment options for neurodegenerative diseases.
 
 - name: Carol Chen
   role: Undergraduate Researcher
   photo: chen_carol.jpg
   alt: Carol Chen
-  bio: B.S. in Neuroscience and Cognitive Science, University of Arizona.
+  bio: >-
+    B.S. in Neuroscience and Cognitive Science, University of Arizona.
 
 - name: Shraddha Dwivedi
   role: Undergraduate Researcher
   photo: dwivedi.jpg
   alt: Shraddha Dwivedi
   bio: >-
-    B.S. in Neuroscience &amp; Cognitive Science and Molecular &amp; Cellular
-    Biology, minors in Biochemistry and Public Health.
+    B.S. in Neuroscience &amp; Cognitive Science and Molecular &amp; Cellular Biology, minors in Biochemistry and Public Health.
 
 - name: Amanda Wiley
   role: Undergraduate Researcher
   photo: amanda.jpg
   alt: Amanda Wiley
   bio: >-
-    B.S. in Biology with an emphasis on Biomedical Science, minor in Religious
-    Studies.
+    B.S. in Biology with an emphasis on Biomedical Science, minor in Religious Studies.
 
 - name: Frances Webb
   role: Undergraduate Researcher
   photo: frances_webb.jpg
   alt: Frances Webb
-  bio: B.S. in Neuroscience and Cognitive Science and Psychological Sciences
+  bio: >-
+    B.S. in Neuroscience and Cognitive Science and Psychological Sciences
